@@ -1,0 +1,513 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-27 00:53+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: povertymappingapp/settings_example.py:231
+#: povertymappingapp/settings_example.py:246
+msgid "en"
+msgstr ""
+
+#: povertymappingapp/templates/about.html:9
+#: povertymappingapp/templates/about.html:18
+#: povertymappingapp/templates/base.html:104
+msgid "ABOUT"
+msgstr "អំពី"
+
+#: povertymappingapp/templates/about.html:21
+msgid "Mapping vulnerability using big data and AI is a collaborative effort of NIS/UNDP Cambodia and the Spatial Informatics Group under the auspices of Servir Mekong. In the project we distinguish the vulnerability dimensions of education, health, living standard, employment and monetary. The dimensions are calculated from big earth data using artificial intelligence. Spatial data information layers were derived from satellite imagery, Geo Information Systems and various other sources. We will use the Google Earth Engine technology platform for storing and processing information. Google Earth Engine is a cloud based geo-spatial storage and processing platform which enables users to perform calculations over fast areas and easily share data and work routines."
+msgstr "ការផលិតផែនទីនៃភាពងាយរងគ្រោះដោយប្រើប្រាស់ទិន្នន័យធំ (Big data) និងបញ្ញាសិប្បនិម្មិត (AI) គឺជាកិច្ចខិតខំប្រឹងប្រែងរួមគ្នារវាង UNDP Cambodia និង វិទ្យាស្ថានជាតិស្ថិតិ ក្រោមការឧបត្ថម្ភពី Servir Mekong ។ នៅក្នុងគម្រោងនេះ យើងបែងចែកវិសាលភាពនៃភាពងាយរងគ្រោះនៃការអប់រំ សុខភាព ស្តង់ដារនៃការរស់នៅ ការងារ និងរូបិយវត្ថុ។ វិសាលភាពត្រូវបានគណនាពីទិន្នន័យផែនដីធំដោយប្រើបញ្ញាសិប្បនិម្មិត។ ស្រទាប់ព័ត៌មានទិន្នន័យលំហបានមកពីរូបភាពផ្កាយរណប ប្រព័ន្ធព័ត៌មានភូមិសាស្ត្រ និងប្រភពផ្សេងៗ។ យើងនឹងប្រើវេទិកាបច្ចេកវិទ្យា Google Earth Engine សម្រាប់រក្សាទុក និងដំណើរការព័ត៌មាន។ Google Earth Engine គឺជាប្រព័ន្ធផ្ទុកទិន្នន័យ និងដំណើរការតាមភូមិសាស្ត្រដែលមានមូលដ្ឋានលើពពក ដែលអាចឱ្យអ្នកប្រើប្រាស់ធ្វើការគណនាលើតំបន់ដែលមានល្បឿនលឿន និងងាយស្រួលចែករំលែកទិន្នន័យ និងការងារ។"
+
+#: povertymappingapp/templates/about.html:53
+msgid "ORGANIZATIONS INVOLVED"
+msgstr "ដៃគូរពាក់ព័ន្ធ"
+
+#: povertymappingapp/templates/about.html:76
+msgid "OUR TEAM"
+msgstr "ក្រុមការងារ"
+
+#: povertymappingapp/templates/about.html:206
+msgid "CONTACT US"
+msgstr "អំពីយើង"
+
+#: povertymappingapp/templates/base.html:94
+msgid "HOME"
+msgstr "ទំព័រដើម"
+
+#: povertymappingapp/templates/base.html:97
+msgid "MAP"
+msgstr "ផែនទី"
+
+#: povertymappingapp/templates/base.html:100
+#: povertymappingapp/templates/method.html:9
+#: povertymappingapp/templates/method.html:19
+msgid "METHODOLOGY"
+msgstr "វិធីសាស្រ្ត"
+
+#: povertymappingapp/templates/home.html:14
+msgid "Big data and artificial intelligence for mapping vulnerability in Cambodia"
+msgstr "ការផលិតផែនទីងាយរងគ្រោះ ដោយប្រើប្រាស់ទិន្នន័យធំ និងបញ្ញាសិប្បនិម្មិត កម្ពុជា"
+
+#: povertymappingapp/templates/home.html:15
+msgid "To increase the availability of vulnerability data that identifies locations, dimensions, and degree of multidimensional vulnerability in Cambodia."
+msgstr "ដើម្បីបង្កើនភាពងាយរកបានទិន្នន័យងាយរងគ្រោះ ដែលអាចសម្គាល់ទីតាំង វិសាលភាព និងកម្រិតនៃភាពងាយរងគ្រោះដែលសម្បូរនៅកម្ពុជា"
+
+#: povertymappingapp/templates/home.html:16
+msgid "LAUNCH TOOL"
+msgstr "ដំណើរការឧបករណ៍"
+
+#: povertymappingapp/templates/home.html:17
+msgid "READ MORE"
+msgstr "អានបន្ថែម"
+
+#: povertymappingapp/templates/home.html:42
+msgid "Application Purpose"
+msgstr "គោលបំណងនៃប្រព័ន្ធ"
+
+#: povertymappingapp/templates/home.html:43
+msgid "Artificial intelligence can be very useful to map vulnerability across different dimensions in space and time at the household level. The poverty mapping tool can provide valuable insights into the location and extent of different deprivations across Cambodia and help achieve different Sustainable Development Goals."
+msgstr "បញ្ញាសិប្បនិម្មិត (AI) អាចមានប្រយោជន៍ខ្លាំងណាស់ក្នុងការផលិតផែនទីភាពងាយរងគ្រោះនៅទូទាំងវិមាត្រផ្សេងៗគ្នាក្នុងលំហ និងពេលវេលានៅកម្រិតគ្រួសារ។ ឧបករណ៍ផលិតផែនទីភាពក្រីក្រអាចផ្តល់នូវការយល់ដឹងដ៏មានតម្លៃចំពោះទីតាំង និងទំហំនៃភាពខ្វះខាតផ្សេងៗគ្នានៅទូទាំងប្រទេសកម្ពុជា និងជួយសម្រេចបាននូវគោលដៅអភិវឌ្ឍន៍ប្រកបដោយចីរភាពផ្សេងៗគ្នា។"
+
+#: povertymappingapp/templates/home.html:45
+msgid "Application Uses"
+msgstr "ការប្រើប្រាស់ប្រព័ន្ធ"
+
+#: povertymappingapp/templates/home.html:46
+msgid "The poverty mapping tool is currently used by UNDP Cambodia to track deprivations and report on vulnerability across the country."
+msgstr "ឧបករណ៍ផលិតផែនទីភាពក្រីក្រត្រូវបានប្រើប្រាស់ដោយវិទ្យាស្ថានជាតិស្ថិតិ គាំទ្របច្ចេកទេស និងថវិកា ដោយ UNDP ប្រចាំកម្ពុជា ដើម្បីតាមដានការខ្វះខាត និងរាយការណ៍អំពីភាពងាយរងគ្រោះនៅទូទាំងប្រទេស។"
+
+#: povertymappingapp/templates/home.html:55
+msgid "Poverty mapping for Cambodia"
+msgstr "ផែនទីភាពក្រីក្រក្នុងប្រទេសកម្ពុជា"
+
+#: povertymappingapp/templates/home.html:78
+msgid "Easily Accessible"
+msgstr "ងាយស្រួលក្នុងការប្រើប្រាស់"
+
+#: povertymappingapp/templates/home.html:79
+msgid "The system uses free, easily accessible, open source data and is fully customizable to meet user-tailored needs"
+msgstr "ប្រព័ន្ធនេះប្រើប្រាស់ប្រភពទិន្នន័យបើកចំហ ដោយឥតគិតថ្លៃ ងាយស្រួលក្នុងការប្រើប្រាស់ និងអាចប្ដូរបានដោយពេញលេញ ដើម្បីបំពេញតាមតម្រូវការរបស់អ្នកប្រើប្រាស់។"
+
+#: povertymappingapp/templates/home.html:86
+msgid "Artificial Intelligence"
+msgstr "បញ្ញាសិប្បនិម្មិត"
+
+#: povertymappingapp/templates/home.html:87
+msgid "The system uses the newest methodologies in the field of Machine Learning and Artificial Intelligence."
+msgstr "ប្រព័ន្ធនេះប្រើប្រាស់វិធីសាស្រ្តថ្មី"
+
+#: povertymappingapp/templates/home.html:94
+msgid "Cloud Technology"
+msgstr "បច្ចេកវិទ្យាក្លោដ"
+
+#: povertymappingapp/templates/home.html:95
+msgid "Use of the latest cloud computing technologies, leveraging the power of Google Earth Engine cloud-based platform."
+msgstr "ការប្រើប្រាស់បច្ចេកវិទ្យា cloud computing ចុងក្រោយបំផុត ដោយប្រើប្រាស់កម្មវិធី​​ Google Earth Engine ដោយផ្អែកលើ cloud-based platform។"
+
+#: povertymappingapp/templates/home.html:106
+msgid "Our Partners"
+msgstr "ដៃគូ"
+
+#: povertymappingapp/templates/home.html:127
+#: povertymappingapp/templates/panels/guiding-panel.html:59
+msgid "Disclaimer"
+msgstr "ការបដិសេធ៖"
+
+#: povertymappingapp/templates/home.html:127
+#: povertymappingapp/templates/panels/guiding-panel.html:59
+msgid "The results presented on this website are the outcome of an exploratory scientific study on the use of AI for vulnerability mapping in Cambodia. Results should be interpreted in this context and not be used as absolute or official numbers endorsed by official entities. For more information please contact UNDP Cambodia."
+msgstr "ការបដិសេធ៖ លទ្ធផលដែលបានបង្ហាញនៅលើគេហទំព័រនេះ គឺជាលទ្ធផលនៃការសិក្សាស្រាវជ្រាវបែបវិទ្យាសាស្ត្រលើការប្រើប្រាស់បញ្ញាសិប្បនិម្មិត (AI) សម្រាប់ការផលិតផែនទីភាពងាយរងគ្រោះនៅក្នុងប្រទេសកម្ពុជា។ លទ្ធផលគួរតែត្រូវបានបកស្រាយនៅក្នុងបរិបទនេះ ហើយមិនត្រូវប្រើជាលេខដាច់ខាត ឬលេខដែលគាំទ្រដោយអង្គភាពផ្លូវការនោះទេ។ សម្រាប់ព័ត៌មានបន្ថែម សូមទាក់ទងវិទ្យាស្ថានជាតិស្ថិតិ ឬ UNDP Cambodia។"
+
+#: povertymappingapp/templates/map.html:69
+msgid "Select  administrative level"
+msgstr "ជ្រើសរើសកម្រិតរដ្ឋបាល"
+
+#: povertymappingapp/templates/map.html:72
+msgid "Province"
+msgstr "ខេត្ត"
+
+#: povertymappingapp/templates/map.html:73
+#: povertymappingapp/templates/panels/left-menu.html:359
+msgid "District"
+msgstr "ស្រុក"
+
+#: povertymappingapp/templates/map.html:74
+msgid "Commune/Sangkat"
+msgstr "ឃុំ"
+
+#: povertymappingapp/templates/map.html:76
+msgid "Clear Selected Region"
+msgstr "ការសម្អាតតំបន់ដែលបានជ្រើសរើស"
+
+#: povertymappingapp/templates/map.html:92
+msgid "Total Population"
+msgstr "ប្រជាជនសរុប"
+
+#: povertymappingapp/templates/map.html:102
+msgid "Number of Buildings"
+msgstr "ចំនួនអាគារ"
+
+#: povertymappingapp/templates/map.html:112
+msgid "Probability of population deprived from overall vulnerability"
+msgstr "ប្រូបាប៊ីលីតេនៃចំនួនប្រជាជនដែលត្រូវបានដកចេញពីភាពងាយរងគ្រោះ"
+
+#: povertymappingapp/templates/map.html:155
+msgid "Poverty Vulnerability Report in Cambodia"
+msgstr "របាយការណ៍ភាពងាយរងគ្រោះនៃភាពក្រីក្រនៅកម្ពុជា"
+
+#: povertymappingapp/templates/map.html:156
+msgid ""
+"To create a summary report, please define the Area of Interest (AOI) for data calculations in all components of the tool. Users can identify areas of interest by selecting administrative boundaries (province, district or township)"
+msgstr "ដើម្បីបង្កើតរបាយការណ៍សង្ខេប សូមកំណត់តំបន់ដែលជាចំណាប់អារម្មណ៍ (AOI) សម្រាប់ការគណនាទិន្នន័យនៅក្នុងសមាសធាតុទាំងអស់នៃឧបករណ៍។ អ្នកប្រើប្រាស់អាចកំណត់តំបន់ដែលចាប់អារម្មណ៍ដោយជ្រើសរើសព្រំដែនរដ្ឋបាល (ខេត្ត ស្រុក ឬទីប្រជុំជន)"
+
+#: povertymappingapp/templates/map.html:160
+#: povertymappingapp/templates/map.html:170
+#: povertymappingapp/templates/panels/left-menu.html:186
+#: povertymappingapp/templates/panels/left-menu.html:234
+msgid "Overall"
+msgstr "សុខភាព"
+
+#: povertymappingapp/templates/map.html:161
+#: povertymappingapp/templates/map.html:184
+#: povertymappingapp/templates/panels/left-menu.html:80
+#: povertymappingapp/templates/panels/left-menu.html:87
+#: povertymappingapp/templates/panels/left-menu.html:222
+msgid "Health"
+msgstr "សុខភាព"
+
+#: povertymappingapp/templates/map.html:162
+#: povertymappingapp/templates/map.html:269
+#: povertymappingapp/templates/panels/left-menu.html:70
+#: povertymappingapp/templates/panels/left-menu.html:76
+#: povertymappingapp/templates/panels/left-menu.html:219
+msgid "Education"
+msgstr "អប់រំ"
+
+#: povertymappingapp/templates/map.html:163
+#: povertymappingapp/templates/map.html:312
+#: povertymappingapp/templates/panels/left-menu.html:120
+#: povertymappingapp/templates/panels/left-menu.html:126
+#: povertymappingapp/templates/panels/left-menu.html:226
+msgid "Living Standard"
+msgstr "រស់នៅស្តង់ដារ"
+
+#: povertymappingapp/templates/map.html:164
+#: povertymappingapp/templates/map.html:414
+#: povertymappingapp/templates/panels/left-menu.html:176
+#: povertymappingapp/templates/panels/left-menu.html:230
+msgid "Monetary"
+msgstr "រូបិយវត្ថុ"
+
+#: povertymappingapp/templates/map.html:197
+msgid "Access to health care"
+msgstr "ការប្រើប្រាស់សេវាថែទាំសុខភាព"
+
+#: povertymappingapp/templates/map.html:211
+msgid "Access to clean water"
+msgstr "ទទួលបានទឹកស្អាត"
+
+#: povertymappingapp/templates/map.html:225
+msgid "Access to sanitation"
+msgstr "ទទួលបានអនាម័យ"
+
+#: povertymappingapp/templates/map.html:239
+msgid "Food consumption score"
+msgstr "ការបរិភោគអាហារ"
+
+#: povertymappingapp/templates/map.html:252
+msgid "Hand washing"
+msgstr "លាងសម្អាតដៃ"
+
+#: povertymappingapp/templates/map.html:282
+msgid "Educational attainment"
+msgstr "ទទួលបានការអប់រំ"
+
+#: povertymappingapp/templates/map.html:295
+msgid "School attendance"
+msgstr "ចូលរៀននៅសាលា"
+
+#: povertymappingapp/templates/map.html:326
+#: povertymappingapp/templates/panels/left-menu.html:138
+msgid "Overcrowding"
+msgstr "ភាពចង្អៀត"
+
+#: povertymappingapp/templates/map.html:340
+msgid "Housing materials"
+msgstr "សម្ភារៈលំនៅដ្ឋាន"
+
+#: povertymappingapp/templates/map.html:354
+msgid "Cooking fuel"
+msgstr "ប្រេងឥន្ធនៈចម្អិនអាហារ"
+
+#: povertymappingapp/templates/map.html:368
+#: povertymappingapp/templates/panels/left-menu.html:165
+msgid "Assets"
+msgstr "ទ្រព្យសកម្ម"
+
+#: povertymappingapp/templates/map.html:382
+msgid "Livelihood based Coping Strategies"
+msgstr "យុទ្ធសាស្រ្ដនៃការដោះស្រាយជីវភាពរស់នៅ"
+
+#: povertymappingapp/templates/map.html:396
+msgid "Access to electricity"
+msgstr "ទទួលបានប្រើអគ្គិសនី"
+
+#: povertymappingapp/templates/map.html:431
+#: povertymappingapp/templates/panels/left-menu.html:275
+msgid "Nightlight Time Series"
+msgstr "ម៉ោងពេលយប់"
+
+#: povertymappingapp/templates/method.html:24
+msgid "Big data has the ability to revolutionize the humanitarian sector. Accurate and timely information has traditionally been a main constraint in disaster risk preparation and is of paramount importance to meet the Sustainable Development Goals (SDGs)"
+msgstr "ទិន្នន័យធំមានសមត្ថភាពធ្វើបដិវដ្ដវិស័យមនុស្សធម៌។ ព័ត៌មានត្រឹមត្រូវ និងទាន់ពេលវេលា ជាទម្លាប់នៃឧបសគ្គចម្បងក្នុងការរៀបចំហានិភ័យគ្រោះមហន្តរាយ ហើយមានសារៈសំខាន់បំផុតក្នុងការបំពេញតាមគោលដៅអភិវឌ្ឍន៍ប្រកបដោយចីរភាព (SDGs)។"
+
+#: povertymappingapp/templates/method.html:28
+msgid "Geo spatial information can play an important role in achieving sustainable development and reducing vulnerabilities and deprivations by mapping different dimensions of vulnerability across space and time. "
+msgstr "ព័ត៌មានភូមិសាស្ត្រអាចដើរតួនាទីយ៉ាងសំខាន់ក្នុងការសម្រេចបាននូវការអភិវឌ្ឍន៍ប្រកបដោយនិរន្តរភាព និងកាត់បន្ថយភាពងាយរងគ្រោះ និងការដកចេញពីការគូសផែនទីវិសាលភាពផ្សេងៗគ្នានៃភាពងាយរងគ្រោះនៅទូទាំងលំហ និងពេលវេលា។"
+
+#: povertymappingapp/templates/method.html:30
+msgid "In this study Big Earth data were translated into indicators using the data from the Cambodia Socio-Economic Survey. The indicators were then translated into dimensions which add up an overall vulnerability."
+msgstr "នៅក្នុងការសិក្សានេះ ទិន្នន័យ Big Earth ត្រូវបានបកប្រែទៅជាសូចនាករ ដោយប្រើប្រាស់ទិន្នន័យដែលបានមកពីអង្កេតសេដ្ឋកិច្ច-សង្គមកម្ពុជា។ បន្ទាប់មក សូចនាករត្រូវបានបកប្រែទៅជាវិសាលភាព ដែលបន្ថែមភាពងាយរងគ្រោះជារួម។"
+
+#: povertymappingapp/templates/method.html:35
+msgid "The 17 sustainable development goals."
+msgstr "គោលដៅអភិវឌ្ឍន៍ប្រកបដោយចីរភាពទាំង ១៧។"
+
+#: povertymappingapp/templates/method.html:184
+msgid "<b>A random forest algorithm</b> was trained with a large number of geo spatial information layers on e.g. distance to roads, electricity grid, nightlights, health facilities, schools, land cover etc and the data from the Cambodia Socio-economic survey. The random forest model was then applied in probability mode to estimate the probability of deprivations across the country on a 100 by 100 meter grid. The variable importance of the different indicators is shown in FIG 1."
+msgstr "វិធីសាស្រ្ត Random Forest ត្រូវបានបណ្តុះបណ្តាលជាមួយនឹងបណ្ដុំព័ត៌មានភូមិសាស្ត្រមួយចំនួនធំ ឧ. ចម្ងាយផ្លូវ បណ្តាញអគ្គិសនី អំពូលភ្លើងពេលយប់ កន្លែងសុខភាព សាលារៀន គម្របដីជាដើម និងទិន្នន័យអង្កេតសេដ្ឋកិច្ច-សង្គមកម្ពុជា។ បន្ទាប់មកវិធីសាស្រ្ត Random Forest ត្រូវបានអនុវត្តក្នុងទម្រង់ប្រូបាប៊ីលីតេ ដើម្បីប៉ាន់ប្រមាណប្រូបាប៊ីលីតេនៃការដកចេញនៅទូទាំងប្រទេសនៅលើក្រឡាចត្រង្គទំហំ 100 គុណនឹង 100 ម៉ែត្រ។ សារៈសំខាន់អថេរនៃសូចនាករផ្សេងៗគ្នាត្រូវបានបង្ហាញក្នុងរូបទី១"
+
+#: povertymappingapp/templates/method.html:186
+msgid "We used the Bing open building footprints dataset to calculate the deprivations per household. This dataset was generated using a machine learning approach on high resolution satellite images. It provides information on the location of buildings in Cambodia. "
+msgstr "យើង​បាន​ប្រើ​សំណុំ​ទិន្នន័យ​​បើក​ចំហ​នៃអគារ​របស់ Bing ដើម្បី​គណនា​ការ​ដកចេញក្នុង​មួយ​គ្រួសារ។ សំណុំទិន្នន័យនេះត្រូវបានបង្កើតដោយប្រើវិធីសាស្រ្តរៀនតាមរយៈរូបភាពផ្កាយរណបដែលមានគុណភាពបង្ហាញខ្ពស់។ វាផ្តល់ព័ត៌មានអំពីទីតាំងអគារក្នុងប្រទេសកម្ពុជា។"
+
+#: povertymappingapp/templates/method.html:189
+msgid "The image below shows the number of deprivations per household on the country level. This dataset can be explored in more detail in the map section of this website."
+msgstr "រូបភាពខាងក្រោមបង្ហាញពីចំនួននៃការដកចេញក្នុងមួយគ្រួសារនៅកម្រិតប្រទេស។ សំណុំទិន្នន័យនេះ អាចត្រូវបានស្វែងរកយ៉ាងលម្អិតនៅក្នុងផ្នែកផែនទីនៃគេហទំព័រនេះ។"
+
+#: povertymappingapp/templates/method.html:193
+msgid "The variable importance of the different indicators"
+msgstr "រូបភាពទី១ សារៈសំខាន់អថេរនៃសូចនាករផ្សេងៗគ្នា"
+
+#: povertymappingapp/templates/panels/guiding-panel.html:19
+msgid "Step 1"
+msgstr "ជំហានទី ១"
+
+#: povertymappingapp/templates/panels/guiding-panel.html:20
+msgid "Get started by exploiting the data: (Probability maps, Poverty analysis, Explore timeseries, GIS layers)"
+msgstr "ជំហានទី ១ ចាប់ផ្តើមដោយការទាញយកទិន្នន័យ៖ (ផែនទីប្រូបាប៊ីលីតេ ការវិភាគភាពក្រីក្រ ការស្វែងរកពេលវេលា ស្រទាប់ប្រព័ន្ធព័ត៌មានភូមិសាស្រ្ត)"
+
+#: povertymappingapp/templates/panels/guiding-panel.html:29
+msgid "Step 2"
+msgstr "ជំហានទី ២ "
+
+#: povertymappingapp/templates/panels/guiding-panel.html:30
+msgid "Explore indicators at various administrative levels using the selection tool in the top right corner"
+msgstr "ជំហានទី ២ ការប្រើប្រាស់សូចនាករនៅកម្រិតរដ្ឋបាលផ្សេងៗដោយប្រើឧបករណ៍ជ្រើសរើសនៅជ្រុងខាងលើខាងស្តាំ"
+
+#: povertymappingapp/templates/panels/guiding-panel.html:42
+msgid "Step 3"
+msgstr "ជំហានទី ៣ "
+
+#: povertymappingapp/templates/panels/guiding-panel.html:43
+msgid "Explore the data per province, district or commune"
+msgstr "ជំហានទី ៣ ការស្វែងរកទិន្នន័យតាមខេត្ត ស្រុក ឬឃុំ"
+
+#: povertymappingapp/templates/panels/guiding-panel.html:51
+msgid "Step 4"
+msgstr "ជំហានទី ៤"
+
+#: povertymappingapp/templates/panels/guiding-panel.html:52
+msgid "Compare different regions"
+msgstr "ជំហានទី ៤ ការប្រៀបធៀបតំបន់ផ្សេងៗគ្នា"
+
+#: povertymappingapp/templates/panels/left-menu.html:13
+msgid "Probability Maps"
+msgstr "ផែនទីប្រូបាប៊ីលីតេ"
+
+#: povertymappingapp/templates/panels/left-menu.html:24
+msgid "Regional Summaries"
+msgstr "ការសង្ខេបតំបន់"
+
+#: povertymappingapp/templates/panels/left-menu.html:34
+msgid "Satellite Images"
+msgstr "រូបភាពផ្កាយរណប"
+
+#: povertymappingapp/templates/panels/left-menu.html:45
+#: povertymappingapp/templates/panels/left-menu.html:370
+msgid "GIS Layers"
+msgstr "ស្រទាប់ប្រព័ន្ធព័ត៌មានភូមិសាស្រ្ត"
+
+#: povertymappingapp/templates/panels/left-menu.html:63
+msgid "POVERTY VULNERABILITY"
+msgstr ""
+
+#: povertymappingapp/templates/panels/left-menu.html:64
+#: povertymappingapp/templates/panels/left-menu.html:212
+#: povertymappingapp/templates/panels/left-menu.html:263
+#: povertymappingapp/templates/panels/left-menu.html:310
+msgid "Selected Area"
+msgstr "តំបន់ដែលបានជ្រើសរើស"
+
+#: povertymappingapp/templates/panels/left-menu.html:65
+msgid "Probability of deprivation"
+msgstr "ប្រូបាប៊ីលីតេនៃការដកចេញ"
+
+#: povertymappingapp/templates/panels/left-menu.html:94
+msgid "Food"
+msgstr "អារហារ"
+
+#: povertymappingapp/templates/panels/left-menu.html:101
+msgid "Water"
+msgstr "ទឹក"
+
+#: povertymappingapp/templates/panels/left-menu.html:108
+msgid "Sanitation"
+msgstr "អនាម័យ"
+
+#: povertymappingapp/templates/panels/left-menu.html:115
+msgid "Hand Washing"
+msgstr "លាងសម្អាតដៃ"
+
+#: povertymappingapp/templates/panels/left-menu.html:132
+msgid "Buildings"
+msgstr "អគារ"
+
+#: povertymappingapp/templates/panels/left-menu.html:145
+msgid "Housing"
+msgstr "លំនៅដ្ឋាន"
+
+#: povertymappingapp/templates/panels/left-menu.html:151
+msgid "Fuel"
+msgstr "ប្រេងឥន្ធនៈ"
+
+#: povertymappingapp/templates/panels/left-menu.html:158
+msgid "Electricity"
+msgstr "អគ្គិសនី"
+
+#: povertymappingapp/templates/panels/left-menu.html:172
+msgid "Livelihood Based Coping"
+msgstr "យុទ្ធសាស្រ្ដនៃការដោះស្រាយជីវភាពរស់នៅ"
+
+#: povertymappingapp/templates/panels/left-menu.html:182
+msgid "Consumption and Expenditure"
+msgstr "ប្រើប្រាស់ និងការចំណាយ"
+
+#: povertymappingapp/templates/panels/left-menu.html:192
+msgid "Overall Vulnerability"
+msgstr ""
+
+#: povertymappingapp/templates/panels/left-menu.html:211
+msgid "POVERTY INDICATORS"
+msgstr "សូចនាករភាពក្រីក្រ"
+
+#: povertymappingapp/templates/panels/left-menu.html:213
+msgid "Percentage of households with deprivations by administrative region"
+msgstr ""
+
+#: povertymappingapp/templates/panels/left-menu.html:262
+msgid "SATELLITE PRODUCTS"
+msgstr "ផ្កាយរណប"
+
+#: povertymappingapp/templates/panels/left-menu.html:264
+msgid "Buildings and Population"
+msgstr "អគារ និងចំនួនប្រជាជន"
+
+#: povertymappingapp/templates/panels/left-menu.html:267
+msgid "Population density"
+msgstr ""
+
+#: povertymappingapp/templates/panels/left-menu.html:271
+msgid "Number of deprivation"
+msgstr ""
+
+#: povertymappingapp/templates/panels/left-menu.html:277
+msgid "Nightlight map legend"
+msgstr ""
+
+#: povertymappingapp/templates/panels/left-menu.html:282
+msgid "WorldPop"
+msgstr "ផែនទីពិភពលោក"
+
+#: povertymappingapp/templates/panels/left-menu.html:284
+msgid "WorldPop map legend"
+msgstr "ផែនទីពិភពលោក (legend)"
+
+#: povertymappingapp/templates/panels/left-menu.html:288
+msgid "Land Cover Map"
+msgstr "ផែនទីគម្របដី"
+
+#: povertymappingapp/templates/panels/left-menu.html:290
+msgid "Land cover map legend"
+msgstr "ផែនទីគម្របដី (legend)"
+
+#: povertymappingapp/templates/panels/left-menu.html:308
+msgid "HOUSING AND PUBLIC SERVICES"
+msgstr ""
+
+#: povertymappingapp/templates/panels/left-menu.html:311
+msgid "Housing Indicator"
+msgstr "លំនៅដ្ឋាន"
+
+#: povertymappingapp/templates/panels/left-menu.html:313
+msgid "Water Indicator"
+msgstr "ទឹក"
+
+#: povertymappingapp/templates/panels/left-menu.html:315
+msgid "Electricity Indicator"
+msgstr "អគ្គិសនី"
+
+#: povertymappingapp/templates/panels/left-menu.html:317
+msgid "Fuel Indicator"
+msgstr "ប្រេងឥន្ធន"
+
+#: povertymappingapp/templates/panels/left-menu.html:319
+msgid "Asset Indicator"
+msgstr "ទ្រព្យសកម្ម"
+
+#: povertymappingapp/templates/panels/left-menu.html:334
+msgid "Basemap"
+msgstr "ផែនទី"
+
+#: povertymappingapp/templates/panels/left-menu.html:355
+msgid "Administrative Boundaries"
+msgstr "ព្រំដែនរដ្ឋបាល"
+
+#: povertymappingapp/templates/panels/left-menu.html:360
+#, fuzzy
+#| msgid "Commune/Sangkat"
+msgid "Commune"
+msgstr "ឃុំ"
+
+#: povertymappingapp/templates/panels/left-menu.html:373
+msgid "Airport"
+msgstr "អាកាសយានដ្ឋាន"
+
+#: povertymappingapp/templates/panels/left-menu.html:374
+msgid "Hydro Power Dams"
+msgstr "ទំនប់វារីអគ្គីសនី"
+
+#: povertymappingapp/templates/panels/left-menu.html:375
+msgid "Main Road"
+msgstr "ផ្លូវធំ"
+
+#: povertymappingapp/templates/panels/left-menu.html:376
+msgid "Railway"
+msgstr "ផ្លូវដែក"
+
+#~ msgid "Language"
+#~ msgstr "Language"

@@ -1,0 +1,67 @@
+{% load i18n %}
+<div id="guiding-modal" class="modal">
+  <div class="modal-container">
+    <div class="modal-background"></div>
+    <div class="modal-window">
+      <div class="modal-wrapper custom-scroll">
+        <button type="button" class="close" data-dismiss="model" name="button">×</button>
+        <div class="area-modal-title">
+          Welcome to the Cambodia  poverty mapping Dashboard
+        </div>
+        <br>
+        <div class="disclaimer-content">
+          <p></p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="col-md-12" style="padding: 0; font-size:12px; text-align: center;">
+                <img src="/static/images/steps/step1.jpg" alt="" width="60%">
+              </div>
+              <div class="col-md-12" style="padding: 0; font-size:12px; text-align: center;">
+                <b>{% trans 'Step 1' %}</b>
+                {% trans 'Get started by exploiting the data: (Probability maps, Poverty analysis, Explore timeseries, GIS layers)' %}
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="col-md-12" style="padding: 0; font-size:12px; text-align: center;">
+                <img src="/static/images/steps/step2.jpg" alt="" width="60%">
+              </div>
+              <div class="col-md-12" style="padding: 0; font-size:12px; text-align: center;">
+                <b>{% trans 'Step 2' %}</b>
+                {% trans 'Explore indicators at various administrative levels using the selection tool in the top right corner' %}
+
+              </div>
+            </div>
+            <hr style="margin-top: 10px; margin-bottom: 10px;">
+            </div>
+            <div class="row">
+            <div class="col-md-6">
+              <div class="col-md-12" style="padding: 0; font-size:12px; text-align: center;">
+                <img src="/static/images/steps/step3.jpg" alt="" width="60%">
+              </div>
+              <div class="col-md-12" style="padding: 0; font-size:12px; text-align: center;">
+                <b>{% trans 'Step 3' %}</b>
+                {% trans 'Explore the data per province, district or commune' %}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="col-md-12" style="padding: 0; font-size:12px; text-align: center;">
+                <img src="/static/images/steps/step4.jpg" alt="" width="60%">
+              </div>
+              <div class="col-md-12" style="padding: 0; font-size:12px; text-align: center;">
+                <b>{% trans 'Step 4' %}</b>
+                {% trans 'Compare different regions' %}
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="col-md-12">
+            <p> <span style="color:#1e96d3;">{% trans 'Disclaimer' %}:</span> {% trans 'The results presented on this website are the outcome of an exploratory scientific study on the use of AI for vulnerability mapping in Cambodia. Results should be interpreted in this context and not be used as absolute or official numbers endorsed by official entities. For more information please contact UNDP Cambodia.' %}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

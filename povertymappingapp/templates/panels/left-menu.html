@@ -1,0 +1,380 @@
+{% load i18n %}
+<div class="c-map-menu map-menu">
+  <div class="menu-tiles map-tour-data-layers">
+    <div class="c-menu-desktop menu-desktop">
+      <ul class="datasets-menu">
+
+        <li class="c-map-menu-tile datasets-tile" id="component1-tab" data-tippy-content="maps showing the probability of deprivation of households under 14 indicators of vulnerability" data-tippy-size="small">
+          <button class="item-button" type="button" name="button">
+            <div class="button-wrapper">
+              <svg class="c-icon tile-icon" viewBox="-5 -5 42 42">
+                <image xlink:href="/static/images/icons/map-bw.svg" />
+              </svg>
+              <span>{% trans 'Probability Maps' %}</span>
+
+            </div>
+          </button>
+        </li>
+        <li class="c-map-menu-tile datasets-tile" id="component2-tab" data-tippy-content="Analyze the deprivation at different administrative levels." data-tippy-size="small">
+          <button class="item-button" type="button" name="button">
+            <div class="button-wrapper">
+              <svg class="c-icon tile-icon" viewBox="-5 -5 42 42">
+                <image xlink:href="/static/images/icons/analysis-bw.svg" />
+              </svg>
+              <span>{% trans 'Regional Summaries' %}</span>
+            </div>
+          </button>
+        </li>
+        <li class="c-map-menu-tile datasets-tile" id="component3-tab" data-tippy-content="Explore the nightlight, worldpop and landcover time series for cambodia." data-tippy-size="small">
+          <button class="item-button" type="button" name="button">
+            <div class="button-wrapper">
+              <svg class="c-icon tile-icon" viewBox="-5 -5 42 42">
+                <image xlink:href="/static/images/icons/satellite-bw.svg" />
+              </svg>
+              <span>{% trans 'Satellite Images' %}</span>
+            </div>
+          </button>
+        </li>
+
+        <li class="c-map-menu-tile datasets-tile" id="layers-tab" data-tippy-content="Various other datalayers for cambodia" data-tippy-size="small">
+          <button class="item-button" type="button" name="button">
+            <div class="button-wrapper">
+              <svg class="c-icon tile-icon" viewBox="-5 -5 42 42">
+                <image xlink:href="/static/images/icons/layer-bw.svg" />
+              </svg>
+              <span>{% trans 'GIS Layers' %}</span>
+            </div>
+          </button>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+  <div class="c-menu-panel map-tour-menu-panel menu-panel" id="panel-component1" style="opacity: 0; transform: translateX(-25rem) translateZ(0rem);  transition: 1s;">
+    <button class="close-menu">
+      <svg class="c-icon icon-close-panel" viewBox="-5 -5 42 42">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 42 42">
+          <path d="M3.692 0l-3.692 3.692 12.308 12.308-12.308 12.308 3.692 3.692 12.308-12.308 12.308 12.308 3.692-3.692-12.308-12.308 12.308-12.308-3.692-3.692-12.308 12.308z"></path>
+        </svg>
+      </svg>
+    </button>
+    <div class="panel-body">
+
+      <label><b>{% trans 'POVERTY VULNERABILITY' %}</b></label>
+      <p>{% trans 'Selected Area' %}: <span class="selected_area_name" style="color: #023b10;">Cambodia</span></p>
+      <p>{% trans 'Probability of deprivation' %}</p>
+      <img src="/static/images/deprivation_legend.jpg"  alt="" style="width:50%;">
+
+      <hr style="margin-top: 10px;  margin-bottom: 10px;">
+      <!-- <ul class="toggles-list" id="toggle-list-probability"></ul> -->
+      <label><b>{% trans 'Education' %}</b></label>
+      <ul class="toggles-list">
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_Education" id="prop_Education" data-id="prop_Education"  data-yid="2020" data-name="Education" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label style="font-weight:600;">{% trans 'Education' %}</label>
+        </li>
+      </ul>
+
+      <label><b>{% trans 'Health' %}</b></label>
+      <ul class="toggles-list">
+
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_Health" id="prop_Health" data-id="prop_Health"  data-yid="2020" data-name="Health" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label style="font-weight:600;">{% trans 'Health' %}</label>
+        </li>
+
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_food" id="prop_food" data-id="prop_food"  data-yid="2020" data-name="Food" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Food' %}</label>
+        </li>
+
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_water" id="prop_water" data-id="prop_water"  data-yid="2020" data-name="Water" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Water' %}</label>
+        </li>
+
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_sanitation" id="prop_sanitation" data-id="prop_sanitation"  data-yid="2020" data-name="Sanitation" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Sanitation' %}</label>
+        </li>
+
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_handWashing" id="prop_handWashing" data-id="prop_handWashing"  data-yid="2020" data-name="HandWashing" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Hand Washing' %}</label>
+        </li>
+
+      </ul>
+
+      <label><b>{% trans 'Living Standard' %}</b></label>
+      <ul class="toggles-list">
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_LivingStandard" id="prop_LivingStandard" data-id="prop_LivingStandard"  data-yid="2020" data-name="Living Standard" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label style="font-weight:600;">{% trans 'Living Standard' %}</label>
+        </li>
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_buildings" id="prop_buildings" data-id="prop_buildings"  data-yid="2020" data-name="Buildings" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Buildings' %}</label>
+        </li>
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_overcrowding" id="prop_overcrowding" data-id="prop_overcrowding"  data-yid="2020" data-name="Overcrowding" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Overcrowding' %}</label>
+        </li>
+
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_housing" id="prop_housing" data-id="prop_housing"  data-yid="2020" data-name="Housing" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Housing' %}</label>
+        </li>
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_fuel" id="prop_fuel" data-id="prop_fuel"  data-yid="2020" data-name="Fuel" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Fuel' %}</label>
+        </li>
+
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_electricity" id="prop_electricity" data-id="prop_electricity"  data-yid="2020" data-name="Electricity" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Electricity' %}</label>
+        </li>
+
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_assets" id="prop_assets" data-id="prop_assets"  data-yid="2020" data-name="Assets" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Assets' %}</label>
+        </li>
+
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_livelihoodBasedCopingStrategies" id="prop_livelihoodBasedCopingStrategies" data-id="prop_livelihoodBasedCopingStrategies"  data-yid="2020" data-name="Livelihood Based Coping" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label>{% trans 'Livelihood Based Coping' %}</label>
+        </li>
+      </ul>
+
+      <label><b>{% trans 'Monetary' %}</b></label>
+      <ul class="toggles-list">
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_consumption" id="prop_consumption" data-id="prop_consumption"  data-yid="2020" data-name="Consumption" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+          </label>
+          <label style="font-weight:600;">{% trans 'Consumption and Expenditure' %}</label>
+        </li>
+      </ul>
+
+      <label><b>{% trans 'Overall' %}</b></label>
+      <ul class="toggles-list">
+        <li class="toggle">
+          <label class="switch_layer">
+            <input name="prop_totalV2" id="prop_totalV2" data-id="prop_totalV2"  data-yid="2020" data-name="Overall Vulnerability" data-color="#333" type="checkbox" checked><span class="slider_toggle round"></span></input>
+          </label>
+          <label style="font-weight:600;">{% trans 'Overall Vulnerability' %}</label>
+        </li>
+      </ul>
+
+
+      <ul class="toggles-list" id="toggle-list-probability"></ul>
+
+    </div>
+  </div>
+
+  <div class="c-menu-panel map-tour-menu-panel menu-panel" id="panel-component2" style="opacity: 0; transform: translateX(-25rem) translateZ(0rem); transition: 1s;">
+    <button class="close-menu">
+      <svg class="c-icon icon-close-panel" viewBox="-5 -5 42 42">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 42 42">
+          <path d="M3.692 0l-3.692 3.692 12.308 12.308-12.308 12.308 3.692 3.692 12.308-12.308 12.308 12.308 3.692-3.692-12.308-12.308 12.308-12.308-3.692-3.692-12.308 12.308z"></path>
+        </svg>
+      </svg>
+    </button>
+    <div class="panel-body">
+      <label><b>{% trans 'POVERTY INDICATORS' %}</b></label>
+      <p>{% trans 'Selected Area' %}: <span class="selected_area_name" style="color: #023b10;">Cambodia</span></p>
+      <p>{% trans 'Percentage of households with deprivations by administrative region' %}</p>
+      <img src="/static/images/deprivation_legend.jpg"  alt="" style="width:50%;">
+      <hr style="margin-top: 10px;  margin-bottom: 10px;">
+
+
+
+      <label><b>{% trans 'Education' %}</b></label>
+      <ul class="toggles-list" id="toggle-list-education"></ul>
+
+      <label><b>{% trans 'Health' %}</b></label>
+      <ul class="toggles-list" id="toggle-list-health"></ul>
+
+
+      <label><b>{% trans 'Living Standard' %}</b></label>
+      <ul class="toggles-list" id="toggle-list-living"></ul>
+
+
+      <label><b>{% trans 'Monetary' %}</b></label>
+      <ul class="toggles-list" id="toggle-list-monetary"></ul>
+
+
+      <label><b>{% trans 'Overall' %}</b></label>
+      <ul class="toggles-list" id="toggle-list-overall"></ul>
+
+      <hr style="margin-top: 10px;  margin-bottom: 5px;">
+      <div id="download_options" style="display:none;">
+        <div class="">
+          <a href="#" id="download_commu_csv" class="chart-btn-medium">Get CSV DownloadURL</a>
+          <a href="#" id="download_commu_shp" class="chart-btn-medium">Get SHP DownloadURL</a>
+        </div>
+
+        <input type="text" value="" id="downloadURL_box" class="downloadURL_box">
+        <a href="#" id="clipboardFunc">Copy URL</a>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="c-menu-panel map-tour-menu-panel menu-panel" id="panel-component3" style="opacity: 0; transform: translateX(-25rem) translateZ(0rem); transition: 1s;">
+    <button class="close-menu">
+      <svg class="c-icon icon-close-panel" viewBox="-5 -5 42 42">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 42 42">
+          <path d="M3.692 0l-3.692 3.692 12.308 12.308-12.308 12.308 3.692 3.692 12.308-12.308 12.308 12.308 3.692-3.692-12.308-12.308 12.308-12.308-3.692-3.692-12.308 12.308z"></path>
+        </svg>
+      </svg>
+    </button>
+    <div class="panel-body">
+      <label><b>{% trans 'SATELLITE PRODUCTS' %}</b></label>
+      <p>{% trans 'Selected Area' %}: <span class="selected_area_name" style="color: #023b10;">Cambodia</span></p>
+      <label><b>{% trans 'Buildings and Population' %}</b></label>
+      <ul class="toggles-list" id="toggle-list-others"></ul>
+
+      <p>{% trans 'Population density' %}</p>
+      <img src="/static/images/deprivation_number_legend.jpg"  alt="" style="width:100%;">
+      <hr style="margin-top: 10px;  margin-bottom: 10px;">
+
+      <p>{% trans 'Number of deprivation' %}</p>
+      <img src="/static/images/deprivation_number_legend.jpg"  alt="" style="width:100%;">
+      <hr style="margin-top: 10px;  margin-bottom: 10px;">
+
+      <label><b>{% trans 'Nightlight Time Series' %}</b></label>
+      <ul class="toggles-list ul-columns" id="toggle-list-nightlight"></ul>
+      <p>{% trans 'Nightlight map legend' %}</p>
+      <img src="/static/images/nightlight_legend.jpg"  alt="" style="width:100%;">
+      <hr style="margin-top: 10px;  margin-bottom: 10px;">
+
+
+      <label><b>{% trans 'WorldPop' %}</b></label>
+      <ul class="toggles-list ul-columns" id="toggle-list-worldpop"></ul>
+      <p>{% trans 'WorldPop map legend' %}</p>
+      <img src="/static/images/worldpop_legend.jpg"  alt="" style="width:100%;">
+      <hr style="margin-top: 10px;  margin-bottom: 10px;">
+
+      <label><b>{% trans 'Land Cover Map' %}</b></label>
+      <ul class="toggles-list ul-columns" id="toggle-list-landcover"></ul>
+      <p>{% trans 'Land cover map legend' %}</p>
+      <img src="/static/images/lc-legend.png"  alt="" style="width:40%;">
+      <hr style="margin-top: 10px;  margin-bottom: 10px;">
+
+
+    </div>
+  </div>
+
+  <div class="c-menu-panel map-tour-menu-panel menu-panel" id="panel-fire" style="opacity: 0; transform: translateX(-25rem) translateZ(0rem); transition: 1s;">
+    <button class="close-menu">
+      <svg class="c-icon icon-close-panel" viewBox="-5 -5 42 42">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 42 42">
+          <path d="M3.692 0l-3.692 3.692 12.308 12.308-12.308 12.308 3.692 3.692 12.308-12.308 12.308 12.308 3.692-3.692-12.308-12.308 12.308-12.308-3.692-3.692-12.308 12.308z"></path>
+        </svg>
+      </svg>
+    </button>
+    <div class="panel-body">
+      <h4>
+        {% trans 'HOUSING AND PUBLIC SERVICES' %}
+      </h4>
+      <p>{% trans 'Selected Area' %}: <span class="selected_area_name" style="color: #023b10;">Cambodia</span></p>
+      <h4>{% trans 'Housing Indicator' %}</h4>
+      <ul class="toggles-list" id="toggle-list-housing"></ul>
+      <h4>{% trans 'Water Indicator' %}</h4>
+      <ul class="toggles-list" id="toggle-list-water"></ul>
+      <h4>{% trans 'Electricity Indicator' %}</h4>
+      <ul class="toggles-list" id="toggle-list-electricity"></ul>
+      <h4>{% trans 'Fuel Indicator' %}</h4>
+      <ul class="toggles-list" id="toggle-list-fuel"></ul>
+      <h4>{% trans 'Asset Indicator' %}</h4>
+      <ul class="toggles-list" id="toggle-list-assets"></ul>
+
+    </div>
+  </div>
+
+  <div class="c-menu-panel map-tour-menu-panel menu-panel" id="panel-layers" style="opacity: 0; transform: translateX(-25rem) translateZ(0rem); transition: 1s;">
+    <button class="close-menu">
+      <svg class="c-icon icon-close-panel" viewBox="-5 -5 42 42">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 42 42">
+          <path d="M3.692 0l-3.692 3.692 12.308 12.308-12.308 12.308 3.692 3.692 12.308-12.308 12.308 12.308 3.692-3.692-12.308-12.308 12.308-12.308-3.692-3.692-12.308 12.308z"></path>
+        </svg>
+      </svg>
+    </button>
+    <div class="panel-body">
+      <label><b>{% trans 'Basemap' %}</b></label>
+      <div class="circle-selector">
+        <table>
+          <tr>
+            <td width="70px">
+              <input id="street" type="radio" checked="checked" name="basemap_selection" value="street" />
+              <label class="radiocard-cc street" for="street"></label><br>
+              <label for="street">STREETS</label>
+            </td>
+
+            <td width="70px">
+              <input id="satellite" type="radio" name="basemap_selection" value="satellite" />
+              <label class="radiocard-cc satellite" for="satellite"></label><br>
+              <label for="street">SATELLITE</label>
+            </td>
+
+          </tr>
+        </table>
+      </div>
+
+
+      <label><b>{% trans 'Administrative Boundaries' %}</b></label>
+      <ul class="toggles-list">
+        <!-- <li class="toggle"><label class="switch_layer"><input name="cambodia_toggle" id="cambodia_toggle" type="checkbox" ><span class="slider_toggle round"></span></label><label>Country</label></li> -->
+        <!-- <li class="toggle"><label class="switch_layer"><input name="province_toggle" id="province_toggle" type="checkbox"><span class="slider_toggle round"></span></label><label>Province</label></li> -->
+        <li class="toggle"><label class="switch_layer"><input name="district_toggle" id="district_toggle" type="checkbox"><span class="slider_toggle round"></span></label><label>{% trans 'District' %}</label></li>
+        <li class="toggle"><label class="switch_layer"><input name="commune_toggle" id="commune_toggle" type="checkbox"><span class="slider_toggle round"></span></label><label>{% trans 'Commune' %}</label></li>
+
+      </ul>
+
+      <label>
+        <!-- <span>
+          <svg id="gis-info" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#d4dbd4" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+          </svg>
+        </span> -->
+        <b>{% trans 'GIS Layers' %}</b></label>
+
+        <ul class="toggles-list">
+          <li class="toggle"><label class="switch_layer"><input name="airport_toggle" id="airport_toggle" type="checkbox"><span class="slider_toggle round"></span></label><label>{% trans 'Airport' %}</label></li>
+          <li class="toggle"><label class="switch_layer"><input name="dams_toggle" id="dams_toggle" type="checkbox"><span class="slider_toggle round"></span></label><label>{% trans 'Hydro Power Dams' %}</label></li>
+          <li class="toggle"><label class="switch_layer"><input name="main_road_toggle" id="main_road_toggle" type="checkbox"><span class="slider_toggle round"></span></label><label>{% trans 'Main Road' %}</label></li>
+          <li class="toggle"><label class="switch_layer"><input name="railway_toggle" id="railway_toggle" type="checkbox"><span class="slider_toggle round"></span></label><label>{% trans 'Railway' %}</label></li>
+        </ul>
+      </div>
+    </div>
+  </div>

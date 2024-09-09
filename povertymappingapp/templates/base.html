@@ -1,0 +1,255 @@
+{% load cms_tags menu_tags sekizai_tags static %}
+{% load i18n %}
+{% load strip_lang_prefix %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" data-framework="angularjs">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_ANALYTICS_ID }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      
+      gtag('config', '{{ GOOGLE_ANALYTICS_ID }}')
+    </script>
+
+    <!-- Mouse Flow -->
+    <script type="text/javascript">
+      window._mfq = window._mfq || []
+      ;(function () {
+        var mf = document.createElement('script')
+        mf.type = 'text/javascript'
+        mf.async = true
+        mf.src = '//cdn.mouseflow.com/projects/8abf1772-ee4f-4989-826a-cc135f063452.js'
+        document.getElementsByTagName('head')[0].appendChild(mf)
+      })()
+    </script>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="keywords" content="poverty mapping, machine learning, AI, cambodia, undp, google earth engine" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="description" content="poverty mapping for Cambodia" />
+    <meta name="author" content="Thannarot Kunlamai" />
+
+    {% block head %}
+      <title>Povert Mapping | Home</title>
+    {% endblock %}
+
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon" />
+
+    {% addtoblock 'css' %}
+    <style type="text/css">
+      /** Hide when Angular is not yet loaded and initialized */
+      [ng\:cloak],
+      [ng-cloak],
+      [data-ng-cloak],
+      [x-ng-cloak],
+      .ng-cloak,
+      .x-ng-cloak {
+        display: none !important;
+      }
+    </style>
+
+
+    <!-- Khmer Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Siemreap&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
+
+
+
+    <!-- Mapping -->
+    <link href="{% static 'vendor/leaflet/dist/leaflet.css' %}" rel="stylesheet" />
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet" />
+    <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet" />
+    <link href="{% static 'vendor/components-font-awesome/css/all.css' %}" rel="stylesheet" />
+    <!-- lEAFLET -->
+    <link href="{% static 'vendor/leaflet/dist/leaflet.css' %}" rel="stylesheet" />
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/map.css' %}" rel="stylesheet" />
+
+    {% endaddtoblock %}
+
+    {% render_block 'css' %}
+  </head>
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header">
+      <div class="row" style="background: #474343;color: #FFF;">
+        <div class="container">
+          <div class="undp-logo" style="cursor: pointer;">
+            <img src="{% static 'images/partners/undp-logo-blue.svg' %}" alt="" />
+          </div>
+          <div class="logo float-left">
+            <div style="margin-top: 15px;margin-left: 70px;">POVERTY MAPPING FOR CAMBODIA</div>
+          </div>
+
+          <nav class="nav-menu float-right d-none d-lg-block">
+            <ul id="page-menu">
+              <li>
+                <a href="/home">{% trans 'HOME' %}</a>
+              </li>
+              <li>
+                <a href="/map">{% trans 'MAP' %}</a>
+              </li>
+              <li>
+                <a href="/method">{% trans 'METHODOLOGY' %}</a>
+              </li>
+
+              <li>
+                <a href="/about">{% trans 'ABOUT' %}</a>
+              </li>
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% if LANGUAGE_CODE == 'en' %}
+                        EN
+                    {% elif LANGUAGE_CODE == 'kh' %}
+                        KH
+                    {% endif %}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="{% if LANGUAGE_CODE == 'en' %}active{% endif %}">
+                        <a href="{% url 'switch_language' %}?language=en&next={% strip_lang_prefix %}" class="dropdown-item">ENGLISH</a>
+                    </li>
+                    <li class="{% if LANGUAGE_CODE == 'kh' %}active{% endif %}">
+                        <a href="{% url 'switch_language' %}?language=kh&next={% strip_lang_prefix %}" class="dropdown-item">KHMER</a>
+                    </li>
+                </ul>
+            </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    {% block body %}
+
+    {% endblock %}
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 col-md-6 footer-info">
+              <h3><img src="/static/images/partners/sig.png" alt="" style="width:auto; height:55px;" /></h3>
+
+              <p>
+                <b>Spatial Informatics Group, LLC (SIG)</b> <br />
+                Spatial Informatics Group, 2529 Yolanda Ct.<br />
+                Pleasanton, CA 94566<br />
+                BTS Skytrain: Sanam Pao, Exit 1<br />
+                <strong>Email:</strong> info@sig-gis.com<br />
+              </p>
+              <div class="social-links mt-3"></div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Menu Links</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="/home">Home</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="/map">Map</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="/method">Methodology</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="/about">About Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="copyright">
+          Copyright &copy;2022 <strong><span>Poverty Mapping for Cambodia</span></strong>. All Rights Reserved
+        </div>
+      </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    {% addtoblock 'js' %}
+
+    <script src="{% static 'vendor/jquery/dist/jquery.min.js' %}"></script>
+    <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- Bootstrap Plugins -->
+    <script src="{% static 'vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+    <!-- Load Angular -->
+    <script src="{% static 'vendor/angular/angular.min.js' %}"></script>
+
+    <!-- Angular Plugins -->
+    <script src="{% static 'vendor/angular-sanitize/angular-sanitize.min.js' %}"></script>
+    <script src="{% static 'vendor/ngstorage/ngStorage.min.js' %}"></script>
+
+    <!-- Bootstrap Application -->
+    <script src="{% static 'app/init.js' %}"></script>
+
+    <!-- Load Settings -->
+    <script src="{% static 'app/config/settings.js' %}"></script>
+
+    <!-- Services -->
+    <script src="{% static 'app/services/common-service.js' %}"></script>
+
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+
+    <script src="{% static 'vendor/jquery-sticky/jquery.sticky.js' %}"></script>
+    <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+    <script src="{% static 'vendor/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendor/aos/aos.js' %}"></script>
+
+    <script src="{% static 'app/controllers/main.js' %}"></script>
+    {% block extra_script %}
+
+    {% endblock %}
+
+    {% endaddtoblock %}
+
+    {% render_block 'js' %}
+
+
+    <style>
+      {% if LANGUAGE_CODE == 'en' %}
+      body {
+          font-family: 'Roboto', sans-serif;
+          color: #444;
+      }
+      {% elif LANGUAGE_CODE == 'kh' %}
+      body {
+        font-family: 'Siemreap', 'Roboto Condensed', sans-serif;
+        color: #444;
+      }
+      h1, h2, h3, h4, h5, h6, .font-primary {
+        font-family: 'Moul', sans-serif;
+      }
+      {% endif %}
+  </style>
+  </body>
+</html>

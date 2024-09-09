@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block body %}
+  <!-- ======= homeimg Section ======= -->
+  <section id="homeimg">
+    <div class="homeimg-container">
+      <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators" id="homeimg-carousel-indicators"></ol>
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url('/static/images/slide/poverty-cambodai-home.jpg');">
+            <div class="carousel-container">
+              <div class="carousel-content container">
+                <h2 class="animated fadeInDown">{% trans 'Big data and artificial intelligence for mapping vulnerability in Cambodia' %} </h2>
+                <p class="animated fadeInUp">{% trans 'To increase the availability of vulnerability data that identifies locations, dimensions, and degree of multidimensional vulnerability in Cambodia.' %}</p>
+                <a href="/map" class="btn-get-started animated fadeInUp scrollto">{% trans 'LAUNCH TOOL' %}</a>
+                <a href="/method" class="btn-get-started animated fadeInUp scrollto">{% trans 'READ MORE' %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon icofont-rounded-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon icofont-rounded-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>  -->
+      </div>
+    </div>
+  </section>
+  <!-- End homeimg -->
+
+  <main id="main">
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about portfolio">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-lg-6 d-flex flex-column justify-content-center about-content">
+            <div class="section-title">
+              <h2 style="text-align: left;">{% trans 'Application Purpose' %}</h2>
+              <p>{% trans 'Artificial intelligence can be very useful to map vulnerability across different dimensions in space and time at the household level. The poverty mapping tool can provide valuable insights into the location and extent of different deprivations across Cambodia and help achieve different Sustainable Development Goals.' %}</p>
+              <hr style="margin-top: 10px; margin-bottom: 10px;" />
+              <h2 style="text-align: left;">{% trans 'Application Uses' %}</h2>
+              <p>{% trans 'The poverty mapping tool is currently used by UNDP Cambodia to track deprivations and report on vulnerability across the country.' %}</p>
+            </div>
+          </div>
+          <div class="col-lg-6" style="padding:20px;">
+            <div class="row portfolio-container">
+              <div class="col-lg-12 col-md-6">
+                <div class="portfolio-wrap text-center">
+                  <img src="/static/images/services/poverty-mapping-app.jpg" class="img-fluid" alt="" width="90%" />
+                  <div class="portfolio-info">
+                    <h4>{% trans 'Poverty mapping for Cambodia' %}</h4>
+                    <div class="portfolio-links">
+                      <a href="/map/" title="Browse Application" target="_blank"><i class="icofont-external-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End About Us Section -->
+
+    <!-- ======= Info Section ======= -->
+
+    <section class="method-lists">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-lg-4 col-md-6 content-item">
+            <div class="highlight-icon">
+              <img src="/static/images/icons/Free-easily.png" alt="" />
+            </div>
+            <h4>{% trans 'Easily Accessible' %}</h4>
+            <p>{% trans 'The system uses free, easily accessible, open source data and is fully customizable to meet user-tailored needs' %}</p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 content-item">
+            <div class="highlight-icon">
+              <img src="/static/images/icons/Artificial-intelligence.png" alt="" />
+            </div>
+            <h4>{% trans 'Artificial Intelligence' %}</h4>
+            <p>{% trans 'The system uses the newest methodologies in the field of Machine Learning and Artificial Intelligence.' %}</p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 content-item">
+            <div class="highlight-icon">
+              <img src="/static/images/icons/Cloud-technologies.png" alt="" />
+            </div>
+            <h4>{% trans 'Cloud Technology' %}</h4>
+            <p>{% trans 'Use of the latest cloud computing technologies, leveraging the power of Google Earth Engine cloud-based platform.' %}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======= End Info Section ======= -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>{% trans 'Our Partners' %}</h2>
+        </div>
+
+        <div class="row justify-content-md-center">
+          <div class="col-lg-3 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+            <img src="/static/images/partners/sig.png" alt="" style="width:100%;" />
+          </div>
+          <div class="col-lg-3 col-md-6 icon-box" data-aos="fade-up">
+            <img src="/static/images/partners/undp.png" alt="" style="width:auto; height:150px;" />
+          </div>
+          <div class="col-lg-3 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+            <img src="/static/images/partners/servir-mekong.png" alt="" style="width:100%; margin-top:20px;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <p style="font-size:14px;">
+            <span style="color:#1e96d3;">{% trans 'Disclaimer' %}:</span> {% trans 'The results presented on this website are the outcome of an exploratory scientific study on the use of AI for vulnerability mapping in Cambodia. Results should be interpreted in this context and not be used as absolute or official numbers endorsed by official entities. For more information please contact UNDP Cambodia.' %}
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}
