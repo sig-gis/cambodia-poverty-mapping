@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-27 00:53+0700\n"
+"POT-Creation-Date: 2024-09-10 09:12+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,22 @@ msgstr ""
 
 #: povertymappingapp/templates/about.html:9
 #: povertymappingapp/templates/about.html:18
-#: povertymappingapp/templates/base.html:104
+#: povertymappingapp/templates/base.html:115
 msgid "ABOUT"
 msgstr "ABOUT"
 
 #: povertymappingapp/templates/about.html:21
-msgid "Mapping vulnerability using big data and AI is a collaborative effort of NIS/UNDP Cambodia and the Spatial Informatics Group under the auspices of Servir Mekong. In the project we distinguish the vulnerability dimensions of education, health, living standard, employment and monetary. The dimensions are calculated from big earth data using artificial intelligence. Spatial data information layers were derived from satellite imagery, Geo Information Systems and various other sources. We will use the Google Earth Engine technology platform for storing and processing information. Google Earth Engine is a cloud based geo-spatial storage and processing platform which enables users to perform calculations over fast areas and easily share data and work routines."
-msgstr ""
-
-#: povertymappingapp/templates/about.html:53
-msgid "ORGANIZATIONS INVOLVED"
+msgid ""
+"Mapping vulnerability using big data and AI is a collaborative effort of the "
+"National Institute of Statistics (NIS) and UNDP Cambodia. In the project, we "
+"distinguish the vulnerability dimensions of education, health, living "
+"standard, employment and monetary. The dimensions are calculated from big "
+"earth data using artificial intelligence. Spatial data information layers "
+"were derived from satellite imagery, Geo Information Systems and various "
+"other sources. We use the Google Earth Engine technology platform for "
+"storing and processing information. Google Earth Engine is a cloud based geo-"
+"spatial storage and processing platform which enables users to perform "
+"calculations over areas quickly and easily share data."
 msgstr ""
 
 #: povertymappingapp/templates/about.html:76
@@ -45,19 +51,43 @@ msgstr ""
 msgid "CONTACT US"
 msgstr ""
 
-#: povertymappingapp/templates/base.html:94
+#: povertymappingapp/templates/base.html:99
+msgid "POVERTY MAPPING FOR CAMBODIA"
+msgstr ""
+
+#: povertymappingapp/templates/base.html:105
 msgid "HOME"
 msgstr "HOME"
 
-#: povertymappingapp/templates/base.html:97
+#: povertymappingapp/templates/base.html:108
 msgid "MAP"
 msgstr "MAP"
 
-#: povertymappingapp/templates/base.html:100
+#: povertymappingapp/templates/base.html:111
 #: povertymappingapp/templates/method.html:9
 #: povertymappingapp/templates/method.html:19
 msgid "METHODOLOGY"
 msgstr "METHODOLOGY"
+
+#: povertymappingapp/templates/base.html:172
+msgid "Menu Links"
+msgstr ""
+
+#: povertymappingapp/templates/base.html:175
+msgid "Home"
+msgstr ""
+
+#: povertymappingapp/templates/base.html:178
+msgid "Map"
+msgstr ""
+
+#: povertymappingapp/templates/base.html:181
+msgid "Methodology"
+msgstr ""
+
+#: povertymappingapp/templates/base.html:184
+msgid "About Us"
+msgstr ""
 
 #: povertymappingapp/templates/home.html:14
 msgid ""
@@ -98,7 +128,8 @@ msgstr "Application Uses"
 
 #: povertymappingapp/templates/home.html:46
 msgid ""
-"The poverty mapping tool is currently used by UNDP Cambodia to track "
+"The poverty mapping tool is currently used by the National Institute of "
+"Statistics with technical and financial support from UNDP Cambodia to track "
 "deprivations and report on vulnerability across the country."
 msgstr ""
 
@@ -140,13 +171,13 @@ msgstr ""
 msgid "Our Partners"
 msgstr ""
 
-#: povertymappingapp/templates/home.html:127
-#: povertymappingapp/templates/panels/guiding-panel.html:59
+#: povertymappingapp/templates/home.html:130
+#: povertymappingapp/templates/panels/guiding-panel.html:60
 msgid "Disclaimer"
 msgstr ""
 
-#: povertymappingapp/templates/home.html:127
-#: povertymappingapp/templates/panels/guiding-panel.html:59
+#: povertymappingapp/templates/home.html:130
+#: povertymappingapp/templates/panels/guiding-panel.html:60
 msgid ""
 "The results presented on this website are the outcome of an exploratory "
 "scientific study on the use of AI for vulnerability mapping in Cambodia. "
@@ -155,144 +186,144 @@ msgid ""
 "contact UNDP Cambodia."
 msgstr ""
 
-#: povertymappingapp/templates/map.html:69
+#: povertymappingapp/templates/map.html:68
 msgid "Select  administrative level"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:72
+#: povertymappingapp/templates/map.html:70
 msgid "Province"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:73
+#: povertymappingapp/templates/map.html:71
 #: povertymappingapp/templates/panels/left-menu.html:359
 msgid "District"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:74
+#: povertymappingapp/templates/map.html:72
 msgid "Commune/Sangkat"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:76
+#: povertymappingapp/templates/map.html:74
 msgid "Clear Selected Region"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:92
+#: povertymappingapp/templates/map.html:90
 msgid "Total Population"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:102
+#: povertymappingapp/templates/map.html:100
 msgid "Number of Buildings"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:112
+#: povertymappingapp/templates/map.html:110
 msgid "Probability of population deprived from overall vulnerability"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:155
+#: povertymappingapp/templates/map.html:153
 msgid "Poverty Vulnerability Report in Cambodia"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:156
-msgid ""
+#: povertymappingapp/templates/map.html:154
+msgid "To create a summary"
+msgstr ""
 "To create a summary report, please define the Area of Interest (AOI) for "
 "data calculations in all components of the tool. Users can identify areas of "
 "interest by selecting administrative boundaries (province, district or "
-"township)"
-msgstr ""
+"commune)"
 
-#: povertymappingapp/templates/map.html:160
-#: povertymappingapp/templates/map.html:170
+#: povertymappingapp/templates/map.html:158
+#: povertymappingapp/templates/map.html:166
 #: povertymappingapp/templates/panels/left-menu.html:186
 #: povertymappingapp/templates/panels/left-menu.html:234
 msgid "Overall"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:161
-#: povertymappingapp/templates/map.html:184
+#: povertymappingapp/templates/map.html:159
+#: povertymappingapp/templates/map.html:180
 #: povertymappingapp/templates/panels/left-menu.html:80
 #: povertymappingapp/templates/panels/left-menu.html:87
 #: povertymappingapp/templates/panels/left-menu.html:222
 msgid "Health"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:162
-#: povertymappingapp/templates/map.html:269
+#: povertymappingapp/templates/map.html:160
+#: povertymappingapp/templates/map.html:265
 #: povertymappingapp/templates/panels/left-menu.html:70
 #: povertymappingapp/templates/panels/left-menu.html:76
 #: povertymappingapp/templates/panels/left-menu.html:219
 msgid "Education"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:163
-#: povertymappingapp/templates/map.html:312
+#: povertymappingapp/templates/map.html:161
+#: povertymappingapp/templates/map.html:308
 #: povertymappingapp/templates/panels/left-menu.html:120
 #: povertymappingapp/templates/panels/left-menu.html:126
 #: povertymappingapp/templates/panels/left-menu.html:226
 msgid "Living Standard"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:164
-#: povertymappingapp/templates/map.html:414
+#: povertymappingapp/templates/map.html:162
+#: povertymappingapp/templates/map.html:410
 #: povertymappingapp/templates/panels/left-menu.html:176
 #: povertymappingapp/templates/panels/left-menu.html:230
 msgid "Monetary"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:197
+#: povertymappingapp/templates/map.html:193
 msgid "Access to health care"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:211
+#: povertymappingapp/templates/map.html:207
 msgid "Access to clean water"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:225
+#: povertymappingapp/templates/map.html:221
 msgid "Access to sanitation"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:239
+#: povertymappingapp/templates/map.html:235
 msgid "Food consumption score"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:252
+#: povertymappingapp/templates/map.html:248
 msgid "Hand washing"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:282
+#: povertymappingapp/templates/map.html:278
 msgid "Educational attainment"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:295
+#: povertymappingapp/templates/map.html:291
 msgid "School attendance"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:326
+#: povertymappingapp/templates/map.html:322
 #: povertymappingapp/templates/panels/left-menu.html:138
 msgid "Overcrowding"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:340
+#: povertymappingapp/templates/map.html:336
 msgid "Housing materials"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:354
+#: povertymappingapp/templates/map.html:350
 msgid "Cooking fuel"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:368
+#: povertymappingapp/templates/map.html:364
 #: povertymappingapp/templates/panels/left-menu.html:165
 msgid "Assets"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:382
+#: povertymappingapp/templates/map.html:378
 msgid "Livelihood based Coping Strategies"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:396
+#: povertymappingapp/templates/map.html:392
 msgid "Access to electricity"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:431
+#: povertymappingapp/templates/map.html:427
 #: povertymappingapp/templates/panels/left-menu.html:275
 msgid "Nightlight Time Series"
 msgstr ""
@@ -325,11 +356,11 @@ msgstr ""
 
 #: povertymappingapp/templates/method.html:184
 msgid ""
-"<b>A random forest algorithm</b>> was trained with a large number of geo spatial "
-"information layers on e.g. distance to roads, electricity grid, nightlights, "
-"health facilities, schools, land cover etc and the data from the Cambodia "
-"Socio-economic survey. The random forest model was then applied in "
-"probability mode to estimate the probability of deprivations across the "
+"<b>A random forest algorithm</b> was trained with a large number of geo "
+"spatial information layers on e.g. distance to roads, electricity grid, "
+"nightlights, health facilities, schools, land cover etc and the data from "
+"the Cambodia Socio-economic survey. The random forest model was then applied "
+"in probability mode to estimate the probability of deprivations across the "
 "country on a 100 by 100 meter grid. The variable importance of the different "
 "indicators is shown in FIG 1."
 msgstr ""
@@ -353,39 +384,43 @@ msgstr ""
 msgid "The variable importance of the different indicators"
 msgstr ""
 
-#: povertymappingapp/templates/panels/guiding-panel.html:19
-msgid "Step 1"
+#: povertymappingapp/templates/panels/guiding-panel.html:9
+msgid "Welcome to the Cambodia's vulnerability/poverty mapping Dashboard"
 msgstr ""
 
 #: povertymappingapp/templates/panels/guiding-panel.html:20
+msgid "Step 1"
+msgstr ""
+
+#: povertymappingapp/templates/panels/guiding-panel.html:21
 msgid ""
 "Get started by exploiting the data: (Probability maps, Poverty analysis, "
 "Explore timeseries, GIS layers)"
 msgstr ""
 
-#: povertymappingapp/templates/panels/guiding-panel.html:29
+#: povertymappingapp/templates/panels/guiding-panel.html:30
 msgid "Step 2"
 msgstr ""
 
-#: povertymappingapp/templates/panels/guiding-panel.html:30
+#: povertymappingapp/templates/panels/guiding-panel.html:31
 msgid ""
 "Explore indicators at various administrative levels using the selection tool "
 "in the top right corner"
 msgstr ""
 
-#: povertymappingapp/templates/panels/guiding-panel.html:42
+#: povertymappingapp/templates/panels/guiding-panel.html:43
 msgid "Step 3"
 msgstr ""
 
-#: povertymappingapp/templates/panels/guiding-panel.html:43
+#: povertymappingapp/templates/panels/guiding-panel.html:44
 msgid "Explore the data per province, district or commune"
 msgstr ""
 
-#: povertymappingapp/templates/panels/guiding-panel.html:51
+#: povertymappingapp/templates/panels/guiding-panel.html:52
 msgid "Step 4"
 msgstr ""
 
-#: povertymappingapp/templates/panels/guiding-panel.html:52
+#: povertymappingapp/templates/panels/guiding-panel.html:53
 msgid "Compare different regions"
 msgstr ""
 

@@ -35,8 +35,6 @@ def api(request):
             end_year = post('endYear', '')
             year = post('year', '')
             type = post('type', '')
-            tree_canopy_definition = post('treeCanopyDefinition', 10) # in percentage
-            tree_height_definition = post('treeHeightDefinition', 5) # in meters
             get_image = post('get_image', False)
             download  = post('download', '')
             data = post('data', '')
@@ -46,22 +44,20 @@ def api(request):
 
             core = GEEApi(area_path, area_name, geom, area_type, area_id)
 
-            if action == 'get-forest-extent-map':
-                data = core.get_mapid(type, start_year, end_year, tree_canopy_definition, tree_height_definition, area_type, area_id)
-            elif action == 'get-landcover':
+            if action == 'get-landcover':
                 data = core.getLandcoverArea(start_year, end_year, area_type, area_id)
             elif action == 'get-building-map':
                 data = core.getOthersMap(area_type, area_id)
             elif action == 'calMapArea':
                 data = core.getDataMap(start_year, end_year, area_type, area_id, data)
-            elif action == 'get-graph-data':
-                data = core.getGraphData(start_year, end_year, area_type, area_id, data)
+            # elif action == 'get-graph-data':
+            #     data = core.getGraphData(start_year, end_year, area_type, area_id, data)
             elif action == 'get-val-map':
                 data = core.valnerabilityMap(feat, area_type, area_id)
             elif action == 'get-download-url':
                 data = core.download_valnerabilityMap(type)
-            elif action == 'get-graph-pie-data':
-                data = core.getGraphPieData(area_type, area_id)
+            # elif action == 'get-graph-pie-data':
+            #     data = core.getGraphPieData(area_type, area_id)
             elif action == 'get-prop-map':
                 data = core.probabilityMaps()
             elif action =='get-nightlight':

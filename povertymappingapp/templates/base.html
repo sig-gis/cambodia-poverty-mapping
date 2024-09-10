@@ -96,7 +96,7 @@
             <img src="{% static 'images/partners/undp-logo-blue.svg' %}" alt="" />
           </div>
           <div class="logo float-left">
-            <div style="margin-top: 15px;margin-left: 70px;">POVERTY MAPPING FOR CAMBODIA</div>
+            <div style="margin-top: 15px;margin-left: 70px;">{% trans 'POVERTY MAPPING FOR CAMBODIA' %}</div>
           </div>
 
           <nav class="nav-menu float-right d-none d-lg-block">
@@ -149,33 +149,39 @@
       <div class="footer-top">
         <div class="container">
           <div class="row">
-            <div class="col-lg-9 col-md-6 footer-info">
-              <h3><img src="/static/images/partners/sig.png" alt="" style="width:auto; height:55px;" /></h3>
+            <div class="col-lg-2 col-md-6 footer-info">
+              {% if LANGUAGE_CODE == 'en' %}
+              <h3><img src="/static/images/partners/NIS-English.jpg" alt="" style="width:auto; height:125px;" /></h3>
+              {% endif %}
+              {% if LANGUAGE_CODE == 'kh' %}
+              <h3><img src="/static/images/partners/NIS-Khmer.jpg" alt="" style="width:auto; height:125px;" /></h3>
+              {% endif %}
+            </div>
 
+            <div class="col-lg-7 col-md-6 footer-info">
               <p>
-                <b>Spatial Informatics Group, LLC (SIG)</b> <br />
-                Spatial Informatics Group, 2529 Yolanda Ct.<br />
-                Pleasanton, CA 94566<br />
-                BTS Skytrain: Sanam Pao, Exit 1<br />
-                <strong>Email:</strong> info@sig-gis.com<br />
+                <b>National Institute of Statistics (NIS)</b> <br />
+                Ministry of Planning, Royal Government of Cambodia<br />
+                <strong>Email:</strong> info@nis.gov.kh<br />
+                <strong>Tel:</strong> 855-23-219922; 855-23-219921<br />
               </p>
               <div class="social-links mt-3"></div>
             </div>
 
             <div class="col-lg-3 col-md-6 footer-links">
-              <h4>Menu Links</h4>
+              <h4>{% trans 'Menu Links' %}</h4>
               <ul>
                 <li>
-                  <i class="bx bx-chevron-right"></i> <a href="/home">Home</a>
+                  <i class="bx bx-chevron-right"></i> <a href="/home">{% trans 'Home' %}</a>
                 </li>
                 <li>
-                  <i class="bx bx-chevron-right"></i> <a href="/map">Map</a>
+                  <i class="bx bx-chevron-right"></i> <a href="/map">{% trans 'Map' %}</a>
                 </li>
                 <li>
-                  <i class="bx bx-chevron-right"></i> <a href="/method">Methodology</a>
+                  <i class="bx bx-chevron-right"></i> <a href="/method">{% trans 'Methodology' %}</a>
                 </li>
                 <li>
-                  <i class="bx bx-chevron-right"></i> <a href="/about">About Us</a>
+                  <i class="bx bx-chevron-right"></i> <a href="/about">{% trans 'About Us' %}</a>
                 </li>
               </ul>
             </div>
@@ -185,7 +191,7 @@
 
       <div class="container">
         <div class="copyright">
-          Copyright &copy;2022 <strong><span>Poverty Mapping for Cambodia</span></strong>. All Rights Reserved
+          Copyright &copy;2024 <strong><span>Poverty Mapping for Cambodia</span></strong>. All Rights Reserved
         </div>
       </div>
     </footer>

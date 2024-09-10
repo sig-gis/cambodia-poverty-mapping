@@ -54,7 +54,7 @@ ELECTRICITY_IMG = ee.Image("projects/earthengine-legacy/assets/projects/servir-m
 #income
 CONSUMPTION_IMG = ee.Image("projects/servir-mekong/undp/indicators/ConsumptionandExpenditure")
 
-BUILDING_FC = ee.FeatureCollection("projects/servir-mekong/buildings/cambodia")
+# BUILDING_FC = ee.FeatureCollection("projects/servir-mekong/buildings/cambodia")
 
 SANITATION_IMG = ee.Image("projects/earthengine-legacy/assets/projects/servir-mekong/undp/indicators/AccesstoSanitation")
 

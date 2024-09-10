@@ -54,7 +54,6 @@
 
 
         {% include "panels/guiding-panel.html" %}
-        <!-- Left Munu -->
         {% include "panels/left-menu.html" %}
 
         <div class="map" id="map">
@@ -68,7 +67,6 @@
       <div class="c-map-admAreaBox">
         <label for="">{% trans 'Select  administrative level' %}</label>
         <select class="form-select" name="administrative_level" id="administrative_level">
-          <!-- <option value="country">Country</option> -->
           <option value="province" selected>{% trans 'Province' %}</option>
           <option value="district">{% trans 'District' %}</option>
           <option value="sub-district">{% trans 'Commune/Sangkat' %}</option>
@@ -153,7 +151,7 @@
                   <div class="col-lg-12">
                     <div class="main_title text-left">
                       <h4 style="font-weight: 700;">{% trans 'Poverty Vulnerability Report in Cambodia' %}</h4>
-                      <p>{% trans 'To create a summary report, please define the Area of Interest (AOI) for data calculations in all components of the tool. Users can identify areas of interest by selecting administrative boundaries (province, district or township)' %}</p>
+                      <p>{% trans 'To create a summary' %}</p>
 
                       <div id="exTab2" class="container">
                       <ul class="nav nav-tabs">
@@ -162,9 +160,7 @@
                       			<li><a href="#2" data-toggle="tab">{% trans 'Education' %}</a> </li>
                       			<li><a href="#3" data-toggle="tab">{% trans 'Living Standard' %}</a> </li>
                             <li><a href="#4" data-toggle="tab">{% trans 'Monetary' %}</a> </li>
-
                       		</ul>
-
                       			<div class="tab-content ">
                               <div class="tab-pane active" id="5">
                                 <p><b>{% trans 'Overall' %}</b></p>

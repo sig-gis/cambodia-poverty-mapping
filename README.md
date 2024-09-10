@@ -36,7 +36,7 @@ This repository contains the Poverty Mapping web application for Cambodia, built
 
 2. **Clone the Project Repository**:
    ```bash
-   git clone https://github.com/Thannarot/povertymappingapp.git povertymappingapp
+   git clone https://github.com/sig-gis/cambodia-poverty-mapping.git povertymappingapp
    ```
 
 3. **Obtain Google Service Account Credentials**:

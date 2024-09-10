@@ -43,7 +43,7 @@
               <p>{% trans 'Artificial intelligence can be very useful to map vulnerability across different dimensions in space and time at the household level. The poverty mapping tool can provide valuable insights into the location and extent of different deprivations across Cambodia and help achieve different Sustainable Development Goals.' %}</p>
               <hr style="margin-top: 10px; margin-bottom: 10px;" />
               <h2 style="text-align: left;">{% trans 'Application Uses' %}</h2>
-              <p>{% trans 'The poverty mapping tool is currently used by UNDP Cambodia to track deprivations and report on vulnerability across the country.' %}</p>
+              <p>{% trans 'The poverty mapping tool is currently used by the National Institute of Statistics with technical and financial support from UNDP Cambodia to track deprivations and report on vulnerability across the country.' %}</p>
             </div>
           </div>
           <div class="col-lg-6" style="padding:20px;">
@@ -99,8 +99,9 @@
     </section>
     <!-- ======= End Info Section ======= -->
 
+    <hr>
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
+   <section id="services" class="services">
       <div class="container">
         <div class="section-title">
           <h2>{% trans 'Our Partners' %}</h2>
@@ -108,17 +109,20 @@
 
         <div class="row justify-content-md-center">
           <div class="col-lg-3 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <img src="/static/images/partners/sig.png" alt="" style="width:100%;" />
+            <img src="/static/images/partners/nis-.png" alt="" style="width:100%;" />
+            {% if LANGUAGE_CODE == 'en' %}
+              <img src="/static/images/partners/NIS-English.jpg" alt="" style="width:auto; height:150px;" />
+              {% endif %}
+              {% if LANGUAGE_CODE == 'kh' %}
+              <img src="/static/images/partners/NIS-Khmer.jpg" alt="" style="width:auto; height:150px;"  />
+              {% endif %}
           </div>
           <div class="col-lg-3 col-md-6 icon-box" data-aos="fade-up">
             <img src="/static/images/partners/undp.png" alt="" style="width:auto; height:150px;" />
           </div>
-          <div class="col-lg-3 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-            <img src="/static/images/partners/servir-mekong.png" alt="" style="width:100%; margin-top:20px;" />
-          </div>
         </div>
       </div>
-    </section>
+    </section> 
 
     <section id="services" class="services">
       <div class="container">

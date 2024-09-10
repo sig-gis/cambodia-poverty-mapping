@@ -1,3 +1,4 @@
 credentials/
 mapclient/__pycache__/
 povertymappingapp/__pycache__/
+.env

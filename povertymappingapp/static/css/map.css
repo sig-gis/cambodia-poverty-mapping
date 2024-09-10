@@ -1727,3 +1727,7 @@ svg image{
   color: #333;
   margin-top: 5px;
 }
+
+.content-item h3{
+  font-family: 'Roboto', sans-serif !important;
+}
