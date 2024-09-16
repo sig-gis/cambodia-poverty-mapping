@@ -2378,6 +2378,7 @@ table.dataTable.no-footer {
   margin-top: 20px;
   margin-bottom: 5px;
   font-size: 18px;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 .member p {
