@@ -2,15 +2,13 @@
 {% load i18n %}
 
     {% block body%}
-    <!-- ======= homeimg Section ======= -->
     <section id="branding" class="image">
       <div class="overlay">
         <div class="">
           <h2 class="animated fadeInDown">{% trans 'ABOUT' %}</h2>
         </div>
       </div>
-    </section><!-- End homeimg -->
-
+    </section>
 
     <section class="method-lists">
       <div class="container">
@@ -18,11 +16,12 @@
           <h1>{% trans 'ABOUT' %}</h1>
         </div>
         <div class="col-lg-12 margin-top">
-          <p>{% trans 'Mapping vulnerability using big data and AI is a collaborative effort of the National Institute of Statistics (NIS) and UNDP Cambodia. In the project, we distinguish the vulnerability dimensions of education, health, living standard, employment and monetary. The dimensions are calculated from big earth data using artificial intelligence. Spatial data information layers were derived from satellite imagery, Geo Information Systems and various other sources. We use the Google Earth Engine technology platform for storing and processing information. Google Earth Engine is a cloud based geo-spatial storage and processing platform which enables users to perform calculations over areas quickly and easily share data.' %}</p>
+          <p>{% trans 'About content' %}</p>
         </div>
       </div>
-    </section><!-- End About Lists Section -->
-<hr>
+    </section>
+    <hr>
+
     <!-- <section class="method-lists">
       <div class="container">
         <div class="col-lg-12 col-md-6">
@@ -70,20 +69,18 @@
 
     <section class="method-lists">
       <div class="container">
-
         <div class="col-lg-12 col-md-6">
           <h1>{% trans 'OUR TEAM' %}</h1>
         </div>
 
         <div class="col-lg-12 col-md-6">
           <div class="row member">
-
-
+            
               <div class="column">
                 <div class="card">
                   <img src="/static/images/members/ivan.jpg" alt="ivan" style="width:100%">
                   <div class="container text-center">
-                    <h2>Dr. Iván González de Alba</h2>
+                    <h2 class="title-eng">Dr. Iván González de Alba</h2>
                     <p class="title">Country Economist</p>
                     <p class="title">UNDP Cambodia</p>
                     <!-- <p>Some text that describes me lorem ipsum ipsum lorem.</p> -->
@@ -97,7 +94,7 @@
                 <div class="card">
                   <img src="/static/images/members/theara.jpg" alt="Theara" style="width:100%">
                   <div class="container text-center">
-                    <h2>Theara Khoun</h2>
+                    <h2 class="title-eng">Theara Khoun</h2>
                     <p class="title">Socio-Economic Policy Specialist</p>
                     <p class="title">UNDP Cambodia</p>
                     <a style="margin-right:15px;" href="mailto:theara.khoun@undp.org" role="button"><i class="fa fa-envelope" aria-hidden="true"></i></a>
@@ -110,7 +107,7 @@
                 <div class="card">
                   <img src="/static/images/members/ate.jpg" alt="ATE" style="width:100%">
                   <div class="container text-center">
-                    <h2>Dr. Ate Poortinga</h2>
+                    <h2 class="title-eng">Dr. Ate Poortinga</h2>
                     <p class="title">Senior Scientist</p>
                     <p class="title">Spatial Informatics Group</p>
                     <!-- <p>Some text that describes me lorem ipsum ipsum lorem.</p> -->
@@ -120,7 +117,7 @@
                 </div>
               </div>
 
-              <div class="column">
+              {% comment %} <div class="column">
                 <div class="card">
                   <img src="/static/images/members/nyien.jpg" alt="nyien" style="width:100%">
                   <div class="container text-center">
@@ -132,13 +129,13 @@
                     <a style="margin-right:15px;" href="https://www.linkedin.com/in/nyein-soe-thwal-51054bb1/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                   </div>
                 </div>
-              </div>
+              </div> {% endcomment %}
 
               <div class="column">
                 <div class="card">
                   <img src="/static/images/members/andrea.jpg" alt="nyien" style="width:100%">
                   <div class="container text-center">
-                    <h2>Dr. Andrea McMahon</h2>
+                    <h2 class="title-eng">Dr. Andrea McMahon</h2>
                     <p class="title">Geospatial Data Scientist</p>
                     <p class="title">Spatial Informatics Group</p>
                     <!-- <p>Some text that describes me lorem ipsum ipsum lorem.</p> -->
@@ -148,7 +145,7 @@
                 </div>
               </div>
 
-              <div class="column">
+              {% comment %} <div class="column">
                 <div class="card">
                   <img src="/static/images/members/chinaporn.jpg" alt="nyien" style="width:100%">
                   <div class="container text-center">
@@ -189,7 +186,7 @@
 
                   </div>
                 </div>
-              </div>
+              </div> {% endcomment %}
 
 
             </div>
@@ -223,10 +220,21 @@
             <p>Theara Khoun (theara.khoun@undp.org ) </p>
 
             <br>
-            </p>
           </div>
         </div>
 
+        <div class="row no-gutters">
+          <div class="col-lg-6 col-md-6">
+            <p>
+              <b>National Institute of Statistics (NIS)</b> <br />
+              Ministry of Planning, Royal Government of Cambodia<br />
+              <strong>Email:</strong> info@nis.gov.kh<br />
+              <strong>Tel:</strong> 855-23-219922; 855-23-219921<br />
+            </p>
+
+          </div>
+          
+        </div>
       </div>
     </section>
     {% endblock %}

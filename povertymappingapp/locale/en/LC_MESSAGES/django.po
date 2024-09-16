@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-10 09:12+0700\n"
+"POT-Creation-Date: 2024-09-16 13:05+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,14 +23,15 @@ msgstr ""
 msgid "en"
 msgstr ""
 
-#: povertymappingapp/templates/about.html:9
-#: povertymappingapp/templates/about.html:18
-#: povertymappingapp/templates/base.html:115
+#: povertymappingapp/templates/about.html:8
+#: povertymappingapp/templates/about.html:16
+#: povertymappingapp/templates/base.html:116
 msgid "ABOUT"
 msgstr "ABOUT"
 
-#: povertymappingapp/templates/about.html:21
-msgid ""
+#: povertymappingapp/templates/about.html:19
+msgid "About content"
+msgstr ""
 "Mapping vulnerability using big data and AI is a collaborative effort of the "
 "National Institute of Statistics (NIS) and UNDP Cambodia. In the project, we "
 "distinguish the vulnerability dimensions of education, health, living "
@@ -41,53 +42,32 @@ msgid ""
 "storing and processing information. Google Earth Engine is a cloud based geo-"
 "spatial storage and processing platform which enables users to perform "
 "calculations over areas quickly and easily share data."
-msgstr ""
 
-#: povertymappingapp/templates/about.html:76
+#: povertymappingapp/templates/about.html:74
 msgid "OUR TEAM"
 msgstr ""
 
-#: povertymappingapp/templates/about.html:206
+#: povertymappingapp/templates/about.html:205
 msgid "CONTACT US"
 msgstr ""
 
-#: povertymappingapp/templates/base.html:99
+#: povertymappingapp/templates/base.html:100
 msgid "POVERTY MAPPING FOR CAMBODIA"
 msgstr ""
 
-#: povertymappingapp/templates/base.html:105
+#: povertymappingapp/templates/base.html:106
 msgid "HOME"
 msgstr "HOME"
 
-#: povertymappingapp/templates/base.html:108
+#: povertymappingapp/templates/base.html:109
 msgid "MAP"
 msgstr "MAP"
 
-#: povertymappingapp/templates/base.html:111
+#: povertymappingapp/templates/base.html:112
 #: povertymappingapp/templates/method.html:9
 #: povertymappingapp/templates/method.html:19
 msgid "METHODOLOGY"
 msgstr "METHODOLOGY"
-
-#: povertymappingapp/templates/base.html:172
-msgid "Menu Links"
-msgstr ""
-
-#: povertymappingapp/templates/base.html:175
-msgid "Home"
-msgstr ""
-
-#: povertymappingapp/templates/base.html:178
-msgid "Map"
-msgstr ""
-
-#: povertymappingapp/templates/base.html:181
-msgid "Methodology"
-msgstr ""
-
-#: povertymappingapp/templates/base.html:184
-msgid "About Us"
-msgstr ""
 
 #: povertymappingapp/templates/home.html:14
 msgid ""
@@ -167,16 +147,16 @@ msgid ""
 "Google Earth Engine cloud-based platform."
 msgstr ""
 
-#: povertymappingapp/templates/home.html:106
+#: povertymappingapp/templates/home.html:107
 msgid "Our Partners"
 msgstr ""
 
-#: povertymappingapp/templates/home.html:130
+#: povertymappingapp/templates/home.html:131
 #: povertymappingapp/templates/panels/guiding-panel.html:60
 msgid "Disclaimer"
 msgstr ""
 
-#: povertymappingapp/templates/home.html:130
+#: povertymappingapp/templates/home.html:131
 #: povertymappingapp/templates/panels/guiding-panel.html:60
 msgid ""
 "The results presented on this website are the outcome of an exploratory "
@@ -355,30 +335,16 @@ msgid "The 17 sustainable development goals."
 msgstr ""
 
 #: povertymappingapp/templates/method.html:184
-msgid ""
-"<b>A random forest algorithm</b> was trained with a large number of geo "
-"spatial information layers on e.g. distance to roads, electricity grid, "
-"nightlights, health facilities, schools, land cover etc and the data from "
-"the Cambodia Socio-economic survey. The random forest model was then applied "
-"in probability mode to estimate the probability of deprivations across the "
-"country on a 100 by 100 meter grid. The variable importance of the different "
-"indicators is shown in FIG 1."
-msgstr ""
+msgid "method-paragraph-4"
+msgstr "A random forest algorithm was trained with a large number of geo spatial information layers on e.g. distance to roads, electricity grid, nightlights, health facilities, schools, land cover etc and the data from the Cambodia Socio-economic survey. The random forest model was then applied in probability mode to estimate the probability of deprivations across the country on a 100 by 100 meter grid. The variable importance of the different indicators is shown in FIG 1."
 
 #: povertymappingapp/templates/method.html:186
-msgid ""
-"We used the Bing open building footprints dataset to calculate the "
-"deprivations per household. This dataset was generated using a machine "
-"learning approach on high resolution satellite images. It provides "
-"information on the location of buildings in Cambodia. "
-msgstr ""
+msgid "method-paragraph-5"
+msgstr "We used the Bing open building footprints dataset to calculate the deprivations per household. This dataset was generated using a machine learning approach on high resolution satellite images. It provides information on the location of buildings in Cambodia."
 
 #: povertymappingapp/templates/method.html:189
-msgid ""
-"The image below shows the number of deprivations per household on the "
-"country level. This dataset can be explored in more detail in the map "
-"section of this website."
-msgstr ""
+msgid "method-paragraph-6"
+msgstr "The image below shows the number of deprivations per household on the country level. This dataset can be explored in more detail in the map section of this website."
 
 #: povertymappingapp/templates/method.html:193
 msgid "The variable importance of the different indicators"

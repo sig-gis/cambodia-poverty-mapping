@@ -41,6 +41,22 @@
         "overall": ["overall"],
       }
 
+      function fetchWithCache(url, storageKey, callback) {
+        const cachedData = localStorage.getItem(storageKey);
+        if (cachedData) {
+          console.log('Serving from cache:', storageKey);
+          callback(JSON.parse(cachedData));
+        } else {
+          $.getJSON(url, function (data) {
+            console.log('Fetching from network and caching:', storageKey);
+            localStorage.setItem(storageKey, JSON.stringify(data));
+            callback(data);
+          });
+        }
+      }
+
+
+
       function createMapVar() {
         for (y = $scope.STUDYLOW; y <= $scope.STUDYHIGH; y++) {
           eval('$scope.buildings' + y + '=null;');
@@ -288,17 +304,30 @@
 
 
       const static_url = "/static/";
-      $.getJSON(static_url + "data/VALNERABILITY_DATA_AMD1_v2.json", function (json) {
-        adm1_data = json;
+      // $.getJSON(static_url + "data/VALNERABILITY_DATA_AMD1_v2.json", function (json) {
+      //   adm1_data = json;
+      //   createBarChart();
+      // });
+
+      // $.getJSON(static_url + "data/VALNERABILITY_DATA_AMD2_v2.json", function (json) {
+      //   adm2_data = json;
+      // });
+
+      // $.getJSON(static_url + "data/VALNERABILITY_DATA_AMD3_v2.json", function (json) {
+      //   adm3_data = json;
+      // });
+
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD1_v2.json", 'adm1_data_cache', function (data) {
+        adm1_data = data;
         createBarChart();
       });
 
-      $.getJSON(static_url + "data/VALNERABILITY_DATA_AMD2_v2.json", function (json) {
-        adm2_data = json;
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_v2.json", 'adm2_data_cache', function (data) {
+        adm2_data = data;
       });
 
-      $.getJSON(static_url + "data/VALNERABILITY_DATA_AMD3_v2.json", function (json) {
-        adm3_data = json;
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD3_v2.json", 'adm3_data_cache', function (data) {
+        adm3_data = data;
       });
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1561,15 +1590,15 @@
         $("#overall0_chart_report_area").html("");
 
         const static_url = "/static/";
-        var _jsonfile = static_url+"data/VALNERABILITY_DATA_AMD1_v2.json";
+        var _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD1_v2.json";
         if (area_type === "provice") {
-          _jsonfile = static_url+"data/VALNERABILITY_DATA_AMD1_v2.json";
+          _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD1_v2.json";
         } else if (area_type === "district") {
-          _jsonfile = static_url+"data/VALNERABILITY_DATA_AMD2_v2.json";
+          _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD2_v2.json";
         } else if (area_type === "sub-district") {
-          _jsonfile = static_url+"data/VALNERABILITY_DATA_AMD3_v2.json";
+          _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD3_v2.json";
         }
-      
+
         $.getJSON(_jsonfile, function (json) {
           var data = json;
           var index = data["id_area"].indexOf(area_id);

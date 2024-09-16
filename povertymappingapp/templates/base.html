@@ -92,11 +92,11 @@
     <header id="header">
       <div class="row" style="background: #474343;color: #FFF;">
         <div class="container">
-          <div class="undp-logo" style="cursor: pointer;">
+          {% comment %} <div class="undp-logo" style="cursor: pointer;">
             <img src="{% static 'images/partners/undp-logo-blue.svg' %}" alt="" />
-          </div>
+          </div> {% endcomment %}
           <div class="logo float-left">
-            <div style="margin-top: 15px;margin-left: 70px;">{% trans 'POVERTY MAPPING FOR CAMBODIA' %}</div>
+            <div style="margin-top: 15px;margin-left: 0px;">{% trans 'POVERTY MAPPING FOR CAMBODIA' %}</div>
           </div>
 
           <nav class="nav-menu float-right d-none d-lg-block">
@@ -146,7 +146,7 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
-      <div class="footer-top">
+      {% comment %} <div class="footer-top">
         <div class="container">
           <div class="row">
             <div class="col-lg-2 col-md-6 footer-info">
@@ -187,7 +187,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> {% endcomment %}
 
       <div class="container">
         <div class="copyright">

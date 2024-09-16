@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-10 09:12+0700\n"
+"POT-Creation-Date: 2024-09-16 13:05+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,37 +22,14 @@ msgstr ""
 msgid "en"
 msgstr ""
 
-#: povertymappingapp/templates/about.html:9
-#: povertymappingapp/templates/about.html:18
-#: povertymappingapp/templates/base.html:115
+#: povertymappingapp/templates/about.html:8
+#: povertymappingapp/templates/about.html:16
+#: povertymappingapp/templates/base.html:116
 msgid "ABOUT"
 msgstr "អំពី"
 
-#: povertymappingapp/templates/about.html:21
-#, fuzzy
-#| msgid ""
-#| "Mapping vulnerability using big data and AI is a collaborative effort of "
-#| "NIS/UNDP Cambodia and the Spatial Informatics Group under the auspices of "
-#| "Servir Mekong. In the project we distinguish the vulnerability dimensions "
-#| "of education, health, living standard, employment and monetary. The "
-#| "dimensions are calculated from big earth data using artificial "
-#| "intelligence. Spatial data information layers were derived from satellite "
-#| "imagery, Geo Information Systems and various other sources. We will use "
-#| "the Google Earth Engine technology platform for storing and processing "
-#| "information. Google Earth Engine is a cloud based geo-spatial storage and "
-#| "processing platform which enables users to perform calculations over fast "
-#| "areas and easily share data and work routines."
-msgid ""
-"Mapping vulnerability using big data and AI is a collaborative effort of the "
-"National Institute of Statistics (NIS) and UNDP Cambodia. In the project, we "
-"distinguish the vulnerability dimensions of education, health, living "
-"standard, employment and monetary. The dimensions are calculated from big "
-"earth data using artificial intelligence. Spatial data information layers "
-"were derived from satellite imagery, Geo Information Systems and various "
-"other sources. We use the Google Earth Engine technology platform for "
-"storing and processing information. Google Earth Engine is a cloud based geo-"
-"spatial storage and processing platform which enables users to perform "
-"calculations over areas quickly and easily share data."
+#: povertymappingapp/templates/about.html:19
+msgid "About content"
 msgstr ""
 "ការផលិតផែនទីនៃភាពងាយរងគ្រោះដោយប្រើប្រាស់ទិន្នន័យធំ (Big data) និងបញ្ញាសិប្បនិម្មិត (AI) "
 "គឺជាកិច្ចខិតខំប្រឹងប្រែងរួមគ្នារវាង វិទ្យាស្ថានជាតិស្ថិតិ និងកម្មវិធីអភិវឌ្ឍន៍សហប្រជាជាតិប្រចាំកម្ពុជា។ "
@@ -63,51 +40,31 @@ msgstr ""
 "Earth Engine គឺជាប្រព័ន្ធផ្ទុកទិន្នន័យ និងដំណើរការតាមភូមិសាស្ត្រដោយប្រើបច្ចេកវិទ្យាក្លោដ "
 "ដែលអាចឱ្យអ្នកប្រើប្រាស់ធ្វើការគណនាលើតំបន់ដែលមានល្បឿនលឿន និងងាយស្រួលចែករំលែកទិន្នន័យ។"
 
-#: povertymappingapp/templates/about.html:76
+#: povertymappingapp/templates/about.html:74
 msgid "OUR TEAM"
 msgstr "ក្រុមការងារ"
 
-#: povertymappingapp/templates/about.html:206
+#: povertymappingapp/templates/about.html:205
 msgid "CONTACT US"
 msgstr "អំពីយើង"
 
-#: povertymappingapp/templates/base.html:99
+#: povertymappingapp/templates/base.html:100
 msgid "POVERTY MAPPING FOR CAMBODIA"
 msgstr "ផែនទីភាពងាយរងគ្រោះ/ភាពក្រីក្រពហុសមាសភាគនៅកម្ពុជា"
 
-#: povertymappingapp/templates/base.html:105
+#: povertymappingapp/templates/base.html:106
 msgid "HOME"
 msgstr "ទំព័រដើម"
 
-#: povertymappingapp/templates/base.html:108
+#: povertymappingapp/templates/base.html:109
 msgid "MAP"
 msgstr "ផែនទី"
 
-#: povertymappingapp/templates/base.html:111
+#: povertymappingapp/templates/base.html:112
 #: povertymappingapp/templates/method.html:9
 #: povertymappingapp/templates/method.html:19
 msgid "METHODOLOGY"
 msgstr "វិធីសាស្រ្ត"
-
-#: povertymappingapp/templates/base.html:172
-msgid "Menu Links"
-msgstr "តំណភ្ជាប់"
-
-#: povertymappingapp/templates/base.html:175
-msgid "Home"
-msgstr "ទំព័រដើម"
-
-#: povertymappingapp/templates/base.html:178
-msgid "Map"
-msgstr "ផែនទី"
-
-#: povertymappingapp/templates/base.html:181
-msgid "Methodology"
-msgstr "វិធីសាស្រ្ត"
-
-#: povertymappingapp/templates/base.html:184
-msgid "About Us"
-msgstr "អំពីយើង"
 
 #: povertymappingapp/templates/home.html:14
 msgid ""
@@ -204,16 +161,16 @@ msgid ""
 "Google Earth Engine cloud-based platform."
 msgstr "ការប្រើប្រាស់់បច្ចេកវិធីក្លោដចុងក្រោយ តាមរយៈកម្មវិធី Google Earth Engine"
 
-#: povertymappingapp/templates/home.html:106
+#: povertymappingapp/templates/home.html:107
 msgid "Our Partners"
 msgstr "ដៃគូ"
 
-#: povertymappingapp/templates/home.html:130
+#: povertymappingapp/templates/home.html:131
 #: povertymappingapp/templates/panels/guiding-panel.html:60
 msgid "Disclaimer"
 msgstr "ការបដិសេធ៖"
 
-#: povertymappingapp/templates/home.html:130
+#: povertymappingapp/templates/home.html:131
 #: povertymappingapp/templates/panels/guiding-panel.html:60
 msgid ""
 "The results presented on this website are the outcome of an exploratory "
@@ -406,55 +363,16 @@ msgid "The 17 sustainable development goals."
 msgstr "គោលដៅអភិវឌ្ឍន៍ប្រកបដោយចីរភាពទាំង១៧"
 
 #: povertymappingapp/templates/method.html:184
-#, fuzzy
-#| msgid ""
-#| "<b>A random forest algorithm</b> was trained with a large number of geo "
-#| "spatial information layers on e.g. distance to roads, electricity grid, "
-#| "nightlights, health facilities, schools, land cover etc and the data from "
-#| "the Cambodia Socio-economic survey. The random forest model was then "
-#| "applied in probability mode to estimate the probability of deprivations "
-#| "across the country on a 100 by 100 meter grid. The variable importance of "
-#| "the different indicators is shown in FIG 1"
-msgid ""
-"<b>A random forest algorithm</b> was trained with a large number of geo "
-"spatial information layers on e.g. distance to roads, electricity grid, "
-"nightlights, health facilities, schools, land cover etc and the data from "
-"the Cambodia Socio-economic survey. The random forest model was then applied "
-"in probability mode to estimate the probability of deprivations across the "
-"country on a 100 by 100 meter grid. The variable importance of the different "
-"indicators is shown in FIG 1."
-msgstr ""
-"វិធីសាស្រ្ត Random Forest ត្រូវបានបង្វឹកជាមួយនឹងបណ្ដុំព័ត៌មានភូមិសាស្ត្រមួយចំនួនធំ ឧ. ចម្ងាយផ្លូវ "
-"បណ្តាញអគ្គិសនី ពន្លឺពេលយប់ មណ្ឌលសុខភាព សាលារៀន គម្របដីជាដើម និងទិន្នន័យអង្កេតសេដ្ឋកិច្ច-"
-"សង្គមកម្ពុជា។ បន្ទាប់មកវិធីសាស្រ្ត Random Forest ត្រូវបានអនុវត្តក្នុងទម្រង់ប្រូបាប៊ីលីតេ "
-"ដើម្បីប៉ាន់ប្រមាណប្រូបាប៊ីលីតេនៃការខ្វះខាតនៅទូទាំងប្រទេសនៅលើក្រឡាចត្រង្គទំហំ 100 គុណនឹង 100 ម៉ែត្រ។ "
-"សារៈសំខាន់អថេរនៃសូចនាករផ្សេងៗគ្នាត្រូវបានបង្ហាញក្នុងរូបទី១។"
+msgid "method-paragraph-4"
+msgstr "វិធីសាស្រ្ត Random Forest ត្រូវបានបង្វឹកជាមួយនឹងបណ្ដុំព័ត៌មានភូមិសាស្ត្រមួយចំនួនធំ ឧ. ចម្ងាយផ្លូវ បណ្តាញអគ្គិសនី ពន្លឺពេលយប់ មណ្ឌលសុខភាព សាលារៀន គម្របដីជាដើម និងទិន្នន័យអង្កេតសេដ្ឋកិច្ច-សង្គមកម្ពុជា។ បន្ទាប់មកវិធីសាស្រ្ត Random Forest ត្រូវបានអនុវត្តក្នុងទម្រង់ប្រូបាប៊ីលីតេ ដើម្បីប៉ាន់ប្រមាណប្រូបាប៊ីលីតេនៃការខ្វះខាតនៅទូទាំងប្រទេសនៅលើក្រឡាចត្រង្គទំហំ 100 គុណនឹង 100 ម៉ែត្រ។ សារៈសំខាន់អថេរនៃសូចនាករផ្សេងៗគ្នាត្រូវបានបង្ហាញក្នុងរូបទី១។"
 
 #: povertymappingapp/templates/method.html:186
-#, fuzzy
-#| msgid ""
-#| "We used the Bing open building footprints dataset to calculate the "
-#| "deprivations per household. This dataset was generated using a machine "
-#| "learning approach on high resolution satellite images. It provides "
-#| "information on the location of buildings in Cambodia."
-msgid ""
-"We used the Bing open building footprints dataset to calculate the "
-"deprivations per household. This dataset was generated using a machine "
-"learning approach on high resolution satellite images. It provides "
-"information on the location of buildings in Cambodia. "
-msgstr ""
-"យើង​បាន​ប្រើ​សំណុំ​ទិន្នន័យ​​បើក​ចំហ​នៃអគារ​របស់ Bing ដើម្បី​គណនា​ការ​ខ្វះខាតក្នុងកម្រិត​គ្រួសារ។ "
-"សំណុំទិន្នន័យនេះត្រូវបានបង្កើតដោយប្រើវិធីសាស្រ្តMachine Learning "
-"ដោយផ្អែកលើរូបភាពដែលមានគុណភាពបង្ហាញខ្ពស់។ វាផ្តល់ព័ត៌មានអំពីទីតាំងអគារក្នុងប្រទេសកម្ពុជា។"
+msgid "method-paragraph-5"
+msgstr "យើង​បាន​ប្រើ​សំណុំ​ទិន្នន័យ​​បើក​ចំហ​នៃអគារ​របស់ Bing ដើម្បី​គណនា​ការ​ខ្វះខាតក្នុងកម្រិត​គ្រួសារ។ សំណុំទិន្នន័យនេះត្រូវបានបង្កើតដោយប្រើវិធីសាស្រ្តMachine Learning ដោយផ្អែកលើរូបភាពដែលមានគុណភាពបង្ហាញខ្ពស់។ វាផ្តល់ព័ត៌មានអំពីទីតាំងអគារក្នុងប្រទេសកម្ពុជា។"
 
 #: povertymappingapp/templates/method.html:189
-msgid ""
-"The image below shows the number of deprivations per household on the "
-"country level. This dataset can be explored in more detail in the map "
-"section of this website."
-msgstr ""
-"រូបភាពខាងក្រោមបង្ហាញពីចំនួននៃការខ្វះខាតក្នុងមួយគ្រួសារនៅកម្រិតប្រទេស។ សំណុំទិន្នន័យនេះ "
-"អាចត្រូវបានស្វែងរកយ៉ាងលម្អិតនៅក្នុងផ្នែកផែនទីនៃគេហទំព័រនេះ។"
+msgid "method-paragraph-6"
+msgstr "រូបភាពខាងក្រោមបង្ហាញពីចំនួននៃការខ្វះខាតក្នុងមួយគ្រួសារនៅកម្រិតប្រទេស។ សំណុំទិន្នន័យនេះ អាចត្រូវបានស្វែងរកយ៉ាងលម្អិតនៅក្នុងផ្នែកផែនទីនៃគេហទំព័រនេះ។"
 
 #: povertymappingapp/templates/method.html:193
 msgid "The variable importance of the different indicators"
@@ -676,6 +594,106 @@ msgstr "ផ្លូវជាតិ"
 #: povertymappingapp/templates/panels/left-menu.html:376
 msgid "Railway"
 msgstr "ផ្លូវដែក"
+
+#, fuzzy
+#~| msgid ""
+#~| "<b>A random forest algorithm</b> was trained with a large number of geo "
+#~| "spatial information layers on e.g. distance to roads, electricity grid, "
+#~| "nightlights, health facilities, schools, land cover etc and the data "
+#~| "from the Cambodia Socio-economic survey. The random forest model was "
+#~| "then applied in probability mode to estimate the probability of "
+#~| "deprivations across the country on a 100 by 100 meter grid. The variable "
+#~| "importance of the different indicators is shown in FIG 1"
+#~ msgid ""
+#~ "<b>A random forest algorithm</b> was trained with a large number of geo "
+#~ "spatial information layers on e.g. distance to roads, electricity grid, "
+#~ "nightlights, health facilities, schools, land cover etc and the data from "
+#~ "the Cambodia Socio-economic survey. The random forest model was then "
+#~ "applied in probability mode to estimate the probability of deprivations "
+#~ "across the country on a 100 by 100 meter grid. The variable importance of "
+#~ "the different indicators is shown in FIG 1."
+#~ msgstr ""
+#~ "វិធីសាស្រ្ត Random Forest ត្រូវបានបង្វឹកជាមួយនឹងបណ្ដុំព័ត៌មានភូមិសាស្ត្រមួយចំនួនធំ ឧ. ចម្ងាយផ្លូវ "
+#~ "បណ្តាញអគ្គិសនី ពន្លឺពេលយប់ មណ្ឌលសុខភាព សាលារៀន គម្របដីជាដើម និងទិន្នន័យអង្កេតសេដ្ឋកិច្ច-"
+#~ "សង្គមកម្ពុជា។ បន្ទាប់មកវិធីសាស្រ្ត Random Forest ត្រូវបានអនុវត្តក្នុងទម្រង់ប្រូបាប៊ីលីតេ "
+#~ "ដើម្បីប៉ាន់ប្រមាណប្រូបាប៊ីលីតេនៃការខ្វះខាតនៅទូទាំងប្រទេសនៅលើក្រឡាចត្រង្គទំហំ 100 គុណនឹង 100 "
+#~ "ម៉ែត្រ។ សារៈសំខាន់អថេរនៃសូចនាករផ្សេងៗគ្នាត្រូវបានបង្ហាញក្នុងរូបទី១។"
+
+#, fuzzy
+#~| msgid ""
+#~| "We used the Bing open building footprints dataset to calculate the "
+#~| "deprivations per household. This dataset was generated using a machine "
+#~| "learning approach on high resolution satellite images. It provides "
+#~| "information on the location of buildings in Cambodia."
+#~ msgid ""
+#~ "We used the Bing open building footprints dataset to calculate the "
+#~ "deprivations per household. This dataset was generated using a machine "
+#~ "learning approach on high resolution satellite images. It provides "
+#~ "information on the location of buildings in Cambodia. "
+#~ msgstr ""
+#~ "យើង​បាន​ប្រើ​សំណុំ​ទិន្នន័យ​​បើក​ចំហ​នៃអគារ​របស់ Bing ដើម្បី​គណនា​ការ​ខ្វះខាតក្នុងកម្រិត​គ្រួសារ។ "
+#~ "សំណុំទិន្នន័យនេះត្រូវបានបង្កើតដោយប្រើវិធីសាស្រ្តMachine Learning "
+#~ "ដោយផ្អែកលើរូបភាពដែលមានគុណភាពបង្ហាញខ្ពស់។ វាផ្តល់ព័ត៌មានអំពីទីតាំងអគារក្នុងប្រទេសកម្ពុជា។"
+
+#~ msgid ""
+#~ "The image below shows the number of deprivations per household on the "
+#~ "country level. This dataset can be explored in more detail in the map "
+#~ "section of this website."
+#~ msgstr ""
+#~ "រូបភាពខាងក្រោមបង្ហាញពីចំនួននៃការខ្វះខាតក្នុងមួយគ្រួសារនៅកម្រិតប្រទេស។ សំណុំទិន្នន័យនេះ "
+#~ "អាចត្រូវបានស្វែងរកយ៉ាងលម្អិតនៅក្នុងផ្នែកផែនទីនៃគេហទំព័រនេះ។"
+
+#, fuzzy
+#~| msgid ""
+#~| "Mapping vulnerability using big data and AI is a collaborative effort of "
+#~| "NIS/UNDP Cambodia and the Spatial Informatics Group under the auspices "
+#~| "of Servir Mekong. In the project we distinguish the vulnerability "
+#~| "dimensions of education, health, living standard, employment and "
+#~| "monetary. The dimensions are calculated from big earth data using "
+#~| "artificial intelligence. Spatial data information layers were derived "
+#~| "from satellite imagery, Geo Information Systems and various other "
+#~| "sources. We will use the Google Earth Engine technology platform for "
+#~| "storing and processing information. Google Earth Engine is a cloud based "
+#~| "geo-spatial storage and processing platform which enables users to "
+#~| "perform calculations over fast areas and easily share data and work "
+#~| "routines."
+#~ msgid ""
+#~ "Mapping vulnerability using big data and AI is a collaborative effort of "
+#~ "the National Institute of Statistics (NIS) and UNDP Cambodia. In the "
+#~ "project, we distinguish the vulnerability dimensions of education, "
+#~ "health, living standard, employment and monetary. The dimensions are "
+#~ "calculated from big earth data using artificial intelligence. Spatial "
+#~ "data information layers were derived from satellite imagery, Geo "
+#~ "Information Systems and various other sources. We use the Google Earth "
+#~ "Engine technology platform for storing and processing information. Google "
+#~ "Earth Engine is a cloud based geo-spatial storage and processing platform "
+#~ "which enables users to perform calculations over areas quickly and easily "
+#~ "share data."
+#~ msgstr ""
+#~ "ការផលិតផែនទីនៃភាពងាយរងគ្រោះដោយប្រើប្រាស់ទិន្នន័យធំ (Big data) និងបញ្ញាសិប្បនិម្មិត (AI) "
+#~ "គឺជាកិច្ចខិតខំប្រឹងប្រែងរួមគ្នារវាង វិទ្យាស្ថានជាតិស្ថិតិ និងកម្មវិធីអភិវឌ្ឍន៍សហប្រជាជាតិប្រចាំកម្ពុជា។ "
+#~ "នៅក្នុងគម្រោងនេះ យើងបែងចែកវិសាលភាពនៃភាពងាយរងគ្រោះតាមសូចនាករអប់រំ សុខភាព ស្តង់ដាររស់នៅ "
+#~ "ការងារ និងរូបិយវត្ថុ។ វិសាលភាពត្រូវបានគណនាពីទិន្នន័យផែនដីធំដោយប្រើបញ្ញាសិប្បនិម្មិត។ "
+#~ "ស្រទាប់ព័ត៌មានទិន្នន័យលំហបានមកពីរូបភាពផ្កាយរណប ប្រព័ន្ធព័ត៌មានភូមិសាស្ត្រ និងប្រភពផ្សេងៗ។ "
+#~ "យើងប្រើវេទិកាបច្ចេកវិទ្យា Google Earth Engine សម្រាប់រក្សាទុក និងដំណើរការកម្មវិធី។ "
+#~ "Google Earth Engine គឺជាប្រព័ន្ធផ្ទុកទិន្នន័យ "
+#~ "និងដំណើរការតាមភូមិសាស្ត្រដោយប្រើបច្ចេកវិទ្យាក្លោដ "
+#~ "ដែលអាចឱ្យអ្នកប្រើប្រាស់ធ្វើការគណនាលើតំបន់ដែលមានល្បឿនលឿន និងងាយស្រួលចែករំលែកទិន្នន័យ។"
+
+#~ msgid "Menu Links"
+#~ msgstr "តំណភ្ជាប់"
+
+#~ msgid "Home"
+#~ msgstr "ទំព័រដើម"
+
+#~ msgid "Map"
+#~ msgstr "ផែនទី"
+
+#~ msgid "Methodology"
+#~ msgstr "វិធីសាស្រ្ត"
+
+#~ msgid "About Us"
+#~ msgstr "អំពីយើង"
 
 #, fuzzy
 #~| msgid ""
