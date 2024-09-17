@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  web:
+  webapp:
     build: .
     command: gunicorn --bind 0.0.0.0:8000 povertymappingapp.wsgi:application
     volumes:
@@ -10,3 +10,20 @@ services:
       - "8000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=povertymappingapp.settings
+    networks:
+      - app_network
+
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
