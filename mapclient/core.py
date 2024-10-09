@@ -193,7 +193,6 @@ class GEEApi():
                 'eeMapId': str(map_id['mapid']),
                 'eeMapURL': str(map_id['tile_fetcher'].url_format),
             }
-
             res[feat_name] = obj
         return res
 
@@ -205,14 +204,12 @@ class GEEApi():
             selectors=["NAME_0","NAME_1","NAME_2","NAME_3", "Education0", "edu_attain0", "edu_attend0","Health0", "health_food0", "health_access0", "health_water0","health_sanit0", "health_handwash0","LivingStandard0", "liv_overcr0", "liv_hous0", "liv_cooking0", "liv_elect0", "liv_asset0", "liv_coping0","Monetary0", "overall0"],
             filename="cambodia_poverty_valnerability",
         )
-
         obj = {
             "downloadUrl":url,
         }
         return obj
 
     # -------------------------------------------------------------------------
-
     def probabilityMaps(self):
         buildings = self.buildings
         education = self.education

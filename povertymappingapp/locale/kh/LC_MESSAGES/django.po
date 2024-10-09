@@ -217,7 +217,7 @@ msgstr "ចំនួនអាគារ"
 
 #: povertymappingapp/templates/map.html:110
 msgid "Probability of population deprived from overall vulnerability"
-msgstr "ប្រូបាប៊ីលីតេនៃចំនួនប្រជាជនដែលត្រូវបានដកចេញពីភាពងាយរងគ្រោះ"
+msgstr "ប្រូបាប៊ីលីតេនៃចំនួនប្រជាជនដែលងាយរងគ្រោះ"
 
 #: povertymappingapp/templates/map.html:153
 msgid "Poverty Vulnerability Report in Cambodia"

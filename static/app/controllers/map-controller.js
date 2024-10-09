@@ -718,16 +718,37 @@
         var percent_dep = (_featData["Deprived"][index] * 100).toFixed(2);
         var categorical_deprived = "";
 
-        if (percent_dep <= 20) {
-          categorical_deprived = "Very low";
-        } else if (percent_dep <= 40) {
-          categorical_deprived = "Low";
-        } else if (percent_dep <= 60) {
-          categorical_deprived = "Medium";
-        } else if (percent_dep <= 80) {
-          categorical_deprived = "High";
-        } else if (percent_dep <= 100) {
-          categorical_deprived = "Very high";
+        // Get the current full URL
+        var currentUrl = window.location.href;
+
+        // Use regex to extract the language code from the URL
+        var langCode = currentUrl.match(/\/(en|kh)\//);
+
+        // Check if the match is found
+        if (langCode[1] === 'kh') {
+          if (percent_dep <= 20) {
+            categorical_deprived = "ទាបខ្លាំង";
+          } else if (percent_dep <= 40) {
+            categorical_deprived = "ទាប";
+          } else if (percent_dep <= 60) {
+            categorical_deprived = "មធ្យម";
+          } else if (percent_dep <= 80) {
+            categorical_deprived = "ខ្ពស់";
+          } else if (percent_dep <= 100) {
+            categorical_deprived = "ខ្ពស់ខ្លាំង";
+          }
+        } else {
+          if (percent_dep <= 20) {
+            categorical_deprived = "Very low";
+          } else if (percent_dep <= 40) {
+            categorical_deprived = "Low";
+          } else if (percent_dep <= 60) {
+            categorical_deprived = "Medium";
+          } else if (percent_dep <= 80) {
+            categorical_deprived = "High";
+          } else if (percent_dep <= 100) {
+            categorical_deprived = "Very high";
+          }
         }
 
         $("#no_population").text(parseInt(data["population"][index]));

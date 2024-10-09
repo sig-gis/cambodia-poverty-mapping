@@ -718,18 +718,39 @@
         var percent_dep = (_featData["Deprived"][index] * 100).toFixed(2);
         var categorical_deprived = "";
 
-        if (percent_dep <= 20) {
-          categorical_deprived = "Very low";
-        } else if (percent_dep <= 40) {
-          categorical_deprived = "Low";
-        } else if (percent_dep <= 60) {
-          categorical_deprived = "Medium";
-        } else if (percent_dep <= 80) {
-          categorical_deprived = "High";
-        } else if (percent_dep <= 100) {
-          categorical_deprived = "Very high";
-        }
+        // Get the current full URL
+        var currentUrl = window.location.href;
 
+        // Use regex to extract the language code from the URL
+        var langCode = currentUrl.match(/\/(en|kh)\//);
+
+        // Check if the match is found
+        if (langCode[1] === 'kh') {
+          if (percent_dep <= 20) {
+            categorical_deprived = "ទាបខ្លាំង";
+          } else if (percent_dep <= 40) {
+            categorical_deprived = "ទាប";
+          } else if (percent_dep <= 60) {
+            categorical_deprived = "មធ្យម";
+          } else if (percent_dep <= 80) {
+            categorical_deprived = "ខ្ពស់";
+          } else if (percent_dep <= 100) {
+            categorical_deprived = "ខ្ពស់ខ្លាំង";
+          }
+        } else {
+          if (percent_dep <= 20) {
+            categorical_deprived = "Very low";
+          } else if (percent_dep <= 40) {
+            categorical_deprived = "Low";
+          } else if (percent_dep <= 60) {
+            categorical_deprived = "Medium";
+          } else if (percent_dep <= 80) {
+            categorical_deprived = "High";
+          } else if (percent_dep <= 100) {
+            categorical_deprived = "Very high";
+          }
+        }
+        
         $("#no_population").text(parseInt(data["population"][index]));
         $("#no_buildings").text(parseInt(data["buildings"][index]));
         $(".info_areaname").text(data["name_area"][index]);
@@ -768,12 +789,54 @@
 
 
       function createToggleList(parentUL, inputID, label, yid, checked, bgcolor) {
+        // Get the current full URL
+        var currentUrl = window.location.href;
+        // Use regex to extract the language code from the URL
+        var langCode = currentUrl.match(/\/(en|kh)\//);
+        var activeLang = langCode[1];
+        var labels = {
+          'en': {
+            'Education': 'Education',
+            'Educational attainment': 'Educational attainment',
+            'School attendance': 'School attendance',
+            'Health': 'Health',
+            'Food Comsumtion': 'Food Comsumtion',
+            'Access to Healtcare': 'Access to Healtcare',
+            'Access to Clean Water': 'Access to Clean Water',
+            'Access to Sanitation': 'Access to Sanitation',
+            'Hand Washing': 'Hand Washing',
+            'Living Standard': 'Living Standard',
+            'Overcrowding': 'Overcrowding',
+            'Housing Materials': 'Housing Materials',
+            'Access to Electricity': 'Access to Electricity',
+            'Assets': 'Assets',
+            'Livelihood Based Coping Strategies': 'Livelihood Based Coping Strategies',
+            'Monetary': 'Monetary',
+            'overall': 'overall'
+          }, 
+         'kh': {
+            'Education': 'អប់រំ',
+            'Educational attainment': 'ទទួលបានការអប់រំ',
+            'School attendance': 'ចូលរៀននៅសាលា',
+            'Health': 'សុខភាព',
+            'Food Comsumtion': 'ការហូបចុក',
+            'Access to Healtcare': 'ការទទួលបានសេវាសុខាភិបាល',
+            'Access to Clean Water': 'ការទទួលបានទឹកស្អាត',
+            'Access to Sanitation': 'ការទទួលបានអនាម័យ',
+            'Hand Washing': 'ការលាងសម្អាតដៃ',
+            'Living Standard': 'ស្តង់ដាររស់នៅ',
+            'Overcrowding': 'ការរស់នៅដោយចង្អៀត',
+            'Housing Materials': 'សម្ភារៈលំនៅដ្ឋាន',
+            'Access to Electricity': 'ទទួលបានប្រើអគ្គិសនី',
+            'Assets': 'ទ្រព្យសម្បត្តិ',
+            'Livelihood Based Coping Strategies': 'យុទ្ធសាស្ត្រដោះស្រាយកង្វះខាតជីវភាព',
+            'Monetary': 'ស្តង់ដាររស់នៅ',
+            'overall': 'សរុប'
+         }
+        }
         $("#" + parentUL).append(
           '<li class="toggle">' +
-          // '<span class="tooltip" name="download_'+inputID+'" id="download_'+inputID+'" data-id="'+inputID+'"  data-yid="'+yid+'" data-name="'+label+'" style="cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#d4dbd4" class="bi bi-file-arrow-down-fill" viewBox="0 0 16 16">' +
-          // '<path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8 5a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5A.5.5 0 0 1 8 5z"/>' +
-          // 	'</svg><span class="tooltiptext">Download </span></span>'+
-          '<label class="switch_layer"><input name="' + inputID + '" id="' + inputID + '" data-id="' + inputID + '"  data-yid="' + yid + '" data-name="' + label + '" data-color="#' + bgcolor + '" type="checkbox" ' + checked + '><span class="slider_toggle round"></span></input></label><label>' + label + '</label></li>'
+          '<label class="switch_layer"><input name="' + inputID + '" id="' + inputID + '" data-id="' + inputID + '"  data-yid="' + yid + '" data-name="' + label + '" data-color="#' + bgcolor + '" type="checkbox" ' + checked + '><span class="slider_toggle round"></span></input></label><label>' + labels[activeLang][label] + '</label></li>'
         );
       }
 
@@ -784,7 +847,6 @@
             '<p>' + area_name + '</p>' +
             '<div class="row">' +
             '<div class="col-lg-12">' +
-            // '<p>Summary of '+data+' in '+ $scope.STUDYHIGH +' </p>'+
             '<a id="' + data + '_piepng" data-yid="' + data + '" class="chart-btn-sm">PNG</a>' +
             '<a id="' + data + '_piecsv" data-yid="' + data + '" class="chart-btn-sm">CSV</a>' +
             '<div id="' + data + '_piechart"  width="1000" height="1000" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>' +

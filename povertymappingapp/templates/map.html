@@ -1,135 +1,134 @@
-
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% load cms_tags menu_tags sekizai_tags static %}
 {% load i18n %}
 <html>
   <head>
     {% block head %}
-    <title>Poverty Mapping | Map</title>
+      <title>Poverty Mapping | Map</title>
     {% endblock %}
   </head>
 
   <body>
     {% block extra_script %}
-    <!-- Leaflet -->
-		<script src="{% static 'vendor/leaflet/dist/leaflet.js' %}"></script>
-		<!-- toGeoJSON -->
-		<script src="{% static 'vendor/togeojson/togeojson.js' %}"></script>
-    <!-- Services -->
-    <script src="{% static 'app/services/map-service.js' %}"></script>
-    <!-- Controllers -->
-		<!-- <script src="{% static 'app/controllers/utils-controller.js' %}"></script> -->
-		<script src="{% static 'app/controllers/map-controller.js' %}"></script>
-
-    <script src="{% static 'vendor/highcharts/highcharts.js' %}"></script>
-    <script src="{% static 'vendor/highcharts/modules/exporting.js' %}"></script>
-    <script src="{% static 'vendor/highcharts/modules/export-data.js' %}"></script>
-
-    <script src="{% static 'data/airport.js' %}"></script>
-    <script src="{% static 'data/cpa.js' %}"></script>
-    <script src="{% static 'data/dams.js' %}"></script>
-    <script src="{% static 'data/main_road_osm.js' %}"></script>
-    <script src="{% static 'data/railway.js' %}"></script>
-
-    <script src="{% static 'data/adm0.js' %}"></script>
-    <script src="{% static 'data/adm1_v2.js' %}"></script>
-    <script src="{% static 'data/adm2_v2.js' %}"></script>
-    <script src="{% static 'data/adm3_v2.js' %}"></script>
+      <!-- Leaflet -->
+      <script src="{% static 'vendor/leaflet/dist/leaflet.js' %}"></script>
+      <!-- toGeoJSON -->
+      <script src="{% static 'vendor/togeojson/togeojson.js' %}"></script>
+      <!-- Services -->
+      <script src="{% static 'app/services/map-service.js' %}"></script>
+      <!-- Controllers -->
+      <script src="{% static 'app/controllers/map-controller.js' %}"></script>
+      <script src="{% static 'vendor/highcharts/highcharts.js' %}"></script>
+      <script src="{% static 'vendor/highcharts/modules/exporting.js' %}"></script>
+      <script src="{% static 'vendor/highcharts/modules/export-data.js' %}"></script>
+      <script src="{% static 'data/airport.js' %}"></script>
+      <script src="{% static 'data/cpa.js' %}"></script>
+      <script src="{% static 'data/dams.js' %}"></script>
+      <script src="{% static 'data/main_road_osm.js' %}"></script>
+      <script src="{% static 'data/railway.js' %}"></script>
+      <script src="{% static 'data/adm0.js' %}"></script>
+      <script src="{% static 'data/adm1_v2.js' %}"></script>
+      <script src="{% static 'data/adm2_v2.js' %}"></script>
+      <script src="{% static 'data/adm3_v2.js' %}"></script>
     {% endblock %}
 
-    {% block body%}
-    <div class="container-fluid">
-
-      <div class="row" ng-controller="mapController">
-
-        <div id="alertBox" class="alert alert-dismissible display-none custom-alert" role="alert" style="z-index: 999;position: absolute;margin-top: 10px;">
+    {% block body %}
+      <div class="container-fluid">
+        <div class="row" ng-controller="mapController">
+          <div id="alertBox" class="alert alert-dismissible display-none custom-alert" role="alert" style="z-index: 999;position: absolute;margin-top: 10px;">
             <button id="closeAlert" type="button" class="close" ng-click="closeAlert()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong id="alertType"></strong> <span id="alertContent"></span>
-        </div>
-
-        <!-- Loader Container -->
-        <div id="loader" class="loader" ng-show="showLoader">
-          <i class="loading-img fas fa-circle-notch fa-spin fa-4x"></i>
-        </div>
-
-
-        {% include "panels/guiding-panel.html" %}
-        {% include "panels/left-menu.html" %}
-
-        <div class="map" id="map">
-          <div class="control-panel map-component">
-            <div class="scalebar-container"></div>
-
-            {% include "panels/map-controller.html" %}
           </div>
-        </div>
 
-      <div class="c-map-admAreaBox">
-        <label for="">{% trans 'Select  administrative level' %}</label>
-        <select class="form-select" name="administrative_level" id="administrative_level">
-          <option value="province" selected>{% trans 'Province' %}</option>
-          <option value="district">{% trans 'District' %}</option>
-          <option value="sub-district">{% trans 'Commune/Sangkat' %}</option>
-        </select>
-        <button type="button" class="clear_map_button">{% trans 'Clear Selected Region' %}</button>
-      </div>
+          <!-- Loader Container -->
+          <div id="loader" class="loader" ng-show="showLoader">
+            <i class="loading-img fas fa-circle-notch fa-spin fa-4x"></i>
+          </div>
 
-      <div class="c-map-highlight_area_textbox">
-        <p class="highlight_area_textbox"></p>
-      </div>
+          {% include 'panels/guiding-panel.html' %}
+          {% include 'panels/left-menu.html' %}
 
-      <div class="c-map-infographic">
-          <div class="container">
-            <div class="row no-gutters">
+          <div class="map" id="map">
+            <div class="control-panel map-component">
+              <div class="scalebar-container"></div>
+              {% include 'panels/map-controller.html' %}
+            </div>
+          </div>
 
-              <div class="col-lg-4 col-md-6 content-item">
-                <div class="highlight-icon">
-                  <img src="/static/images/icons/population.png" alt="">
+          <div class="c-map-admAreaBox">
+            <label for="">{% trans 'Select  administrative level' %}</label>
+            <select class="form-select" name="administrative_level" id="administrative_level">
+              <option value="province" selected>
+                {% trans 'Province' %}
+              </option>
+              <option value="district">
+                {% trans 'District' %}
+              </option>
+              <option value="sub-district">
+                {% trans 'Commune/Sangkat' %}
+              </option>
+            </select>
+            <button type="button" class="clear_map_button">{% trans 'Clear Selected Region' %}</button>
+          </div>
+
+          <div class="c-map-highlight_area_textbox">
+            <p class="highlight_area_textbox"></p>
+          </div>
+
+          <div class="c-map-infographic">
+            <div class="container">
+              <div class="row no-gutters">
+                <div class="col-lg-4 col-md-6 content-item">
+                  <div class="highlight-icon">
+                    <img src="/static/images/icons/population.png" alt="" />
+                  </div>
+                  <hr />
+                  <p>
+                    {% trans 'Total Population' %}
+                  </p>
+                  <p class="info_areaname"></p>
+                  <h3 id="no_population"></h3>
                 </div>
-                <hr>
-                <p>{% trans 'Total Population' %}</p>
-                <p class="info_areaname" ></p>
-                <h3 id="no_population"></h3>
-              </div>
 
-              <div class="col-lg-4 col-md-6 content-item">
-                <div class="highlight-icon">
-                  <img src="/static/images/icons/buildings.png" alt="">
+                <div class="col-lg-4 col-md-6 content-item">
+                  <div class="highlight-icon">
+                    <img src="/static/images/icons/buildings.png" alt="" />
+                  </div>
+                  <hr />
+                  <p>
+                    {% trans 'Number of Buildings' %}
+                  </p>
+                  <p class="info_areaname"></p>
+                  <h3 id="no_buildings"></h3>
                 </div>
-                <hr>
-                <p>{% trans 'Number of Buildings' %}</p>
-                <p class="info_areaname" ></p>
-                <h3 id="no_buildings"></h3>
-              </div>
 
-              <div class="col-lg-4 col-md-6 content-item">
-                <div class="highlight-icon">
-                  <img src="/static/images/icons/deprived.png" alt="">
+                <div class="col-lg-4 col-md-6 content-item">
+                  <div class="highlight-icon">
+                    <img src="/static/images/icons/deprived.png" alt="" />
+                  </div>
+                  <hr />
+                  <p>
+                    {% trans 'Probability of population deprived from overall vulnerability' %}
+                  </p>
+                  <p class="info_areaname"></p>
+                  <h3 id="categorical_deprived"><span id="percent_deprived"></span></h3>
                 </div>
-                <hr>
-                <p>{% trans 'Probability of population deprived from overall vulnerability' %}</p>
-                <p class="info_areaname" ></p>
-                <h3 id="categorical_deprived"><span id="percent_deprived"></span></h3>
-              </div>
 
-              <!-- <div class="col-lg-3 col-md-6 content-item">
+                <!--  <div class="col-lg-3 col-md-6 content-item">
                 <div class="highlight-icon">
                   <img src="/static/images/icons/electricity.jpg" alt="">
                 </div>
                 <hr>
                 <p>Electricity Ratio</p>
                 <h3>56.9%</h3>
-              </div> -->
-
+              </div>  -->
+              </div>
             </div>
           </div>
-        </div>
 
-
-        <div class="container" style="margin-top: 50px;">
-          <div class="row justify-content-start align-items-center">
-
-                <!-- <div class="col-lg-12">
+          <div class="container" style="margin-top: 50px;">
+            <div class="row justify-content-start align-items-center">
+              <!--  <div class="col-lg-12">
                   <div class="main_title text-left">
                     <div class="section_title">
                       <div class="section_title_text">Povert Vulnerability Report in Cambodia</div>
@@ -146,302 +145,347 @@
                         </div>
                       </div>
                     </div>
-                  </div> -->
+                  </div>  -->
 
-                  <div class="col-lg-12">
-                    <div class="main_title text-left">
-                      <h4 style="font-weight: 700;">{% trans 'Poverty Vulnerability Report in Cambodia' %}</h4>
-                      <p>{% trans 'To create a summary' %}</p>
+              <div class="col-lg-12">
+                <div class="main_title text-left">
+                  <h4 style="font-weight: 700;">{% trans 'Poverty Vulnerability Report in Cambodia' %}</h4>
+                  <p>
+                    {% trans 'To create a summary' %}
+                  </p>
 
-                      <div id="exTab2" class="container">
-                      <ul class="nav nav-tabs">
-                            <li class="active"><a href="#5" data-toggle="tab">{% trans 'Overall' %}</a> </li>
-                      			<li> <a href="#1" data-toggle="tab">{% trans 'Health' %}</a> </li>
-                      			<li><a href="#2" data-toggle="tab">{% trans 'Education' %}</a> </li>
-                      			<li><a href="#3" data-toggle="tab">{% trans 'Living Standard' %}</a> </li>
-                            <li><a href="#4" data-toggle="tab">{% trans 'Monetary' %}</a> </li>
-                      		</ul>
-                      			<div class="tab-content ">
-                              <div class="tab-pane active" id="5">
-                                <p><b>{% trans 'Overall' %}</b></p>
-                                <div class="row" id="overall0_chart_report_area"></div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <a id="overall0_bar_png" class="chart-btn-sm">PNG</a>
-                                      <a id="overall0_bar_csv" class="chart-btn-sm">CSV</a>
-                                      <div id="overall0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                    </div>
-                                  </div>
-                      				</div>
-
-                      			  <div class="tab-pane" id="1">
-                                <div class="row">
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Health' %} </b></p>
-                                    <div class="row" id="health0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="health0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="health0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="health0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Access to health care' %} </b></p>
-                                    <div class="row" id="health_access0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="health_access0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="health_access0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="health_access0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Access to clean water' %} </b></p>
-                                    <div class="row" id="health_water0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="health_water0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="health_water0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="health_water0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Access to sanitation' %} </b></p>
-                                    <div class="row" id="health_sanit0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="health_sanit0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="health_sanit0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="health_sanit0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Food consumption score' %}  </b></p>
-                                    <div class="row" id="health_food0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="health_food0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="health_food0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="health_food0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Hand washing' %} </b></p>
-                                    <div class="row" id="health_handwash0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="health_handwash0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="health_handwash0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="health_handwash0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-                                </div>
-                      				</div>
-                      				<div class="tab-pane" id="2">
-                                <div class="row">
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Education' %}</b></p>
-                                    <div class="row" id="education0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="education0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="education0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="education0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Educational attainment' %}</b></p>
-                                    <div class="row" id="edu_attain0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="edu_attain0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="edu_attain0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="edu_attain0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'School attendance' %}</b></p>
-                                    <div class="row" id="edu_attend0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="edu_attend0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="edu_attend0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="edu_attend0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-                                </div>
-                      				</div>
-                              <div class="tab-pane" id="3">
-                                <div class="row">
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Living Standard' %}</b></p>
-                                    <div class="row" id="livingstandard0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="livingstandard0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="livingstandard0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="livingstandard0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Overcrowding' %}</b></p>
-                                    <div class="row" id="liv_overcr0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="liv_overcr0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="liv_overcr0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="liv_overcr0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Housing materials' %}</b></p>
-                                    <div class="row" id="liv_hous0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="liv_hous0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="liv_hous0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="liv_hous0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Cooking fuel' %}</b></p>
-                                    <div class="row" id="liv_cooking0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="liv_cooking0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="liv_cooking0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="liv_cooking0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Assets' %}</b></p>
-                                    <div class="row" id="liv_asset0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="liv_asset0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="liv_asset0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="liv_asset0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Livelihood based Coping Strategies' %}</b></p>
-                                    <div class="row" id="liv_coping0_chart_report_area"></div>
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="liv_coping0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="liv_coping0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="liv_coping0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                    <p><b>{% trans 'Access to electricity' %}</b></p>
-                                    <div class="row" id="liv_elect0_chart_report_area"></div>
-
-                                    <div class="col-lg-12">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                            <a id="liv_elect0_bar_png" class="chart-btn-sm">PNG</a>
-                                            <a id="liv_elect0_bar_csv" class="chart-btn-sm">CSV</a>
-                                            <div id="liv_elect0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                  </div>
-
-                                </div>
-                      				</div>
-                              <div class="tab-pane" id="4">
-                                <p><b>{% trans 'Monetary' %}</b></p>
-                                <div class="row" id="monetary0_chart_report_area"></div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <a id="monetary0_bar_png" class="chart-btn-sm">PNG</a>
-                                      <a id="monetary0_bar_csv" class="chart-btn-sm">CSV</a>
-                                      <div id="monetary0_barchart_adm"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
-                                    </div>
-                                  </div>
-                      				</div>
-
-                      			</div>
-                        </div>
-
-                    <div class="col-lg-12" id="nightlight-div" style="display: none;">
-                      <div class="main_title text-left">
-                        <div class="section_title">
-                          <div class="section_title_text">{% trans 'Nightlight Time Series' %}</div>
-                        </div>
+                  <div id="exTab2" class="container">
+                    <ul class="nav nav-tabs">
+                      <li class="active">
+                        <a href="#5" data-toggle="tab">{% trans 'Overall' %}</a>
+                      </li>
+                      <li>
+                        <a href="#1" data-toggle="tab">{% trans 'Health' %}</a>
+                      </li>
+                      <li>
+                        <a href="#2" data-toggle="tab">{% trans 'Education' %}</a>
+                      </li>
+                      <li>
+                        <a href="#3" data-toggle="tab">{% trans 'Living Standard' %}</a>
+                      </li>
+                      <li>
+                        <a href="#4" data-toggle="tab">{% trans 'Monetary' %}</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane active" id="5">
+                        <p>
+                          <b>{% trans 'Overall' %}</b>
+                        </p>
                         <div class="row" id="overall0_chart_report_area"></div>
-                        <div class="col-lg-12">
-                          <div class="row">
-                              <div class="col-lg-12">
-                                <a id="nightlight_line_png" class="chart-btn-sm">PNG</a>
-                                <a id="nightlight_line_csv" href="#" class="chart-btn-sm">CSV</a>
-                                <div id="nightlight_linechart"  width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <a id="overall0_bar_png" class="chart-btn-sm">PNG</a>
+                            <a id="overall0_bar_csv" class="chart-btn-sm">CSV</a>
+                            <div id="overall0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="tab-pane" id="1">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Health' %}</b>
+                            </p>
+                            <div class="row" id="health0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="health0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="health0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="health0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Access to health care' %}</b>
+                            </p>
+                            <div class="row" id="health_access0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="health_access0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="health_access0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="health_access0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Access to clean water' %}</b>
+                            </p>
+                            <div class="row" id="health_water0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="health_water0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="health_water0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="health_water0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Access to sanitation' %}</b>
+                            </p>
+                            <div class="row" id="health_sanit0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="health_sanit0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="health_sanit0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="health_sanit0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Food consumption score' %}</b>
+                            </p>
+                            <div class="row" id="health_food0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="health_food0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="health_food0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="health_food0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Hand washing' %}</b>
+                            </p>
+                            <div class="row" id="health_handwash0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="health_handwash0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="health_handwash0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="health_handwash0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
+                      <div class="tab-pane" id="2">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Education' %}</b>
+                            </p>
+                            <div class="row" id="education0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="education0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="education0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="education0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Educational attainment' %}</b>
+                            </p>
+                            <div class="row" id="edu_attain0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="edu_attain0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="edu_attain0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="edu_attain0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'School attendance' %}</b>
+                            </p>
+                            <div class="row" id="edu_attend0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="edu_attend0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="edu_attend0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="edu_attend0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="3">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Living Standard' %}</b>
+                            </p>
+                            <div class="row" id="livingstandard0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="livingstandard0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="livingstandard0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="livingstandard0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Overcrowding' %}</b>
+                            </p>
+                            <div class="row" id="liv_overcr0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="liv_overcr0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="liv_overcr0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="liv_overcr0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Housing materials' %}</b>
+                            </p>
+                            <div class="row" id="liv_hous0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="liv_hous0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="liv_hous0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="liv_hous0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
-                        <!-- <div class="col-lg-12">
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Cooking fuel' %}</b>
+                            </p>
+                            <div class="row" id="liv_cooking0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="liv_cooking0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="liv_cooking0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="liv_cooking0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Assets' %}</b>
+                            </p>
+                            <div class="row" id="liv_asset0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="liv_asset0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="liv_asset0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="liv_asset0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Livelihood based Coping Strategies' %}</b>
+                            </p>
+                            <div class="row" id="liv_coping0_chart_report_area"></div>
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="liv_coping0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="liv_coping0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="liv_coping0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <p>
+                              <b>{% trans 'Access to electricity' %}</b>
+                            </p>
+                            <div class="row" id="liv_elect0_chart_report_area"></div>
+
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <a id="liv_elect0_bar_png" class="chart-btn-sm">PNG</a>
+                                  <a id="liv_elect0_bar_csv" class="chart-btn-sm">CSV</a>
+                                  <div id="liv_elect0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="4">
+                        <p>
+                          <b>{% trans 'Monetary' %}</b>
+                        </p>
+                        <div class="row" id="monetary0_chart_report_area"></div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <a id="monetary0_bar_png" class="chart-btn-sm">PNG</a>
+                            <a id="monetary0_bar_csv" class="chart-btn-sm">CSV</a>
+                            <div id="monetary0_barchart_adm" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12" id="nightlight-div" style="display: none;">
+                    <div class="main_title text-left">
+                      <div class="section_title">
+                        <div class="section_title_text">
+                          {% trans 'Nightlight Time Series' %}
+                        </div>
+                      </div>
+                      <div class="row" id="overall0_chart_report_area"></div>
+                      <div class="col-lg-12">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <a id="nightlight_line_png" class="chart-btn-sm">PNG</a>
+                            <a id="nightlight_line_csv" href="#" class="chart-btn-sm">CSV</a>
+                            <div id="nightlight_linechart" width="1000" height="500" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--  <div class="col-lg-12">
                           <div class="main_title text-left">
                             <div class="section_title">
                               <div class="section_title_text">Income and Employment</div>
@@ -449,28 +493,25 @@
                             <div class="row" id="income_chart_report_area">
                             </div>
                             </div>
-                          </div> -->
-
-                        </div>
-                        </div>
+                          </div>  -->
                 </div>
               </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-    </div>
-
-  <script>
-      // With the above scripts loaded, you can call `tippy()` with a CSS
-      // selector and a `content` prop:
-      tippy('[data-tippy-content]',{
-        arrow: true,
-        placement: 'right',
-        theme: 'light',
-        animation: 'fade',
-        maxWidth: 250,
-      });
-
-    </script>
+      <script>
+        // With the above scripts loaded, you can call `tippy()` with a CSS
+        // selector and a `content` prop:
+        tippy('[data-tippy-content]', {
+          arrow: true,
+          placement: 'right',
+          theme: 'light',
+          animation: 'fade',
+          maxWidth: 250
+        })
+      </script>
     {% endblock %}
   </body>
 </html>
