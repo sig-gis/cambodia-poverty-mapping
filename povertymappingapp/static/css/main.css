@@ -1872,7 +1872,7 @@ section {
 # About Lists
 --------------------------------------------------------------*/
 .method-lists {
-  padding: 40px;
+  padding: 40px 40px 0px 40px;
 }
 
 .method-lists .row {
@@ -2415,18 +2415,18 @@ table.dataTable.no-footer {
 }
 
 .poverty-table table th {
-  background: #474343;
+  background: #f2f2f2;
   border-color: #FFF;
   /* width: 25%; */
   font-size: 16px;
   font-weight: 800;
   text-align: center;
-  color: #FFF;
+  color: #000;
 
 }
 
 .poverty-table table {
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
   border-spacing: 0;
   width: 100%;
   border: 1px solid #ddd;
@@ -2438,9 +2438,9 @@ table.dataTable.no-footer {
   font-size: 14px;
 }
 
-.poverty-table table  tr:nth-child(even) {
+/* .poverty-table table  tr:nth-child(even) {
   background-color: #e8e8e8;
-}
+} */
 
 
 #exTab1 .tab-content {
