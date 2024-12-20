@@ -67,134 +67,440 @@
 
       <hr style="margin-top: 10px;  margin-bottom: 10px;">
       <!-- <ul class="toggles-list" id="toggle-list-probability"></ul> -->
-      <label><b>{% trans 'Education' %}</b></label>
-      <ul class="toggles-list">
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_Education" id="prop_Education" data-id="prop_Education"  data-yid="2020" data-name="Education" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label style="font-weight:600;">{% trans 'Education' %}</label>
-        </li>
-      </ul>
 
-      <label><b>{% trans 'Health' %}</b></label>
-      <ul class="toggles-list">
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse2019">2019</a>
+            </h4>
+          </div>
+          <div id="collapse2019" class="panel-collapse collapse">
+            <div class="panel-body">
+              <label><b>{% trans 'Education' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_Education" id="prop_Education_2019" data-id="prop_Education"  data-yid="2019" data-name="Education" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Education' %}</label>
+                </li>
+              </ul>
 
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_Health" id="prop_Health" data-id="prop_Health"  data-yid="2020" data-name="Health" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label style="font-weight:600;">{% trans 'Health' %}</label>
-        </li>
+              <label><b>{% trans 'Health' %}</b></label>
+              <ul class="toggles-list">
 
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_food" id="prop_food" data-id="prop_food"  data-yid="2020" data-name="Food" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Food' %}</label>
-        </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_Health_2019" id="prop_Health_2019" data-id="prop_Health"  data-yid="2019" data-name="Health" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Health' %}</label>
+                </li>
 
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_water" id="prop_water" data-id="prop_water"  data-yid="2020" data-name="Water" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Water' %}</label>
-        </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_food" id="prop_food_2019" data-id="prop_food"  data-yid="2019" data-name="Food" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Food' %}</label>
+                </li>
 
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_sanitation" id="prop_sanitation" data-id="prop_sanitation"  data-yid="2020" data-name="Sanitation" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Sanitation' %}</label>
-        </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_water" id="prop_water_2019" data-id="prop_water"  data-yid="2019" data-name="Water" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Water' %}</label>
+                </li>
 
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_handWashing" id="prop_handWashing" data-id="prop_handWashing"  data-yid="2020" data-name="HandWashing" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Hand Washing' %}</label>
-        </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_sanitation" id="prop_sanitation_2019" data-id="prop_sanitation"  data-yid="2019" data-name="Sanitation" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Sanitation' %}</label>
+                </li>
 
-      </ul>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_handWashing" id="prop_handWashing_2019" data-id="prop_handWashing"  data-yid="2019" data-name="HandWashing" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Hand Washing' %}</label>
+                </li>
 
-      <label><b>{% trans 'Living Standard' %}</b></label>
-      <ul class="toggles-list">
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_LivingStandard" id="prop_LivingStandard" data-id="prop_LivingStandard"  data-yid="2020" data-name="Living Standard" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label style="font-weight:600;">{% trans 'Living Standard' %}</label>
-        </li>
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_buildings" id="prop_buildings" data-id="prop_buildings"  data-yid="2020" data-name="Buildings" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Buildings' %}</label>
-        </li>
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_overcrowding" id="prop_overcrowding" data-id="prop_overcrowding"  data-yid="2020" data-name="Overcrowding" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Overcrowding' %}</label>
-        </li>
+              </ul>
 
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_housing" id="prop_housing" data-id="prop_housing"  data-yid="2020" data-name="Housing" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Housing' %}</label>
-        </li>
-        
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_fuel" id="prop_fuel" data-id="prop_fuel"  data-yid="2020" data-name="Fuel" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Fuel' %}</label>
-        </li>
+              <label><b>{% trans 'Living Standard' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_LivingStandard" id="prop_LivingStandard_2019" data-id="prop_LivingStandard"  data-yid="2019" data-name="Living Standard" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Living Standard' %}</label>
+                </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_buildings" id="prop_buildings_2019" data-id="prop_buildings"  data-yid="2019" data-name="Buildings" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Buildings' %}</label>
+                </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_overcrowding" id="prop_overcrowding_2019" data-id="prop_overcrowding"  data-yid="2019" data-name="Overcrowding" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Overcrowding' %}</label>
+                </li>
 
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_electricity" id="prop_electricity" data-id="prop_electricity"  data-yid="2020" data-name="Electricity" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Electricity' %}</label>
-        </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_housing" id="prop_housing_2019" data-id="prop_housing"  data-yid="2019" data-name="Housing" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Housing' %}</label>
+                </li>
+                
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_fuel" id="prop_fuel_2019" data-id="prop_fuel"  data-yid="2019" data-name="Fuel" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Fuel' %}</label>
+                </li>
 
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_assets" id="prop_assets" data-id="prop_assets"  data-yid="2020" data-name="Assets" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Assets' %}</label>
-        </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_electricity" id="prop_electricity_2019" data-id="prop_electricity"  data-yid="2019" data-name="Electricity" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Electricity' %}</label>
+                </li>
 
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_livelihoodBasedCopingStrategies" id="prop_livelihoodBasedCopingStrategies" data-id="prop_livelihoodBasedCopingStrategies"  data-yid="2020" data-name="Livelihood Based Coping" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label>{% trans 'Livelihood Based Coping' %}</label>
-        </li>
-      </ul>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_assets" id="prop_assets_2019" data-id="prop_assets"  data-yid="2019" data-name="Assets" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Assets' %}</label>
+                </li>
 
-      <label><b>{% trans 'Monetary' %}</b></label>
-      <ul class="toggles-list">
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_consumption" id="prop_consumption" data-id="prop_consumption"  data-yid="2020" data-name="Consumption" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
-          </label>
-          <label style="font-weight:600;">{% trans 'Consumption and Expenditure' %}</label>
-        </li>
-      </ul>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_livelihoodBasedCopingStrategies" id="prop_livelihoodBasedCopingStrategies_2019" data-id="prop_livelihoodBasedCopingStrategies"  data-yid="2019" data-name="Livelihood Based Coping" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Livelihood Based Coping' %}</label>
+                </li>
+              </ul>
 
-      <label><b>{% trans 'Overall' %}</b></label>
-      <ul class="toggles-list">
-        <li class="toggle">
-          <label class="switch_layer">
-            <input name="prop_totalV2" id="prop_totalV2" data-id="prop_totalV2"  data-yid="2020" data-name="Overall Vulnerability" data-color="#333" type="checkbox" checked><span class="slider_toggle round"></span></input>
-          </label>
-          <label style="font-weight:600;">{% trans 'Overall Vulnerability' %}</label>
-        </li>
-      </ul>
+              <label><b>{% trans 'Monetary' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_consumption" id="prop_consumption_2019" data-id="prop_consumption"  data-yid="2019" data-name="Consumption" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Consumption and Expenditure' %}</label>
+                </li>
+              </ul>
 
-      <ul class="toggles-list" id="toggle-list-probability"></ul>
+              <label><b>{% trans 'Overall' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_totalV2" id="prop_totalV2_2019" data-id="prop_totalV2"  data-yid="2019" data-name="Overall Vulnerability" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Overall Vulnerability' %}</label>
+                </li>
+              </ul>
+
+              <ul class="toggles-list" id="toggle-list-probability"></ul>
+
+            </div>
+            {% comment %} <div class="panel-footer">Panel Footer</div> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse2022">2022</a>
+            </h4>
+          </div>
+          <div id="collapse2022" class="panel-collapse collapse">
+            <div class="panel-body">
+              <label><b>{% trans 'Education' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_Education" id="prop_Education_2022" data-id="prop_Education"  data-yid="2022" data-name="Education" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Education' %}</label>
+                </li>
+              </ul>
+
+              <label><b>{% trans 'Health' %}</b></label>
+              <ul class="toggles-list">
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_Health" id="prop_Health_2022" data-id="prop_Health"  data-yid="2022" data-name="Health" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Health' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_food" id="prop_food_2022" data-id="prop_food"  data-yid="2022" data-name="Food" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Food' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_water" id="prop_water_2022" data-id="prop_water"  data-yid="2022" data-name="Water" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Water' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_sanitation" id="prop_sanitation_2022" data-id="prop_sanitation"  data-yid="2022" data-name="Sanitation" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Sanitation' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_handWashing" id="prop_handWashing_2022" data-id="prop_handWashing"  data-yid="2022" data-name="HandWashing" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Hand Washing' %}</label>
+                </li>
+
+              </ul>
+
+              <label><b>{% trans 'Living Standard' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_LivingStandard" id="prop_LivingStandard_2022" data-id="prop_LivingStandard"  data-yid="2022" data-name="Living Standard" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Living Standard' %}</label>
+                </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_buildings" id="prop_buildings_2022" data-id="prop_buildings"  data-yid="2022" data-name="Buildings" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Buildings' %}</label>
+                </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_overcrowding" id="prop_overcrowding_2022" data-id="prop_overcrowding"  data-yid="2022" data-name="Overcrowding" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Overcrowding' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_housing" id="prop_housing_2022" data-id="prop_housing"  data-yid="2022" data-name="Housing" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Housing' %}</label>
+                </li>
+                
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_fuel" id="prop_fuel_2022" data-id="prop_fuel"  data-yid="2022" data-name="Fuel" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Fuel' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_electricity" id="prop_electricity_2022" data-id="prop_electricity"  data-yid="2022" data-name="Electricity" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Electricity' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_assets" id="prop_assets_2022" data-id="prop_assets"  data-yid="2022" data-name="Assets" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Assets' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_livelihoodBasedCopingStrategies" id="prop_livelihoodBasedCopingStrategies_2022" data-id="prop_livelihoodBasedCopingStrategies"  data-yid="2022" data-name="Livelihood Based Coping" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Livelihood Based Coping' %}</label>
+                </li>
+              </ul>
+
+              <label><b>{% trans 'Monetary' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_consumption" id="prop_consumption_2022" data-id="prop_consumption"  data-yid="2022" data-name="Consumption" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Consumption and Expenditure' %}</label>
+                </li>
+              </ul>
+
+              <label><b>{% trans 'Overall' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_totalV2" id="prop_totalV2_2022" data-id="prop_totalV2"  data-yid="2022" data-name="Overall Vulnerability" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Overall Vulnerability' %}</label>
+                </li>
+              </ul>
+
+              <ul class="toggles-list" id="toggle-list-probability"></ul>
+
+            </div>
+            {% comment %} <div class="panel-footer">Panel Footer</div> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse2023">2023</a>
+            </h4>
+          </div>
+          <div id="collapse2023" class="panel-collapse" aria-expanded="true">
+            <div class="panel-body">
+              <label><b>{% trans 'Education' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_Education" id="prop_Education_2023" data-id="prop_Education"  data-yid="2023" data-name="Education" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Education' %}</label>
+                </li>
+              </ul>
+
+              <label><b>{% trans 'Health' %}</b></label>
+              <ul class="toggles-list">
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_Health" id="prop_Health_2023" data-id="prop_Health"  data-yid="2023" data-name="Health" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Health' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_food" id="prop_food_2023" data-id="prop_food"  data-yid="2023" data-name="Food" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Food' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_water" id="prop_water_2023" data-id="prop_water"  data-yid="2023" data-name="Water" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Water' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_sanitation" id="prop_sanitation_2023" data-id="prop_sanitation"  data-yid="2023" data-name="Sanitation" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Sanitation' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_handWashing" id="prop_handWashing_2023" data-id="prop_handWashing"  data-yid="2023" data-name="HandWashing" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Hand Washing' %}</label>
+                </li>
+
+              </ul>
+
+              <label><b>{% trans 'Living Standard' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_LivingStandard" id="prop_LivingStandard_2023" data-id="prop_LivingStandard"  data-yid="2023" data-name="Living Standard" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Living Standard' %}</label>
+                </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_buildings" id="prop_buildings_2023" data-id="prop_buildings"  data-yid="2023" data-name="Buildings" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Buildings' %}</label>
+                </li>
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_overcrowding" id="prop_overcrowding_2023" data-id="prop_overcrowding"  data-yid="2023" data-name="Overcrowding" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Overcrowding' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_housing" id="prop_housing_2023" data-id="prop_housing"  data-yid="2023" data-name="Housing" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Housing' %}</label>
+                </li>
+                
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_fuel" id="prop_fuel_2023" data-id="prop_fuel"  data-yid="2023" data-name="Fuel" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Fuel' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_electricity" id="prop_electricity_2023" data-id="prop_electricity"  data-yid="2023" data-name="Electricity" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Electricity' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_assets" id="prop_assets_2023" data-id="prop_assets"  data-yid="2023" data-name="Assets" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Assets' %}</label>
+                </li>
+
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_livelihoodBasedCopingStrategies" id="prop_livelihoodBasedCopingStrategies_2023" data-id="prop_livelihoodBasedCopingStrategies"  data-yid="2023" data-name="Livelihood Based Coping" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label>{% trans 'Livelihood Based Coping' %}</label>
+                </li>
+              </ul>
+
+              <label><b>{% trans 'Monetary' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_consumption" id="prop_consumption_2023" data-id="prop_consumption"  data-yid="2023" data-name="Consumption" data-color="#333" type="checkbox"><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Consumption and Expenditure' %}</label>
+                </li>
+              </ul>
+
+              <label><b>{% trans 'Overall' %}</b></label>
+              <ul class="toggles-list">
+                <li class="toggle">
+                  <label class="switch_layer">
+                    <input name="prop_totalV2" id="prop_totalV2_2023" data-id="prop_totalV2"  data-yid="2023" data-name="Overall Vulnerability" data-color="#333" type="checkbox" checked><span class="slider_toggle round"></span></input>
+                  </label>
+                  <label style="font-weight:600;">{% trans 'Overall Vulnerability' %}</label>
+                </li>
+              </ul>
+
+              <ul class="toggles-list" id="toggle-list-probability"></ul>
+
+            </div>
+            {% comment %} <div class="panel-footer">Panel Footer</div> {% endcomment %}
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -214,25 +520,107 @@
       <img src="/static/images/deprivation_legend.jpg"  alt="" style="width:50%;">
       <hr style="margin-top: 10px;  margin-bottom: 10px;">
 
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse-val-2019">2019</a>
+            </h4>
+          </div>
+          <div id="collapse-val-2019" class="panel-collapse collapse">
+            <div class="panel-body">
+          
+              <label><b>{% trans 'Education' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-education-2019"></ul>
+        
+              <label><b>{% trans 'Health' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-health-2019"></ul>
+        
+        
+              <label><b>{% trans 'Living Standard' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-living-2019"></ul>
+        
+        
+              <label><b>{% trans 'Monetary' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-monetary-2019"></ul>
+        
+        
+              <label><b>{% trans 'Overall' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-overall-2019"></ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse-val-2022">2022</a>
+            </h4>
+          </div>
+          <div id="collapse-val-2022" class="panel-collapse collapse">
+            <div class="panel-body">
+          
+              <label><b>{% trans 'Education' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-education-2022"></ul>
+        
+              <label><b>{% trans 'Health' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-health-2022"></ul>
+        
+        
+              <label><b>{% trans 'Living Standard' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-living-2022"></ul>
+        
+        
+              <label><b>{% trans 'Monetary' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-monetary-2022"></ul>
+        
+        
+              <label><b>{% trans 'Overall' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-overall-2022"></ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
 
 
-      <label><b>{% trans 'Education' %}</b></label>
-      <ul class="toggles-list" id="toggle-list-education"></ul>
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse-val-2023">2023</a>
+            </h4>
+          </div>
+          <div id="collapse-val-2023" class="panel-collapse">
+            <div class="panel-body">
+          
+              <label><b>{% trans 'Education' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-education-2023"></ul>
+        
+              <label><b>{% trans 'Health' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-health-2023"></ul>
+        
+        
+              <label><b>{% trans 'Living Standard' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-living-2023"></ul>
+        
+        
+              <label><b>{% trans 'Monetary' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-monetary-2023"></ul>
+        
+        
+              <label><b>{% trans 'Overall' %}</b></label>
+              <ul class="toggles-list" id="toggle-list-overall-2023"></ul>
 
-      <label><b>{% trans 'Health' %}</b></label>
-      <ul class="toggles-list" id="toggle-list-health"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
-      <label><b>{% trans 'Living Standard' %}</b></label>
-      <ul class="toggles-list" id="toggle-list-living"></ul>
-
-
-      <label><b>{% trans 'Monetary' %}</b></label>
-      <ul class="toggles-list" id="toggle-list-monetary"></ul>
-
-
-      <label><b>{% trans 'Overall' %}</b></label>
-      <ul class="toggles-list" id="toggle-list-overall"></ul>
 
       <hr style="margin-top: 10px;  margin-bottom: 5px;">
       <div id="download_options" style="display:none;">

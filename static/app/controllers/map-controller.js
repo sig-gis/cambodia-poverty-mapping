@@ -7,8 +7,8 @@
       var MAPBOXAPI = appSettings.mapboxapi;
 
       var map, basemap_layer, drawing_polygon;
-      $scope.STUDYLOW = 2015;
-      $scope.STUDYHIGH = 2020;
+      $scope.STUDYLOW = 2019;
+      $scope.STUDYHIGH = 2023;
       var refHigh, refLow, studyHigh, studyLow;
       var arrayWMSLayers = []
       var k = 'value';
@@ -18,6 +18,18 @@
       var MapLayerArr = {}
       var currentSelectedArea = '';
       var pieCharts = {};
+
+      // List of feature names
+      const featureNames = [
+        "education0", "edu_attain0", "edu_attend0", "health0", "health_food0", 
+        "health_access0", "health_water0", "health_sanit0", "health_handwash0", 
+        "livingstandard0", "liv_overcr0", "liv_hous0", "liv_cooking0", 
+        "liv_elect0", "liv_asset0", "liv_coping0", "monetary0", "overall0"
+      ];
+
+      // List of years
+      const years = [2019, 2022, 2023];
+      
 
 
       var feat_groups = ["education", "health", "living", "monetary", "overall"];
@@ -499,7 +511,7 @@
         if (selected_features.includes(area_id)) {
           console.log(area_id)
         } else {
-          getGraphPieData();
+          // getGraphPieData();
 
         }
         selected_features.push(area_id);
@@ -798,7 +810,7 @@
         );
       }
 
-      function createSelectedAreaReport(parentUL, data, area_name, area_id, chartType) {
+      function createSelectedAreaReport(parentUL, data, area_name, area_id, chartType, year) {
         if (chartType === "pie") {
           $("#" + parentUL).append(
             '<div class="col-lg-12">' +
@@ -806,9 +818,9 @@
             '<div class="row">' +
             '<div class="col-lg-12">' +
             // '<p>Summary of '+data+' in '+ $scope.STUDYHIGH +' </p>'+
-            '<a id="' + data + '_piepng" data-yid="' + data + '" class="chart-btn-sm">PNG</a>' +
-            '<a id="' + data + '_piecsv" data-yid="' + data + '" class="chart-btn-sm">CSV</a>' +
-            '<div id="' + data + '_piechart"  width="1000" height="1000" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>' +
+            '<a id="' + data + '_piepng_' + year + '" data-yid="' + data + '" class="chart-btn-sm">PNG</a>' +
+            '<a id="' + data + '_piecsv_' + year + '" data-yid="' + data + '" class="chart-btn-sm">CSV</a>' +
+            '<div id="' + data + '_piechart_' + year + '"  width="1000" height="1000" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>' +
             '</div>' +
             '</div>' +
             '</div>'
@@ -819,9 +831,9 @@
             '<div class="row">' +
             '<div class="col-lg-12">' +
             // '<p>Summary of '+data+' from '+ $scope.STUDYLOW +' to '+ $scope.STUDYHIGH +' </p>'+
-            '<a id="' + data + '_barpng" data-yid="' + data + '" class="chart-btn-sm">PNG</a>' +
-            '<a id="' + data + '_barcsv" data-yid="' + data + '" class="chart-btn-sm">CSV</a>' +
-            '<div id="' + data + '_barchart"  width="1000" height="1000" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>' +
+            '<a id="' + data + '_barpng_' + year + '" data-yid="' + data + '" class="chart-btn-sm">PNG</a>' +
+            '<a id="' + data + '_barcsv_' + year + '" data-yid="' + data + '" class="chart-btn-sm">CSV</a>' +
+            '<div id="' + data + '_barchart_' + year + '"  width="1000" height="1000" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>' +
             '</div>' +
             '</div>' +
             '</div>'
@@ -1351,7 +1363,7 @@
       getNightLightMap();
 
 
-      function getPropMap() {
+      function getPropMap(_year) {
         // $scope.showLoader = true;
         var parameters = {
           area_type: area_type,
@@ -1367,12 +1379,12 @@
             for (var i = 0; i < _keys.length; i++) {
               var _featData = data[_keys[i]];
               //add map layer
-              MapLayerArr[2020][_keys[i]] = addMapLayer(MapLayerArr[2020][_keys[i]], _featData.eeMapURL, 'geeMapLayer');
+              MapLayerArr[_year][_keys[i]] = addMapLayer(MapLayerArr[_year][_keys[i]], _featData.eeMapURL, 'geeMapLayer');
               /*jshint loopfunc: true */
               if (_keys[i] === "prop_totalV2") {
                 // createToggleList('toggle-list-probability', _keys[i], _featData.name, 2020, 'checked', '333');
-                MapLayerArr[2020].prop_totalV2.setOpacity(1);
-                MapLayerArr[2020].prop_totalV2.addTo(map);
+                MapLayerArr[_year].prop_totalV2.setOpacity(1);
+                MapLayerArr[_year].prop_totalV2.addTo(map);
               } else {
                 // createToggleList('toggle-list-probability', _keys[i], _featData.name, 2020, '', '333');
               }
@@ -1400,7 +1412,18 @@
           });
       }
 
-      getPropMap();
+      getPropMap(2019);
+
+      // getPropMap(2022);
+
+      // getPropMap(2023);
+
+      // Function to clear chart areas
+      function clearChartAreas(year) {
+        featureNames.forEach(featureName => {
+          $(`#${featureName}_chart_report_area_${year}`).html("");
+        });
+      }
 
 
       function createBarChart() {
@@ -1431,7 +1454,7 @@
 
       }
       // createBarChart();
-      function getMapVal() {
+      function getMapVal(_y) {
         $scope.showLoader = true;
         var parameters = {
           feat: "overall0",
@@ -1460,7 +1483,7 @@
               var _listFeat = _groups[feat_groups[j]];
               var _listFeatDesc = _feat_desc[feat_groups[j]];
               for (var i = 0; i < _listFeat.length; i++) {
-                var _year = 2020;
+                var _year = _y;
                 var feat = _listFeat[i]
                 colNames.push(_listFeatDesc[i]);
                 var _featData = data[feat];
@@ -1589,26 +1612,26 @@
           { name: 'Not Deprived', data: [], color: '#434348' },
         ];
 
-        $("#health0_chart_report_area").html("");
-        $("#health_access0_chart_report_area").html("");
-        $("#health_water0_chart_report_area").html("");
-        $("#health_sanit0_chart_report_area").html("");
-        $("#health_food0_chart_report_area").html("");
-        $("#health_handwash0_chart_report_area").html("");
-        $("#education0_chart_report_area").html("");
-        $("#edu_attain0_chart_report_area").html("");
-        $("#edu_attend0_chart_report_area").html("");
+        $("#health0_chart_report_area_2019").html("");
+        $("#health_access0_chart_report_area_2019").html("");
+        $("#health_water0_chart_report_area_2019").html("");
+        $("#health_sanit0_chart_report_area_2019").html("");
+        $("#health_food0_chart_report_area_2019").html("");
+        $("#health_handwash0_chart_report_area_2019").html("");
+        $("#education0_chart_report_area_2019").html("");
+        $("#edu_attain0_chart_report_area_2019").html("");
+        $("#edu_attend0_chart_report_area_2019").html("");
 
-        $("#livingstandard0_chart_report_area").html("");
-        $("#liv_overcr0_chart_report_area").html("");
-        $("#liv_hous0_chart_report_area").html("");
-        $("#liv_cooking0_chart_report_area").html("");
-        $("#liv_asset0_chart_report_area").html("");
-        $("#liv_coping0_chart_report_area").html("");
-        $("#liv_elect0_chart_report_area").html("");
+        $("#livingstandard0_chart_report_area_2019").html("");
+        $("#liv_overcr0_chart_report_area_2019").html("");
+        $("#liv_hous0_chart_report_area_2019").html("");
+        $("#liv_cooking0_chart_report_area_2019").html("");
+        $("#liv_asset0_chart_report_area_2019").html("");
+        $("#liv_coping0_chart_report_area_2019").html("");
+        $("#liv_elect0_chart_report_area_2019").html("");
 
-        $("#monetary0_chart_report_area").html("");
-        $("#overall0_chart_report_area").html("");
+        $("#monetary0_chart_report_area_2019").html("");
+        $("#overall0_chart_report_area_2019").html("");
 
         const static_url = "/static/";
         var _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD1_v2.json";
@@ -1665,7 +1688,7 @@
               var report_div_id = feat.toLowerCase() + "_chart_report_area";
 
               if (_focusedAreas.length > 1) {
-                createSelectedAreaReport(report_div_id, feat.toLowerCase(), selected_admin, area_id, "bar");
+                createSelectedAreaReport(report_div_id, feat.toLowerCase(), selected_admin, area_id, "bar", year);
                 var barChartID = feat.toLowerCase() + '_barchart';
                 showHighChart(barChartID, 'column', _focusedAreas, _barChartInfo[feat], true, 5, feat_des.toUpperCase());
                 $("#" + feat.toLowerCase() + "_barpng").click(function () {
@@ -1680,7 +1703,7 @@
                 });
 
               } else {
-                createSelectedAreaReport(report_div_id, feat.toLowerCase(), selected_admin, area_id, "pie");
+                createSelectedAreaReport(report_div_id, feat.toLowerCase(), selected_admin, area_id, "pie", year);
                 var pieChartID = feat.toLowerCase() + '_piechart';
                 showPieHighChart(pieChartID, pieData, feat_des.toUpperCase() + ' IN ' + selected_admin.toUpperCase(), feat.toLowerCase());
                 // A $( document ).ready() block.
@@ -2031,195 +2054,218 @@
           cam_adm3_layer.resetStyle(layer);
         });
 
+        // $("#health0_chart_report_area_2019").html("");
+        // $("#health_access0_chart_report_area_2019").html("");
+        // $("#health_water0_chart_report_area_2019").html("");
+        // $("#health_sanit0_chart_report_area_2019").html("");
+        // $("#health_food0_chart_report_area_2019").html("");
+        // $("#health_handwash0_chart_report_area_2019").html("");
+        // $("#education0_chart_report_area_2019").html("");
+        // $("#edu_attain0_chart_report_area_2019").html("");
+        // $("#edu_attend0_chart_report_area_2019").html("");
+        // $("#livingstandard0_chart_report_area_2019").html("");
+        // $("#liv_overcr0_chart_report_area_2019").html("");
+        // $("#liv_hous0_chart_report_area_2019").html("");
+        // $("#liv_cooking0_chart_report_area_2019").html("");
+        // $("#liv_asset0_chart_report_area_2019").html("");
+        // $("#liv_coping0_chart_report_area_2019").html("");
+        // $("#liv_elect0_chart_report_area_2019").html("");
+        // $("#monetary0_chart_report_area_2019").html("");
+        // $("#overall0_chart_report_area_2019").html("");
 
-        $("#health0_chart_report_area").html("");
-        $("#health_access0_chart_report_area").html("");
-        $("#health_water0_chart_report_area").html("");
-        $("#health_sanit0_chart_report_area").html("");
-        $("#health_food0_chart_report_area").html("");
-        $("#health_handwash0_chart_report_area").html("");
-        $("#education0_chart_report_area").html("");
-        $("#edu_attain0_chart_report_area").html("");
-        $("#edu_attend0_chart_report_area").html("");
-
-        $("#livingstandard0_chart_report_area").html("");
-        $("#liv_overcr0_chart_report_area").html("");
-        $("#liv_hous0_chart_report_area").html("");
-        $("#liv_cooking0_chart_report_area").html("");
-        $("#liv_asset0_chart_report_area").html("");
-        $("#liv_coping0_chart_report_area").html("");
-        $("#liv_elect0_chart_report_area").html("");
-
-        $("#monetary0_chart_report_area").html("");
-        $("#overall0_chart_report_area").html("");
+        // Clear chart areas for all years
+        years.forEach(year => {
+          clearChartAreas(year);
+        });
 
       });
+      // Function to attach click handlers
+      function attachExportHandlers(featureName, year) {
+        $(`#${featureName}_bar_csv_${year}`).click(function () {
+          console.log(`#${featureName}_barchart_adm_${year}`)
+          const chart = $(`#${featureName}_barchart_adm_${year}`).highcharts();
+          if (chart) chart.downloadCSV();
+        });
 
+        $(`#${featureName}_bar_png_${year}`).click(function () {
+          console.log(`#${featureName}_barchart_adm_${year}`)
+          const chart = $(`#${featureName}_barchart_adm_${year}`).highcharts();
+          if (chart) chart.exportChart();
+        });
+      }
 
-      $("#education0_bar_csv").click(function () {
-        var chart = $("#education0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#education0_bar_png").click(function () {
-        var chart = $("#education0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#edu_attain0_bar_csv").click(function () {
-        var chart = $("#edu_attain0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#edu_attain0_bar_png").click(function () {
-        var chart = $("#edu_attain0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#edu_attend0_bar_csv").click(function () {
-        var chart = $("#edu_attend0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#edu_attend0_bar_png").click(function () {
-        var chart = $("#edu_attend0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#health0_bar_csv").click(function () {
-        var chart = $("#health0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health0_bar_png").click(function () {
-        var chart = $("#health0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#health_food0_bar_csv").click(function () {
-        var chart = $("#health_food0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health_food0_bar_png").click(function () {
-        var chart = $("#health_food0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#health_access0_bar_csv").click(function () {
-        var chart = $("#health_access0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health_access0_bar_png").click(function () {
-        var chart = $("#health_access0_barchart_adm").highcharts();
-        chart.exportChart();
+      // Attach handlers for all features and years
+      years.forEach(year => {
+        featureNames.forEach(featureName => {
+          attachExportHandlers(featureName, year);
+        });
       });
 
 
-      $("#health_water0_bar_csv").click(function () {
-        var chart = $("#health_water0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health_water0_bar_png").click(function () {
-        var chart = $("#health_water0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#education0_bar_csv_2019").click(function () {
+      //   var chart = $("#education0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#education0_bar_png_2019").click(function () {
+      //   var chart = $("#education0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#edu_attain0_bar_csv_2019").click(function () {
+      //   var chart = $("#edu_attain0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#edu_attain0_bar_png_2019").click(function () {
+      //   var chart = $("#edu_attain0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#edu_attend0_bar_csv_2019").click(function () {
+      //   var chart = $("#edu_attend0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#edu_attend0_bar_png_2019").click(function () {
+      //   var chart = $("#edu_attend0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#health0_bar_csv_2019").click(function () {
+      //   var chart = $("#health0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health0_bar_png_2019").click(function () {
+      //   var chart = $("#health0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#health_food0_bar_csv_2019").click(function () {
+      //   var chart = $("#health_food0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health_food0_bar_png_2019").click(function () {
+      //   var chart = $("#health_food0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#health_access0_bar_csv_2019").click(function () {
+      //   var chart = $("#health_access0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health_access0_bar_png_2019").click(function () {
+      //   var chart = $("#health_access0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
 
 
-      $("#health_sanit0_bar_csv").click(function () {
-        var chart = $("#health_sanit0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health_sanit0_bar_png").click(function () {
-        var chart = $("#health_sanit0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#health_handwash0_bar_csv").click(function () {
-        var chart = $("#health_handwash0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health_handwash0_bar_png").click(function () {
-        var chart = $("#health_handwash0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#livingstandard0_bar_csv").click(function () {
-        var chart = $("#livingstandard0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#livingstandard0_bar_png").click(function () {
-        var chart = $("#livingstandard0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#liv_overcr0_bar_csv").click(function () {
-        var chart = $("#liv_overcr0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_overcr0_bar_png").click(function () {
-        var chart = $("#liv_overcr0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#health_water0_bar_csv_2019").click(function () {
+      //   var chart = $("#health_water0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health_water0_bar_png_2019").click(function () {
+      //   var chart = $("#health_water0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
 
 
-      $("#liv_hous0_bar_csv").click(function () {
-        var chart = $("#liv_hous0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_hous0_bar_png").click(function () {
-        var chart = $("#liv_hous0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#health_sanit0_bar_csv_2019").click(function () {
+      //   var chart = $("#health_sanit0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health_sanit0_bar_png_2019").click(function () {
+      //   var chart = $("#health_sanit0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#liv_cooking0_bar_csv").click(function () {
-        var chart = $("#liv_cooking0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_cooking0_bar_png").click(function () {
-        var chart = $("#liv_cooking0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#health_handwash0_bar_csv_2019").click(function () {
+      //   var chart = $("#health_handwash0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health_handwash0_bar_png").click(function () {
+      //   var chart = $("#health_handwash0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#liv_elect0_bar_csv").click(function () {
-        var chart = $("#liv_elect0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_elect0_bar_png").click(function () {
-        var chart = $("#liv_elect0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#livingstandard0_bar_csv_2019").click(function () {
+      //   var chart = $("#livingstandard0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#livingstandard0_bar_png_2019").click(function () {
+      //   var chart = $("#livingstandard0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#liv_asset0_bar_csv").click(function () {
-        var chart = $("#liv_asset0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_asset0_bar_png").click(function () {
-        var chart = $("#liv_asset0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#liv_overcr0_bar_csv_2019").click(function () {
+      //   var chart = $("#liv_overcr0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_overcr0_bar_png_2019").click(function () {
+      //   var chart = $("#liv_overcr0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#liv_coping0_bar_csv").click(function () {
-        var chart = $("#liv_coping0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_coping0_bar_png").click(function () {
-        var chart = $("#liv_coping0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
 
-      $("#monetary0_bar_csv").click(function () {
-        var chart = $("#monetary0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#monetary0_bar_png").click(function () {
-        var chart = $("#monetary0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#liv_hous0_bar_csv_2019").click(function () {
+      //   var chart = $("#liv_hous0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_hous0_bar_png_2019").click(function () {
+      //   var chart = $("#liv_hous0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#overall0_bar_csv").click(function () {
-        var chart = $("#overall0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#overall0_bar_png").click(function () {
-        var chart = $("#overall0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#liv_cooking0_bar_csv_2019").click(function () {
+      //   var chart = $("#liv_cooking0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_cooking0_bar_png_2019").click(function () {
+      //   var chart = $("#liv_cooking0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#liv_elect0_bar_csv_2019").click(function () {
+      //   var chart = $("#liv_elect0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_elect0_bar_png_2019").click(function () {
+      //   var chart = $("#liv_elect0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#liv_asset0_bar_csv_2019").click(function () {
+      //   var chart = $("#liv_asset0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_asset0_bar_png_2019").click(function () {
+      //   var chart = $("#liv_asset0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#liv_coping0_bar_csv_2019").click(function () {
+      //   var chart = $("#liv_coping0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_coping0_bar_png_2019").click(function () {
+      //   var chart = $("#liv_coping0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#monetary0_bar_csv_2019").click(function () {
+      //   var chart = $("#monetary0_barchart_adm_2019").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#monetary0_bar_png_2019").click(function () {
+      //   var chart = $("#monetary0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#overall0_bar_csv").click(function () {
+      //   var chart = $("#overall0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#overall0_bar_png_2019").click(function () {
+      //   var chart = $("#overall0_barchart_adm_2019").highcharts();
+      //   chart.exportChart();
+      // });
 
 
       function hideModel() {

@@ -16,7 +16,7 @@ def api(request):
         public_methods = [
         'get-forest-extent-map', 'get-landcover', 'get-nightlight',
         'get-building-map', 'calMapArea', 'get-graph-data', 'get-val-map',
-        'get-prop-map','get-graph-pie-data','get-nightlight-series', 'get-download-url'
+        'get-prop-map', 'get-prop-map-2022', 'get-prop-map-2023' ,'get-graph-pie-data','get-nightlight-series', 'get-download-url'
         ]
 
         if action in public_methods:
@@ -41,6 +41,8 @@ def api(request):
             feat = post('feat', '')
             lon = post('lon', '')
             lat = post('lat', '')
+            val_year = post('val_year', '')
+            year = post('year', '')
 
             core = GEEApi(area_path, area_name, geom, area_type, area_id)
 
@@ -53,13 +55,13 @@ def api(request):
             # elif action == 'get-graph-data':
             #     data = core.getGraphData(start_year, end_year, area_type, area_id, data)
             elif action == 'get-val-map':
-                data = core.valnerabilityMap(feat, area_type, area_id)
+                data = core.valnerabilityMap(area_type, year)
             elif action == 'get-download-url':
                 data = core.download_valnerabilityMap(type)
             # elif action == 'get-graph-pie-data':
             #     data = core.getGraphPieData(area_type, area_id)
             elif action == 'get-prop-map':
-                data = core.probabilityMaps()
+                data = core.probabilityMaps(year)
             elif action =='get-nightlight':
                 data = core.getNightLightWorldPopMap(start_year, end_year, area_type, area_id)
             elif action =='get-nightlight-series':

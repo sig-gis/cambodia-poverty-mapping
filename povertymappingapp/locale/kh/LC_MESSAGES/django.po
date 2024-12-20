@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 13:05+0700\n"
+"POT-Creation-Date: 2024-12-09 15:13+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,12 +44,12 @@ msgstr ""
 msgid "OUR TEAM"
 msgstr "ក្រុមការងារ"
 
-#: povertymappingapp/templates/about.html:205
+#: povertymappingapp/templates/about.html:143
 msgid "CONTACT US"
 msgstr "អំពីយើង"
 
 #: povertymappingapp/templates/base.html:100
-msgid "POVERTY MAPPING FOR CAMBODIA"
+msgid "VULNERABLE MAPPING FOR CAMBODIA"
 msgstr "ផែនទីភាពងាយរងគ្រោះ/ភាពក្រីក្រពហុសមាសភាគនៅកម្ពុជា"
 
 #: povertymappingapp/templates/base.html:106
@@ -186,40 +186,40 @@ msgstr ""
 "ឬលេខដែលគាំទ្រដោយអង្គភាពផ្លូវការនោះទេ។ សម្រាប់ព័ត៌មានបន្ថែម សូមទាក់ទងវិទ្យាស្ថានជាតិស្ថិតិ ឬ "
 "កម្មវិធីអភិវឌ្ឍន៍សហប្រជាជាតិប្រចាំកម្ពុជា។"
 
-#: povertymappingapp/templates/map.html:68
+#: povertymappingapp/templates/map.html:59
 msgid "Select  administrative level"
 msgstr "ជ្រើសរើសកម្រិតភូមិសាស្ត្ររដ្ឋបាល"
 
-#: povertymappingapp/templates/map.html:70
+#: povertymappingapp/templates/map.html:62
 msgid "Province"
 msgstr "ខេត្ត"
 
-#: povertymappingapp/templates/map.html:71
+#: povertymappingapp/templates/map.html:65
 #: povertymappingapp/templates/panels/left-menu.html:359
 msgid "District"
 msgstr "ស្រុក"
 
-#: povertymappingapp/templates/map.html:72
+#: povertymappingapp/templates/map.html:68
 msgid "Commune/Sangkat"
 msgstr "ឃុំ"
 
-#: povertymappingapp/templates/map.html:74
+#: povertymappingapp/templates/map.html:71
 msgid "Clear Selected Region"
 msgstr "សម្អាតតំបន់តែបានជ្រើសរើស"
 
-#: povertymappingapp/templates/map.html:90
+#: povertymappingapp/templates/map.html:87
 msgid "Total Population"
 msgstr "ប្រជាជនសរុប"
 
-#: povertymappingapp/templates/map.html:100
+#: povertymappingapp/templates/map.html:99
 msgid "Number of Buildings"
 msgstr "ចំនួនអាគារ"
 
-#: povertymappingapp/templates/map.html:110
+#: povertymappingapp/templates/map.html:111
 msgid "Probability of population deprived from overall vulnerability"
 msgstr "ប្រូបាប៊ីលីតេនៃចំនួនប្រជាជនដែលងាយរងគ្រោះ"
 
-#: povertymappingapp/templates/map.html:153
+#: povertymappingapp/templates/map.html:152
 msgid "Poverty Vulnerability Report in Cambodia"
 msgstr "របាយការណ៍ភាពងាយរងគ្រោះនៃភាពក្រីក្រនៅកម្ពុជា"
 
@@ -230,99 +230,99 @@ msgstr ""
 "សម្រាប់ការគណនាទិន្នន័យនៅក្នុងសមាសភាគទាំងអស់នៃឧបករណ៍នេះ។ "
 "អ្នកប្រើប្រាស់អាចកំណត់តំបន់ដែលចាប់អារម្មណ៍ដោយជ្រើសរើសព្រំដែនរដ្ឋបាល (ខេត្ត ស្រុក ឬឃុំ)"
 
-#: povertymappingapp/templates/map.html:158
-#: povertymappingapp/templates/map.html:166
-#: povertymappingapp/templates/panels/left-menu.html:186
+#: povertymappingapp/templates/map.html:160
+#: povertymappingapp/templates/map.html:178
+#: povertymappingapp/templates/panels/left-menu.html:187
 #: povertymappingapp/templates/panels/left-menu.html:234
 msgid "Overall"
 msgstr "សរុប"
 
-#: povertymappingapp/templates/map.html:159
-#: povertymappingapp/templates/map.html:180
+#: povertymappingapp/templates/map.html:163
+#: povertymappingapp/templates/map.html:194
 #: povertymappingapp/templates/panels/left-menu.html:80
 #: povertymappingapp/templates/panels/left-menu.html:87
 #: povertymappingapp/templates/panels/left-menu.html:222
 msgid "Health"
 msgstr "សុខភាព"
 
-#: povertymappingapp/templates/map.html:160
-#: povertymappingapp/templates/map.html:265
+#: povertymappingapp/templates/map.html:166
+#: povertymappingapp/templates/map.html:291
 #: povertymappingapp/templates/panels/left-menu.html:70
 #: povertymappingapp/templates/panels/left-menu.html:76
 #: povertymappingapp/templates/panels/left-menu.html:219
 msgid "Education"
 msgstr "អប់រំ"
 
-#: povertymappingapp/templates/map.html:161
-#: povertymappingapp/templates/map.html:308
+#: povertymappingapp/templates/map.html:169
+#: povertymappingapp/templates/map.html:340
 #: povertymappingapp/templates/panels/left-menu.html:120
 #: povertymappingapp/templates/panels/left-menu.html:126
 #: povertymappingapp/templates/panels/left-menu.html:226
 msgid "Living Standard"
 msgstr "ស្តង់ដាររស់នៅ"
 
-#: povertymappingapp/templates/map.html:162
-#: povertymappingapp/templates/map.html:410
-#: povertymappingapp/templates/panels/left-menu.html:176
+#: povertymappingapp/templates/map.html:172
+#: povertymappingapp/templates/map.html:454
+#: povertymappingapp/templates/panels/left-menu.html:177
 #: povertymappingapp/templates/panels/left-menu.html:230
 msgid "Monetary"
 msgstr "ស្តង់ដាររស់នៅ"
 
-#: povertymappingapp/templates/map.html:193
+#: povertymappingapp/templates/map.html:209
 msgid "Access to health care"
 msgstr "ការទទួលបានសេវាសុខាភិបាល"
 
-#: povertymappingapp/templates/map.html:207
+#: povertymappingapp/templates/map.html:225
 msgid "Access to clean water"
 msgstr "ការទទួលបានទឹកស្អាត"
 
-#: povertymappingapp/templates/map.html:221
+#: povertymappingapp/templates/map.html:241
 msgid "Access to sanitation"
 msgstr "ទទួលបានអនាម័យ"
 
-#: povertymappingapp/templates/map.html:235
+#: povertymappingapp/templates/map.html:257
 msgid "Food consumption score"
 msgstr "ការហូបចុក"
 
-#: povertymappingapp/templates/map.html:248
+#: povertymappingapp/templates/map.html:272
 msgid "Hand washing"
 msgstr "លាងសម្អាតដៃ"
 
-#: povertymappingapp/templates/map.html:278
+#: povertymappingapp/templates/map.html:306
 msgid "Educational attainment"
 msgstr "ទទួលបានការអប់រំ"
 
-#: povertymappingapp/templates/map.html:291
+#: povertymappingapp/templates/map.html:321
 msgid "School attendance"
 msgstr "ចូលរៀននៅសាលា"
 
-#: povertymappingapp/templates/map.html:322
+#: povertymappingapp/templates/map.html:356
 #: povertymappingapp/templates/panels/left-menu.html:138
 msgid "Overcrowding"
 msgstr "ការរស់នៅដោយចង្អៀត"
 
-#: povertymappingapp/templates/map.html:336
+#: povertymappingapp/templates/map.html:372
 msgid "Housing materials"
 msgstr "សម្ភារៈលំនៅដ្ឋាន"
 
-#: povertymappingapp/templates/map.html:350
+#: povertymappingapp/templates/map.html:388
 msgid "Cooking fuel"
 msgstr "ប្រេងឥន្ធនៈចម្អិនអាហារ"
 
-#: povertymappingapp/templates/map.html:364
-#: povertymappingapp/templates/panels/left-menu.html:165
+#: povertymappingapp/templates/map.html:404
+#: povertymappingapp/templates/panels/left-menu.html:166
 msgid "Assets"
 msgstr "ទ្រព្យសម្បត្តិ"
 
-#: povertymappingapp/templates/map.html:378
+#: povertymappingapp/templates/map.html:420
 msgid "Livelihood based Coping Strategies"
 msgstr "យុទ្ធសាស្ត្រដោះស្រាយកង្វះខាតជីវភាព"
 
-#: povertymappingapp/templates/map.html:392
+#: povertymappingapp/templates/map.html:436
 msgid "Access to electricity"
 msgstr "ទទួលបានប្រើអគ្គិសនី"
 
-#: povertymappingapp/templates/map.html:427
+#: povertymappingapp/templates/map.html:472
 #: povertymappingapp/templates/panels/left-menu.html:275
 msgid "Nightlight Time Series"
 msgstr "ទិន្នន័យពន្លឺតាមកាល"
@@ -362,19 +362,29 @@ msgstr ""
 msgid "The 17 sustainable development goals."
 msgstr "គោលដៅអភិវឌ្ឍន៍ប្រកបដោយចីរភាពទាំង១៧"
 
-#: povertymappingapp/templates/method.html:184
+#: povertymappingapp/templates/method.html:59
 msgid "method-paragraph-4"
-msgstr "វិធីសាស្រ្ត Random Forest ត្រូវបានបង្វឹកជាមួយនឹងបណ្ដុំព័ត៌មានភូមិសាស្ត្រមួយចំនួនធំ ឧ. ចម្ងាយផ្លូវ បណ្តាញអគ្គិសនី ពន្លឺពេលយប់ មណ្ឌលសុខភាព សាលារៀន គម្របដីជាដើម និងទិន្នន័យអង្កេតសេដ្ឋកិច្ច-សង្គមកម្ពុជា។ បន្ទាប់មកវិធីសាស្រ្ត Random Forest ត្រូវបានអនុវត្តក្នុងទម្រង់ប្រូបាប៊ីលីតេ ដើម្បីប៉ាន់ប្រមាណប្រូបាប៊ីលីតេនៃការខ្វះខាតនៅទូទាំងប្រទេសនៅលើក្រឡាចត្រង្គទំហំ 100 គុណនឹង 100 ម៉ែត្រ។ សារៈសំខាន់អថេរនៃសូចនាករផ្សេងៗគ្នាត្រូវបានបង្ហាញក្នុងរូបទី១។"
+msgstr ""
+"វិធីសាស្រ្ត Random Forest ត្រូវបានបង្វឹកជាមួយនឹងបណ្ដុំព័ត៌មានភូមិសាស្ត្រមួយចំនួនធំ ឧ. ចម្ងាយផ្លូវ "
+"បណ្តាញអគ្គិសនី ពន្លឺពេលយប់ មណ្ឌលសុខភាព សាលារៀន គម្របដីជាដើម និងទិន្នន័យអង្កេតសេដ្ឋកិច្ច-"
+"សង្គមកម្ពុជា។ បន្ទាប់មកវិធីសាស្រ្ត Random Forest ត្រូវបានអនុវត្តក្នុងទម្រង់ប្រូបាប៊ីលីតេ "
+"ដើម្បីប៉ាន់ប្រមាណប្រូបាប៊ីលីតេនៃការខ្វះខាតនៅទូទាំងប្រទេសនៅលើក្រឡាចត្រង្គទំហំ 100 គុណនឹង 100 ម៉ែត្រ។ "
+"សារៈសំខាន់អថេរនៃសូចនាករផ្សេងៗគ្នាត្រូវបានបង្ហាញក្នុងរូបទី១។"
 
-#: povertymappingapp/templates/method.html:186
+#: povertymappingapp/templates/method.html:61
 msgid "method-paragraph-5"
-msgstr "យើង​បាន​ប្រើ​សំណុំ​ទិន្នន័យ​​បើក​ចំហ​នៃអគារ​របស់ Bing ដើម្បី​គណនា​ការ​ខ្វះខាតក្នុងកម្រិត​គ្រួសារ។ សំណុំទិន្នន័យនេះត្រូវបានបង្កើតដោយប្រើវិធីសាស្រ្តMachine Learning ដោយផ្អែកលើរូបភាពដែលមានគុណភាពបង្ហាញខ្ពស់។ វាផ្តល់ព័ត៌មានអំពីទីតាំងអគារក្នុងប្រទេសកម្ពុជា។"
+msgstr ""
+"យើង​បាន​ប្រើ​សំណុំ​ទិន្នន័យ​​បើក​ចំហ​នៃអគារ​របស់ Bing ដើម្បី​គណនា​ការ​ខ្វះខាតក្នុងកម្រិត​គ្រួសារ។ "
+"សំណុំទិន្នន័យនេះត្រូវបានបង្កើតដោយប្រើវិធីសាស្រ្តMachine Learning "
+"ដោយផ្អែកលើរូបភាពដែលមានគុណភាពបង្ហាញខ្ពស់។ វាផ្តល់ព័ត៌មានអំពីទីតាំងអគារក្នុងប្រទេសកម្ពុជា។"
 
-#: povertymappingapp/templates/method.html:189
+#: povertymappingapp/templates/method.html:64
 msgid "method-paragraph-6"
-msgstr "រូបភាពខាងក្រោមបង្ហាញពីចំនួននៃការខ្វះខាតក្នុងមួយគ្រួសារនៅកម្រិតប្រទេស។ សំណុំទិន្នន័យនេះ អាចត្រូវបានស្វែងរកយ៉ាងលម្អិតនៅក្នុងផ្នែកផែនទីនៃគេហទំព័រនេះ។"
+msgstr ""
+"រូបភាពខាងក្រោមបង្ហាញពីចំនួននៃការខ្វះខាតក្នុងមួយគ្រួសារនៅកម្រិតប្រទេស។ សំណុំទិន្នន័យនេះ "
+"អាចត្រូវបានស្វែងរកយ៉ាងលម្អិតនៅក្នុងផ្នែកផែនទីនៃគេហទំព័រនេះ។"
 
-#: povertymappingapp/templates/method.html:193
+#: povertymappingapp/templates/method.html:68
 msgid "The variable importance of the different indicators"
 msgstr "រូបភាពទី១ សារៈសំខាន់អថេរនៃសូចនាករផ្សេងៗគ្នា"
 
@@ -477,23 +487,23 @@ msgstr "អគារ"
 msgid "Housing"
 msgstr "លំនៅដ្ឋាន"
 
-#: povertymappingapp/templates/panels/left-menu.html:151
+#: povertymappingapp/templates/panels/left-menu.html:152
 msgid "Fuel"
 msgstr "ប្រេងឥន្ធនៈ"
 
-#: povertymappingapp/templates/panels/left-menu.html:158
+#: povertymappingapp/templates/panels/left-menu.html:159
 msgid "Electricity"
 msgstr "អគ្គិសនី"
 
-#: povertymappingapp/templates/panels/left-menu.html:172
+#: povertymappingapp/templates/panels/left-menu.html:173
 msgid "Livelihood Based Coping"
 msgstr "យុទ្ធសាស្រ្ដនៃការដោះស្រាយជីវភាពរស់នៅ"
 
-#: povertymappingapp/templates/panels/left-menu.html:182
+#: povertymappingapp/templates/panels/left-menu.html:183
 msgid "Consumption and Expenditure"
 msgstr "ប្រើប្រាស់ និងការចំណាយ"
 
-#: povertymappingapp/templates/panels/left-menu.html:192
+#: povertymappingapp/templates/panels/left-menu.html:193
 msgid "Overall Vulnerability"
 msgstr "ភាពងាយរងគ្រោះសរុប"
 

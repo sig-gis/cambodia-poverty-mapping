@@ -61,7 +61,9 @@ SANITATION_IMG = ee.Image("projects/earthengine-legacy/assets/projects/servir-me
 WATER_IMG  = ee.Image("projects/earthengine-legacy/assets/projects/servir-mekong/undp/indicators/Accesstocleanwater")
 
 # VALNERABILITY_AMD3 = ee.FeatureCollection("projects/servir-mekong/undp/adm3_50v2/all_50")
-VALNERABILITY_AMD3 = ee.FeatureCollection("projects/servir-mekong/undp/website/adm3_50v2")
+# VALNERABILITY_AMD3 = ee.FeatureCollection("projects/servir-mekong/undp/website/adm3_50v2")
+VALNERABILITY_AMD3 = ee.FeatureCollection("projects/servir-mekong/undp/website/basemap/adm3_19")
+
 
 # ADM3 = ee.FeatureCollection("projects/earthengine-legacy/assets/projects/servir-mekong/admin/KHM_adm3")
 # ADM2 = ee.FeatureCollection("projects/earthengine-legacy/assets/projects/servir-mekong/admin/KHM_adm2")
@@ -78,12 +80,26 @@ POP_ADM2 = ee.FeatureCollection("projects/servir-mekong/undp/website/populationA
 POP_ADM3 = ee.FeatureCollection("projects/servir-mekong/undp/website/populationAdm3")
 BUILDINGS_POP = ee.Image("projects/servir-mekong/undp/buildingsWithPeople/buildingsWithPeopleImg")
 
-
 _feat_name = ""
+
+# Perform a join to add DIST_NAME to VALNERABILITY_AMD3
+def add_district_name(feature):
+    # Get the DIS_CODE from the sub-district
+    dis_code = feature.get('DIS_CODE')
+    
+    # Find the corresponding district feature
+    district = ADM2.filter(ee.Filter.eq('DIS_CODE', dis_code)).first()
+    
+    # Get the DIST_NAME from the district
+    dist_name = ee.String(district.get('DIS_NAME'))
+    
+    # Add DIST_NAME to the sub-district feature
+    return feature.set('DIS_NAME', dist_name)
+
 #--------------------------------------------------------------------------
 
 def nightlight(series_start, series_end, _year):
-    nightlight = ee.ImageCollection("NOAA/VIIRS/DNB/MONTHLY_V1/VCMSLCFG").select("avg_rad");
+    nightlight = ee.ImageCollection("NOAA/VIIRS/DNB/MONTHLY_V1/VCMSLCFG").select("avg_rad")
     nightlightImg = nightlight.select("avg_rad").filterDate(series_start, series_end).mean().select("avg_rad").clip(ADM0.geometry());
     map_id = nightlightImg.getMapId({
         'min': '0',
@@ -130,7 +146,6 @@ def allArea(prov):
     monetary = provAll.aggregate_sum("Monetary0")
     overall = provAll.aggregate_sum("overall0")
 
-
     return prov.set("Total",ee.Number(1).subtract(Education.divide(total)))\
     .set("Education0",ee.Number(1).subtract(Education.divide(total)))\
     .set("edu_attain0",ee.Number(1).subtract(edu_attain.divide(total)))\
@@ -156,8 +171,6 @@ def calfraction(self, feat):
     sample = ee.Number(feat.get(self.feat_name)).float()
     return feat.set("Not Deprived",ee.Number(1).subtract(sample.divide(total))).set("Deprived",sample.divide(total))
 
-area_type = "province"
-
 def main(area_type):
     feat_names = ['Education0', 'Health0', 'LivingStandard0', 'Monetary0', 'Total', 'Unemploy0', 'edu_attain0', 'edu_attend0', 'health_access0', 'health_food0', 'health_handwash0', 'health_sanit0', 'health_water0', 'liv_asset0', 'liv_cooking0', 'liv_coping0', 'liv_elect0', 'liv_hous0', 'liv_overcr0', 'overall0', 'underemployment0', 'unemploy0']
 
@@ -173,7 +186,7 @@ def main(area_type):
             val_map = VALNERABILITY_AMD3 #self.getFraction(VALNERABILITY_AMD3, feat_name)
             adm_name = 'COM_NAME'
             adm_id = 'COM_CODE'
-            _json = 'VALNERABILITY_DATA_AMD3_v2.json'
+            _json = 'VALNERABILITY_DATA_AMD3_2019.json'
             obj = val_map.aggregate_array(feat_name).getInfo()
             total = val_map.aggregate_array("Total").getInfo()
             no_pop = POP_ADM3.aggregate_array("population").getInfo()
@@ -184,36 +197,51 @@ def main(area_type):
                     _Not_Deprived.append(1 - (obj[i] / total[i]))
                     _Deprived.append(obj[i] / total[i])
                 else:
-                    # Handle the zero division case appropriately
-                    _Not_Deprived.append(1)  # Assuming a default value
-                    _Deprived.append(0)      # Assuming a default value
-            # _arr.append(dict)
+                    _Not_Deprived.append(1)
+                    _Deprived.append(0) 
 
         elif area_type == "district":
-            val_map = ADM2.map(allArea)
-            adm_name = 'HRName'
+            # Apply the function to VALNERABILITY_AMD3
+            VALNERABILITY_AMD3_WITH_DIST_NAME = VALNERABILITY_AMD3.map(add_district_name)
+            district_names = VALNERABILITY_AMD3_WITH_DIST_NAME.aggregate_array('DIS_NAME').distinct().getInfo()  # List of district names
+            district_codes = VALNERABILITY_AMD3_WITH_DIST_NAME.aggregate_array('DIS_CODE').distinct().getInfo()
+            adm_name = 'DIS_NAME'
             adm_id = 'DIS_CODE'
-            _json = 'VALNERABILITY_DATA_AMD2_v2.json'
-            obj = val_map.aggregate_array(feat_name).getInfo()
-            # no_pop = POP_DM2.aggregate_array("population").getInfo()
-            # no_buildings = POP_ADM2.aggregate_array("buildingCount").getInfo()
-            no_pop = []
-            no_buildings = []
-            for val in obj:
-                _Not_Deprived.append(val)
-                _Deprived.append(1-val)
+            _json = 'VALNERABILITY_DATA_AMD2_2019.json'
+
+            grouped_results = []
+
+            for district_name in district_names:
+                print(district_name)
+                # Filter sub-districts belonging to the current district
+                district_features = VALNERABILITY_AMD3.filterMetadata('DIS_NAME', 'equals', district_name)
+
+                # Aggregate data for this district
+                obj = district_features.aggregate_array(feat_name).getInfo()
+                total = district_features.aggregate_array("Total").getInfo()
+    
+                _Not_Deprived = []
+                _Deprived = []
+                no_pop = []
+                no_buildings= []
+
+                for i in range(len(obj)):
+                    if total[i] != 0:
+                        _Not_Deprived.append(1 - (obj[i] / total[i]))
+                        _Deprived.append(obj)
         
         elif area_type == "province":
             val_map = ADM1.map(allArea)
             adm_name = 'HRName'
-            adm_id = 'HRPCode'
-            _json = 'VALNERABILITY_DATA_AMD1_v2.json'
+            adm_id = 'PRO_CODE'
+            _json = 'VALNERABILITY_DATA_AMD1_2019.json'
             obj = val_map.aggregate_array(feat_name).getInfo()
             no_pop = POP_ADM1.aggregate_array("population").getInfo()
             no_buildings = POP_ADM1.aggregate_array("buildingCount").getInfo()
             for val in obj:
                 _Not_Deprived.append(val)
                 _Deprived.append(1-val)
+        
         dict = {
             "Not Deprived": _Not_Deprived,
             "Deprived": _Deprived
@@ -221,10 +249,14 @@ def main(area_type):
         
         res[feat_name] = dict
     
-    res['name_area'] = val_map.aggregate_array(adm_name).getInfo()
-    res['id_area'] = val_map.aggregate_array(adm_id).getInfo()
-    res['population'] = no_pop
-    res['buildings'] = no_buildings
+    if(area_type == "district"):
+        res['name_area'] = district_names
+        res['id_area'] = district_codes
+    else:
+        res['name_area'] = list(val_map.aggregate_array(adm_name).getInfo())
+        res['id_area'] = list(val_map.aggregate_array(adm_id).getInfo())
+    res['population'] = list(no_pop)
+    res['buildings'] = list(no_buildings)
 
 
     with open("../povertymappingapp/static/data/"+_json, 'w', encoding='utf8') as f:
@@ -233,5 +265,5 @@ def main(area_type):
 
 if __name__ == "__main__":
     # main("sub-district")
-    main("district")
-    # main("province")
+    main("province")
+    # main("district")

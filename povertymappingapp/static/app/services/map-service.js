@@ -53,9 +53,12 @@
 					feat:options.feat,
 					area_type: options.area_type,
 					area_id: options.area_id,
+					year: options.year,
 				},
 				params: {
-					action: 'get-val-map'
+					action: 'get-val-map',
+					area_type: options.area_type,
+					year: options.year,
 				}
 			};
 			var promise = $http(req)
@@ -129,11 +132,49 @@
 				method: 'POST',
 				url: '/api/mapclient/',
 				data: {
+					year: options.year,
+				},
+				params: {
+					action: 'get-prop-map',
+					year: options.year
+				}
+			};
+			var promise = $http(req)
+			.then(function (response) {
+				return response.data;
+			});
+			return promise;
+		};
+
+		service.getPropMap2022= function (options) {
+			var req = {
+				method: 'POST',
+				url: '/api/mapclient/',
+				data: {
 					area_type: options.area_type,
 					area_id: options.area_id,
 				},
 				params: {
-					action: 'get-prop-map'
+					action: 'get-prop-map-2022'
+				}
+			};
+			var promise = $http(req)
+			.then(function (response) {
+				return response.data;
+			});
+			return promise;
+		};
+
+		service.getPropMap2023= function (options) {
+			var req = {
+				method: 'POST',
+				url: '/api/mapclient/',
+				data: {
+					area_type: options.area_type,
+					area_id: options.area_id,
+				},
+				params: {
+					action: 'get-prop-map-2023'
 				}
 			};
 			var promise = $http(req)

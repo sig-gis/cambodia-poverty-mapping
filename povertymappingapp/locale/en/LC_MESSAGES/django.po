@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 13:05+0700\n"
+"POT-Creation-Date: 2024-12-09 15:11+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,13 +47,13 @@ msgstr ""
 msgid "OUR TEAM"
 msgstr ""
 
-#: povertymappingapp/templates/about.html:205
+#: povertymappingapp/templates/about.html:143
 msgid "CONTACT US"
 msgstr ""
 
 #: povertymappingapp/templates/base.html:100
-msgid "POVERTY MAPPING FOR CAMBODIA"
-msgstr ""
+msgid "VULNERABLE MAPPING FOR CAMBODIA"
+msgstr "VULNERABLE MAPPING FOR CAMBODIA"
 
 #: povertymappingapp/templates/base.html:106
 msgid "HOME"
@@ -166,40 +166,40 @@ msgid ""
 "contact UNDP Cambodia."
 msgstr ""
 
-#: povertymappingapp/templates/map.html:68
+#: povertymappingapp/templates/map.html:59
 msgid "Select  administrative level"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:70
+#: povertymappingapp/templates/map.html:62
 msgid "Province"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:71
+#: povertymappingapp/templates/map.html:65
 #: povertymappingapp/templates/panels/left-menu.html:359
 msgid "District"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:72
+#: povertymappingapp/templates/map.html:68
 msgid "Commune/Sangkat"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:74
+#: povertymappingapp/templates/map.html:71
 msgid "Clear Selected Region"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:90
+#: povertymappingapp/templates/map.html:87
 msgid "Total Population"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:100
+#: povertymappingapp/templates/map.html:99
 msgid "Number of Buildings"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:110
+#: povertymappingapp/templates/map.html:111
 msgid "Probability of population deprived from overall vulnerability"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:153
+#: povertymappingapp/templates/map.html:152
 msgid "Poverty Vulnerability Report in Cambodia"
 msgstr ""
 
@@ -211,99 +211,99 @@ msgstr ""
 "interest by selecting administrative boundaries (province, district or "
 "commune)"
 
-#: povertymappingapp/templates/map.html:158
-#: povertymappingapp/templates/map.html:166
-#: povertymappingapp/templates/panels/left-menu.html:186
+#: povertymappingapp/templates/map.html:160
+#: povertymappingapp/templates/map.html:178
+#: povertymappingapp/templates/panels/left-menu.html:187
 #: povertymappingapp/templates/panels/left-menu.html:234
 msgid "Overall"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:159
-#: povertymappingapp/templates/map.html:180
+#: povertymappingapp/templates/map.html:163
+#: povertymappingapp/templates/map.html:194
 #: povertymappingapp/templates/panels/left-menu.html:80
 #: povertymappingapp/templates/panels/left-menu.html:87
 #: povertymappingapp/templates/panels/left-menu.html:222
 msgid "Health"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:160
-#: povertymappingapp/templates/map.html:265
+#: povertymappingapp/templates/map.html:166
+#: povertymappingapp/templates/map.html:291
 #: povertymappingapp/templates/panels/left-menu.html:70
 #: povertymappingapp/templates/panels/left-menu.html:76
 #: povertymappingapp/templates/panels/left-menu.html:219
 msgid "Education"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:161
-#: povertymappingapp/templates/map.html:308
+#: povertymappingapp/templates/map.html:169
+#: povertymappingapp/templates/map.html:340
 #: povertymappingapp/templates/panels/left-menu.html:120
 #: povertymappingapp/templates/panels/left-menu.html:126
 #: povertymappingapp/templates/panels/left-menu.html:226
 msgid "Living Standard"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:162
-#: povertymappingapp/templates/map.html:410
-#: povertymappingapp/templates/panels/left-menu.html:176
+#: povertymappingapp/templates/map.html:172
+#: povertymappingapp/templates/map.html:454
+#: povertymappingapp/templates/panels/left-menu.html:177
 #: povertymappingapp/templates/panels/left-menu.html:230
 msgid "Monetary"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:193
+#: povertymappingapp/templates/map.html:209
 msgid "Access to health care"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:207
+#: povertymappingapp/templates/map.html:225
 msgid "Access to clean water"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:221
+#: povertymappingapp/templates/map.html:241
 msgid "Access to sanitation"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:235
+#: povertymappingapp/templates/map.html:257
 msgid "Food consumption score"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:248
+#: povertymappingapp/templates/map.html:272
 msgid "Hand washing"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:278
+#: povertymappingapp/templates/map.html:306
 msgid "Educational attainment"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:291
+#: povertymappingapp/templates/map.html:321
 msgid "School attendance"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:322
+#: povertymappingapp/templates/map.html:356
 #: povertymappingapp/templates/panels/left-menu.html:138
 msgid "Overcrowding"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:336
+#: povertymappingapp/templates/map.html:372
 msgid "Housing materials"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:350
+#: povertymappingapp/templates/map.html:388
 msgid "Cooking fuel"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:364
-#: povertymappingapp/templates/panels/left-menu.html:165
+#: povertymappingapp/templates/map.html:404
+#: povertymappingapp/templates/panels/left-menu.html:166
 msgid "Assets"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:378
+#: povertymappingapp/templates/map.html:420
 msgid "Livelihood based Coping Strategies"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:392
+#: povertymappingapp/templates/map.html:436
 msgid "Access to electricity"
 msgstr ""
 
-#: povertymappingapp/templates/map.html:427
+#: povertymappingapp/templates/map.html:472
 #: povertymappingapp/templates/panels/left-menu.html:275
 msgid "Nightlight Time Series"
 msgstr ""
@@ -334,19 +334,33 @@ msgstr ""
 msgid "The 17 sustainable development goals."
 msgstr ""
 
-#: povertymappingapp/templates/method.html:184
+#: povertymappingapp/templates/method.html:59
 msgid "method-paragraph-4"
-msgstr "A random forest algorithm was trained with a large number of geo spatial information layers on e.g. distance to roads, electricity grid, nightlights, health facilities, schools, land cover etc and the data from the Cambodia Socio-economic survey. The random forest model was then applied in probability mode to estimate the probability of deprivations across the country on a 100 by 100 meter grid. The variable importance of the different indicators is shown in FIG 1."
+msgstr ""
+"A random forest algorithm was trained with a large number of geo spatial "
+"information layers on e.g. distance to roads, electricity grid, nightlights, "
+"health facilities, schools, land cover etc and the data from the Cambodia "
+"Socio-economic survey. The random forest model was then applied in "
+"probability mode to estimate the probability of deprivations across the "
+"country on a 100 by 100 meter grid. The variable importance of the different "
+"indicators is shown in FIG 1."
 
-#: povertymappingapp/templates/method.html:186
+#: povertymappingapp/templates/method.html:61
 msgid "method-paragraph-5"
-msgstr "We used the Bing open building footprints dataset to calculate the deprivations per household. This dataset was generated using a machine learning approach on high resolution satellite images. It provides information on the location of buildings in Cambodia."
+msgstr ""
+"We used the Bing open building footprints dataset to calculate the "
+"deprivations per household. This dataset was generated using a machine "
+"learning approach on high resolution satellite images. It provides "
+"information on the location of buildings in Cambodia."
 
-#: povertymappingapp/templates/method.html:189
+#: povertymappingapp/templates/method.html:64
 msgid "method-paragraph-6"
-msgstr "The image below shows the number of deprivations per household on the country level. This dataset can be explored in more detail in the map section of this website."
+msgstr ""
+"The image below shows the number of deprivations per household on the "
+"country level. This dataset can be explored in more detail in the map "
+"section of this website."
 
-#: povertymappingapp/templates/method.html:193
+#: povertymappingapp/templates/method.html:68
 msgid "The variable importance of the different indicators"
 msgstr ""
 
@@ -446,23 +460,23 @@ msgstr ""
 msgid "Housing"
 msgstr ""
 
-#: povertymappingapp/templates/panels/left-menu.html:151
+#: povertymappingapp/templates/panels/left-menu.html:152
 msgid "Fuel"
 msgstr ""
 
-#: povertymappingapp/templates/panels/left-menu.html:158
+#: povertymappingapp/templates/panels/left-menu.html:159
 msgid "Electricity"
 msgstr ""
 
-#: povertymappingapp/templates/panels/left-menu.html:172
+#: povertymappingapp/templates/panels/left-menu.html:173
 msgid "Livelihood Based Coping"
 msgstr ""
 
-#: povertymappingapp/templates/panels/left-menu.html:182
+#: povertymappingapp/templates/panels/left-menu.html:183
 msgid "Consumption and Expenditure"
 msgstr ""
 
-#: povertymappingapp/templates/panels/left-menu.html:192
+#: povertymappingapp/templates/panels/left-menu.html:193
 msgid "Overall Vulnerability"
 msgstr ""
 

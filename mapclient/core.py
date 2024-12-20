@@ -13,9 +13,13 @@ class GEEApi():
 
     def __init__(self, area_path, area_name, geom, area_type, area_id):
         self.scale = 100
+        self.VAL_YEAR = 2023
+
         # image collection
         self.LANDCOVER = ee.ImageCollection(settings.LANDCOVER)
-        self.VALNERABILITY_AMD3 = ee.FeatureCollection(settings.VALNERABILITY_AMD3)
+        self.VALNERABILITY_AMD3_19 = ee.FeatureCollection(settings.VALNERABILITY_AMD3_19)
+        self.VALNERABILITY_AMD3_22 = ee.FeatureCollection(settings.VALNERABILITY_AMD3_22)
+        self.VALNERABILITY_AMD3_23 = ee.FeatureCollection(settings.VALNERABILITY_AMD3_23)
         self.ADM3 = ee.FeatureCollection(settings.ADM3)
         self.ADM2 = ee.FeatureCollection(settings.ADM2)
         self.ADM1 = ee.FeatureCollection(settings.ADM1)
@@ -30,26 +34,60 @@ class GEEApi():
         self.NIGHTLIGHT = ee.ImageCollection(settings.NIGHTLIGHT).select("avg_rad")
         self.WORLDPOP = ee.ImageCollection(settings.WORLDPOP)
 
-        #indicators
+        #indicators 2019
         self.buildings = ee.FeatureCollection(settings.BUILDINGS)
-        self.education = ee.Image(settings.IMG_EDUCATION)
-        self.school = ee.Image(settings.IMG_SCHOOL)
-        self.Education = ee.Image(self.education.add(self.school)).divide(2)
-        self.food = ee.Image(settings.IMG_FOOD)
-        self.health = ee.Image(settings.IMG_HEALTH)
-        self.water = ee.Image(settings.IMG_WATER)
-        self.sanitation = ee.Image(settings.IMG_SANITATION)
-        self.handWashing = ee.Image(settings.IMG_HANDWASHING)
-        self.Health = ee.Image(self.food.add(self.health).add(self.water).add(self.sanitation).add(self.handWashing)).divide(5)
-        self.overcrowding = ee.Image(settings.IMG_OVERCROWDING)
-        self.housing = ee.Image(settings.IMG_HOUSING)
-        self.fuel = ee.Image(settings.IMG_FUEL)
-        self.electricity = ee.Image(settings.IMG_ELECTRICITY)
-        self.assets = ee.Image(settings.IMG_ASSETS)
-        self.livelihoodBasedCopingStrategies = ee.Image(settings.IMG_LIVELIHOODBASEDCOPINGSTRATEGIES)
-        self.LivingStandard = ee.Image(self.overcrowding.add(self.housing).add(self.fuel).add(self.electricity).add(self.assets).add(self.livelihoodBasedCopingStrategies)).divide(6)
-        self.consumption = ee.Image(settings.IMG_CONSUMPTION)
-        self.totalV2 = ee.Image(settings.IMG_TOTALV2)
+        self.Education19 = ee.Image(settings.IMG_EDUCATION19)
+        self.food19 = ee.Image(settings.IMG_FOOD19)
+        self.Health19 = ee.Image(settings.IMG_HEALTH19)
+        self.water19 = ee.Image(settings.IMG_WATER19)
+        self.sanitation19 = ee.Image(settings.IMG_SANITATION19)
+        self.handWashing19 = ee.Image(settings.IMG_HANDWASHING19)
+        # self.Health19 = ee.Image(self.food.add(self.health).add(self.water).add(self.sanitation).add(self.handWashing)).divide(5)
+        self.overcrowding19 = ee.Image(settings.IMG_OVERCROWDING19)
+        self.housing19 = ee.Image(settings.IMG_HOUSING19)
+        self.fuel19 = ee.Image(settings.IMG_FUEL19)
+        self.electricity19 = ee.Image(settings.IMG_ELECTRICITY19)
+        self.assets19 = ee.Image(settings.IMG_ASSETS19)
+        self.livelihoodBasedCopingStrategies19 = ee.Image(settings.IMG_LIVELIHOODBASEDCOPINGSTRATEGIES19)
+        self.LivingStandard19 = ee.Image(self.overcrowding19.add(self.housing19).add(self.fuel19).add(self.electricity19).add(self.assets19).add(self.livelihoodBasedCopingStrategies19)).divide(6)
+        self.consumption19 = ee.Image(settings.IMG_CONSUMPTION19)
+        self.totalV219 = ee.Image(settings.IMG_TOTALV219)
+
+        #indicators 2022
+        self.Education22 = ee.Image(settings.IMG_EDUCATION22)
+        self.food22 = ee.Image(settings.IMG_FOOD22)
+        self.Health22 = ee.Image(settings.IMG_HEALTH22)
+        self.water22 = ee.Image(settings.IMG_WATER22)
+        self.sanitation22 = ee.Image(settings.IMG_SANITATION22)
+        self.handWashing22 = ee.Image(settings.IMG_HANDWASHING22)
+        # self.Health22 = ee.Image(self.food.add(self.health).add(self.water).add(self.sanitation).add(self.handWashing)).divide(5)
+        self.overcrowding22 = ee.Image(settings.IMG_OVERCROWDING22)
+        self.housing22 = ee.Image(settings.IMG_HOUSING22)
+        self.fuel22 = ee.Image(settings.IMG_FUEL22)
+        self.electricity22 = ee.Image(settings.IMG_ELECTRICITY22)
+        self.assets22 = ee.Image(settings.IMG_ASSETS22)
+        self.livelihoodBasedCopingStrategies22 = ee.Image(settings.IMG_LIVELIHOODBASEDCOPINGSTRATEGIES22)
+        self.LivingStandard22 = ee.Image(self.overcrowding22.add(self.housing22).add(self.fuel22).add(self.electricity22).add(self.assets22).add(self.livelihoodBasedCopingStrategies22)).divide(6)
+        self.consumption22 = ee.Image(settings.IMG_CONSUMPTION22)
+        self.totalV222 = ee.Image(settings.IMG_TOTALV222)
+
+        #indicators 2023
+        self.Education23 = ee.Image(settings.IMG_EDUCATION23)
+        self.food23 = ee.Image(settings.IMG_FOOD23)
+        self.Health23 = ee.Image(settings.IMG_HEALTH23)
+        self.water23 = ee.Image(settings.IMG_WATER23)
+        self.sanitation23 = ee.Image(settings.IMG_SANITATION23)
+        self.handWashing23 = ee.Image(settings.IMG_HANDWASHING23)
+        # self.Health23 = ee.Image(self.food.add(self.health).add(self.water).add(self.sanitation).add(self.handWashing)).divide(5)
+        self.overcrowding23 = ee.Image(settings.IMG_OVERCROWDING23)
+        self.housing23 = ee.Image(settings.IMG_HOUSING23)
+        self.fuel23 = ee.Image(settings.IMG_FUEL23)
+        self.electricity23 = ee.Image(settings.IMG_ELECTRICITY23)
+        self.assets23 = ee.Image(settings.IMG_ASSETS23)
+        self.livelihoodBasedCopingStrategies23 = ee.Image(settings.IMG_LIVELIHOODBASEDCOPINGSTRATEGIES23)
+        self.LivingStandard23 = ee.Image(self.overcrowding23.add(self.housing23).add(self.fuel23).add(self.electricity23).add(self.assets23).add(self.livelihoodBasedCopingStrategies23)).divide(6)
+        self.consumption23 = ee.Image(settings.IMG_CONSUMPTION23)
+        self.totalV223 = ee.Image(settings.IMG_TOTALV223)
 
     #--------------------------------------------------------------------------
     def get_NightlightWorldPop(self, series_start, series_end, _year, area_type, area_id):
@@ -99,7 +137,140 @@ class GEEApi():
     #--------------------------------------------------------------------------
 
     def allArea(self, prov):
-        provAll = self.VALNERABILITY_AMD3.filterBounds(prov.geometry())
+        if(self.VAL_YEAR == 2019):
+            VAL_FEAT = self.VALNERABILITY_AMD3_19
+        elif(self.VAL_YEAR == 2022):
+            VAL_FEAT = self.VALNERABILITY_AMD3_22
+        elif(self.VAL_YEAR == 2023):
+            VAL_FEAT = self.VALNERABILITY_AMD3_23
+  
+        provAll = VAL_FEAT.filterBounds(prov.geometry())
+        total = provAll.aggregate_sum("Total")
+        Education =   provAll.aggregate_sum("Education0")
+        edu_attain = provAll.aggregate_sum("edu_attain0")
+        edu_attend = provAll.aggregate_sum("edu_attend0")
+        Health = provAll.aggregate_sum("Health0")
+        healt_access = provAll.aggregate_sum("health_access0")
+        healt_food = provAll.aggregate_sum("health_food0")
+        healt_handWash = provAll.aggregate_sum("health_handwash0")
+        healt_sanit = provAll.aggregate_sum("health_sanit0")
+        healt_water = provAll.aggregate_sum("health_water0")
+        LivingStandard = provAll.aggregate_sum("LivingStandard0")
+        liv_asset = provAll.aggregate_sum("liv_asset0")
+        liv_cooking = provAll.aggregate_sum("liv_cooking0")
+        liv_coping = provAll.aggregate_sum("liv_coping0")
+        liv_elect = provAll.aggregate_sum("liv_elect0")
+        liv_house = provAll.aggregate_sum("liv_hous0")
+        liv_overcrowd = provAll.aggregate_sum("liv_overcr0")
+        monetary = provAll.aggregate_sum("Monetary0")
+        overall = provAll.aggregate_sum("overall0")
+
+        return prov.set("Total",ee.Number(1).subtract(Education.divide(total)))\
+        .set("Education0",ee.Number(1).subtract(Education.divide(total)))\
+        .set("edu_attain0",ee.Number(1).subtract(edu_attain.divide(total)))\
+        .set("edu_attend0",ee.Number(1).subtract(edu_attend.divide(total)))\
+        .set("Health0",ee.Number(1).subtract(Health.divide(total)))\
+        .set("health_access0",ee.Number(1).subtract(healt_access.divide(total)))\
+        .set("health_food0",ee.Number(1).subtract(healt_food.divide(total)))\
+        .set("health_handwash0",ee.Number(1).subtract(healt_handWash.divide(total)))\
+        .set("health_sanit0",ee.Number(1).subtract(healt_sanit.divide(total)))\
+        .set("health_water0",ee.Number(1).subtract(healt_water.divide(total)))\
+        .set("LivingStandard0",ee.Number(1).subtract(LivingStandard.divide(total)))\
+        .set("liv_asset0",ee.Number(1).subtract(liv_asset.divide(total)))\
+        .set("liv_cooking0",ee.Number(1).subtract(liv_cooking.divide(total)))\
+        .set("liv_coping0",ee.Number(1).subtract(liv_coping.divide(total)))\
+        .set("liv_elect0",ee.Number(1).subtract(liv_elect.divide(total)))\
+        .set("liv_hous0",ee.Number(1).subtract(liv_house.divide(total)))\
+        .set("liv_overcr0",ee.Number(1).subtract(liv_overcrowd.divide(total)))\
+        .set("Monetary0",ee.Number(1).subtract(monetary.divide(total)))\
+        .set("overall0",ee.Number(1).subtract(overall.divide(total)))
+    
+    def allArea19(self, prov):
+        provAll = self.VALNERABILITY_AMD3_19.filterBounds(prov.geometry())
+        total = provAll.aggregate_sum("Total")
+        Education =   provAll.aggregate_sum("Education0")
+        edu_attain = provAll.aggregate_sum("edu_attain0")
+        edu_attend = provAll.aggregate_sum("edu_attend0")
+        Health = provAll.aggregate_sum("Health0")
+        healt_access = provAll.aggregate_sum("health_access0")
+        healt_food = provAll.aggregate_sum("health_food0")
+        healt_handWash = provAll.aggregate_sum("health_handwash0")
+        healt_sanit = provAll.aggregate_sum("health_sanit0")
+        healt_water = provAll.aggregate_sum("health_water0")
+        LivingStandard = provAll.aggregate_sum("LivingStandard0")
+        liv_asset = provAll.aggregate_sum("liv_asset0")
+        liv_cooking = provAll.aggregate_sum("liv_cooking0")
+        liv_coping = provAll.aggregate_sum("liv_coping0")
+        liv_elect = provAll.aggregate_sum("liv_elect0")
+        liv_house = provAll.aggregate_sum("liv_hous0")
+        liv_overcrowd = provAll.aggregate_sum("liv_overcr0")
+        monetary = provAll.aggregate_sum("Monetary0")
+        overall = provAll.aggregate_sum("overall0")
+
+        return prov.set("Total",ee.Number(1).subtract(Education.divide(total)))\
+        .set("Education0",ee.Number(1).subtract(Education.divide(total)))\
+        .set("edu_attain0",ee.Number(1).subtract(edu_attain.divide(total)))\
+        .set("edu_attend0",ee.Number(1).subtract(edu_attend.divide(total)))\
+        .set("Health0",ee.Number(1).subtract(Health.divide(total)))\
+        .set("health_access0",ee.Number(1).subtract(healt_access.divide(total)))\
+        .set("health_food0",ee.Number(1).subtract(healt_food.divide(total)))\
+        .set("health_handwash0",ee.Number(1).subtract(healt_handWash.divide(total)))\
+        .set("health_sanit0",ee.Number(1).subtract(healt_sanit.divide(total)))\
+        .set("health_water0",ee.Number(1).subtract(healt_water.divide(total)))\
+        .set("LivingStandard0",ee.Number(1).subtract(LivingStandard.divide(total)))\
+        .set("liv_asset0",ee.Number(1).subtract(liv_asset.divide(total)))\
+        .set("liv_cooking0",ee.Number(1).subtract(liv_cooking.divide(total)))\
+        .set("liv_coping0",ee.Number(1).subtract(liv_coping.divide(total)))\
+        .set("liv_elect0",ee.Number(1).subtract(liv_elect.divide(total)))\
+        .set("liv_hous0",ee.Number(1).subtract(liv_house.divide(total)))\
+        .set("liv_overcr0",ee.Number(1).subtract(liv_overcrowd.divide(total)))\
+        .set("Monetary0",ee.Number(1).subtract(monetary.divide(total)))\
+        .set("overall0",ee.Number(1).subtract(overall.divide(total)))
+
+    def allArea22(self, prov):
+        provAll = self.VALNERABILITY_AMD3_22.filterBounds(prov.geometry())
+        total = provAll.aggregate_sum("Total")
+        Education =   provAll.aggregate_sum("Education0")
+        edu_attain = provAll.aggregate_sum("edu_attain0")
+        edu_attend = provAll.aggregate_sum("edu_attend0")
+        Health = provAll.aggregate_sum("Health0")
+        healt_access = provAll.aggregate_sum("health_access0")
+        healt_food = provAll.aggregate_sum("health_food0")
+        healt_handWash = provAll.aggregate_sum("health_handwash0")
+        healt_sanit = provAll.aggregate_sum("health_sanit0")
+        healt_water = provAll.aggregate_sum("health_water0")
+        LivingStandard = provAll.aggregate_sum("LivingStandard0")
+        liv_asset = provAll.aggregate_sum("liv_asset0")
+        liv_cooking = provAll.aggregate_sum("liv_cooking0")
+        liv_coping = provAll.aggregate_sum("liv_coping0")
+        liv_elect = provAll.aggregate_sum("liv_elect0")
+        liv_house = provAll.aggregate_sum("liv_hous0")
+        liv_overcrowd = provAll.aggregate_sum("liv_overcr0")
+        monetary = provAll.aggregate_sum("Monetary0")
+        overall = provAll.aggregate_sum("overall0")
+
+        return prov.set("Total",ee.Number(1).subtract(Education.divide(total)))\
+        .set("Education0",ee.Number(1).subtract(Education.divide(total)))\
+        .set("edu_attain0",ee.Number(1).subtract(edu_attain.divide(total)))\
+        .set("edu_attend0",ee.Number(1).subtract(edu_attend.divide(total)))\
+        .set("Health0",ee.Number(1).subtract(Health.divide(total)))\
+        .set("health_access0",ee.Number(1).subtract(healt_access.divide(total)))\
+        .set("health_food0",ee.Number(1).subtract(healt_food.divide(total)))\
+        .set("health_handwash0",ee.Number(1).subtract(healt_handWash.divide(total)))\
+        .set("health_sanit0",ee.Number(1).subtract(healt_sanit.divide(total)))\
+        .set("health_water0",ee.Number(1).subtract(healt_water.divide(total)))\
+        .set("LivingStandard0",ee.Number(1).subtract(LivingStandard.divide(total)))\
+        .set("liv_asset0",ee.Number(1).subtract(liv_asset.divide(total)))\
+        .set("liv_cooking0",ee.Number(1).subtract(liv_cooking.divide(total)))\
+        .set("liv_coping0",ee.Number(1).subtract(liv_coping.divide(total)))\
+        .set("liv_elect0",ee.Number(1).subtract(liv_elect.divide(total)))\
+        .set("liv_hous0",ee.Number(1).subtract(liv_house.divide(total)))\
+        .set("liv_overcr0",ee.Number(1).subtract(liv_overcrowd.divide(total)))\
+        .set("Monetary0",ee.Number(1).subtract(monetary.divide(total)))\
+        .set("overall0",ee.Number(1).subtract(overall.divide(total)))
+    
+    def allArea23(self, prov):
+        provAll = self.VALNERABILITY_AMD3_23.filterBounds(prov.geometry())
         total = provAll.aggregate_sum("Total")
         Education =   provAll.aggregate_sum("Education0")
         edu_attain = provAll.aggregate_sum("edu_attain0")
@@ -154,34 +325,63 @@ class GEEApi():
         self.featureName= featureName
         ft = ft.map(self.calfraction)
         return ft
+    
+    def getValFeat(self, year):
+        if(year == 2019):
+            return self.VALNERABILITY_AMD3_19
+        elif(year == 2022):
+            return self.VALNERABILITY_AMD3_22
+        elif(year == 2023):
+            return self.VALNERABILITY_AMD3_23
 
-    def valnerabilityMap(self, feat, area_type, area_id,):
+    def valnerabilityMap(self, area_type, year):
         feat_names = ["Education0", "edu_attain0", "edu_attend0",
         "Health0", "health_food0", "health_access0", "health_water0","health_sanit0", "health_handwash0",
         "LivingStandard0", "liv_overcr0", "liv_hous0", "liv_cooking0", "liv_elect0", "liv_asset0", "liv_coping0",
         "Monetary0", "overall0"]
         res = {}
         adm_name = ''
+        
+        self.val_year = year
+
+        VAL_FEAT = self.getValFeat(year)
+        
         for feat_name in feat_names:
             self.feat_name = feat_name
             if area_type == "sub-district":
-                val_map = self.getFraction(self.VALNERABILITY_AMD3, self.feat_name)
+                val_map = self.getFraction(VAL_FEAT, self.feat_name)
                 img = val_map.reduceToImage(
                     properties= ["Not Deprived"],
                     reducer= ee.Reducer.mean(),
                 )
                 adm_name = 'NAME_3'
             elif area_type == "country":
-                val_map = self.ADM0.map(self.allArea)
-                img = val_map.reduceToImage([self.feat_name],ee.Reducer.mean());
+                if(year == 2019):
+                    val_map = self.ADM0.map(self.allArea19)
+                elif(year == 2022):
+                    val_map = self.ADM0.map(self.allArea22)
+                elif(year == 2023):
+                    val_map = self.ADM0.map(self.allArea23)
+    
+                img = val_map.reduceToImage([self.feat_name],ee.Reducer.mean())
                 adm_name = 'NAME_0'
             elif area_type == "province":
-                val_map = self.ADM1.map(self.allArea)
-                img = val_map.reduceToImage([self.feat_name],ee.Reducer.mean());
+                if(year == 2019):
+                    val_map = self.ADM1.map(self.allArea19)
+                elif(year == 2022):
+                    val_map = self.ADM1.map(self.allArea22)
+                elif(year == 2023):
+                    val_map = self.ADM1.map(self.allArea23)
+                img = val_map.reduceToImage([self.feat_name],ee.Reducer.mean())
                 adm_name = 'NAME_1'
             elif area_type == "district":
-                val_map = self.ADM2.map(self.allArea)
-                img = val_map.reduceToImage([self.feat_name],ee.Reducer.mean());
+                if(year == 2019):
+                    val_map = self.ADM2.map(self.allArea19)
+                elif(year == 2022):
+                    val_map = self.ADM2.map(self.allArea22)
+                elif(year == 2023):
+                    val_map = self.ADM2.map(self.allArea23)
+                img = val_map.reduceToImage([self.feat_name],ee.Reducer.mean())
                 adm_name = 'NAME_2'
 
             map_id = img.getMapId({
@@ -209,27 +409,60 @@ class GEEApi():
         }
         return obj
 
-    # -------------------------------------------------------------------------
-    def probabilityMaps(self):
+
+    # 2019-------------------------------------------------------------------------
+    def probabilityMaps(self, year):
         buildings = self.buildings
-        education = self.education
-        school = self.school
-        Education = self.Education
-        food = self.food
-        health = self.health
-        water = self.water
-        sanitation = self.sanitation
-        handWashing = self.handWashing
-        Health = self.Health
-        overcrowding = self.overcrowding
-        housing = self.housing
-        fuel = self.fuel
-        electricity = self.electricity
-        assets = self.assets
-        livelihoodBasedCopingStrategies = self.livelihoodBasedCopingStrategies
-        LivingStandard = self.LivingStandard
-        consumption = self.consumption
-        totalV2 = self.totalV2
+
+        if(year == 2019):
+            Education = self.Education19.clip(self.ADM0)
+            water = self.water19.clip(self.ADM0)
+            food = self.food19.clip(self.ADM0)
+            sanitation = self.sanitation19.clip(self.ADM0)
+            handWashing = self.handWashing19.clip(self.ADM0)
+            Health = self.Health19.clip(self.ADM0)
+            overcrowding = self.overcrowding19.clip(self.ADM0)
+            housing = self.housing19.clip(self.ADM0)
+            fuel = self.fuel19.clip(self.ADM0)
+            electricity = self.electricity19.clip(self.ADM0)
+            assets = self.assets19.clip(self.ADM0)
+            livelihoodBasedCopingStrategies = self.livelihoodBasedCopingStrategies19.clip(self.ADM0)
+            LivingStandard = self.LivingStandard19.clip(self.ADM0)
+            consumption = self.consumption19.clip(self.ADM0)
+            totalV2 = self.totalV219.clip(self.ADM0)
+        elif(year == 2022):
+            Education = self.Education22.clip(self.ADM0)
+            food = self.food22.clip(self.ADM0)
+            water = self.water22.clip(self.ADM0)
+            sanitation = self.sanitation22.clip(self.ADM0)
+            handWashing = self.handWashing22.clip(self.ADM0)
+            Health = self.Health22.clip(self.ADM0)
+            overcrowding = self.overcrowding22.clip(self.ADM0)
+            housing = self.housing22.clip(self.ADM0)
+            fuel = self.fuel22.clip(self.ADM0)
+            electricity = self.electricity22.clip(self.ADM0)
+            assets = self.assets22.clip(self.ADM0)
+            livelihoodBasedCopingStrategies = self.livelihoodBasedCopingStrategies22.clip(self.ADM0)
+            LivingStandard = self.LivingStandard22.clip(self.ADM0)
+            consumption = self.consumption22.clip(self.ADM0)
+            totalV2 = self.totalV222.clip(self.ADM0)
+        elif(year == 2023):
+            Education = self.Education23.clip(self.ADM0)
+            food = self.food23.clip(self.ADM0)
+            water = self.water23.clip(self.ADM0)
+            sanitation = self.sanitation23.clip(self.ADM0)
+            handWashing = self.handWashing23.clip(self.ADM0)
+            Health = self.Health23.clip(self.ADM0)
+            overcrowding = self.overcrowding23.clip(self.ADM0)
+            housing = self.housing23.clip(self.ADM0)
+            fuel = self.fuel23.clip(self.ADM0)
+            electricity = self.electricity23.clip(self.ADM0)
+            assets = self.assets23.clip(self.ADM0)
+            livelihoodBasedCopingStrategies = self.livelihoodBasedCopingStrategies23.clip(self.ADM0)
+            LivingStandard = self.LivingStandard23.clip(self.ADM0)  
+            consumption = self.consumption23.clip(self.ADM0)
+            totalV2 = self.totalV223.clip(self.ADM0)
+
 
         all = [buildings, Education, food, water, sanitation, handWashing, Health, overcrowding, housing, fuel, electricity, assets, livelihoodBasedCopingStrategies, LivingStandard, consumption, totalV2]
         feat_id = ["prop_buildings", "prop_Education", "prop_food", "prop_water", "prop_sanitation", "prop_handWashing", "prop_Health", "prop_overcrowding", "prop_housing", "prop_fuel", "prop_electricity", "prop_assets", "prop_livelihoodBasedCopingStrategies", "prop_LivingStandard", "prop_consumption", "prop_totalV2"]
@@ -238,9 +471,9 @@ class GEEApi():
         inx =0
         for feat in all:
             map_id = feat.getMapId({
-                'min': '20',
-                'max': '80',
-                'palette': '006837, B5DF73, FEE695, DF422F, B91326, A50026'
+                'min': '0',
+                'max': '100',
+                'palette': 'darkgreen,green,yellow,orange,red,darkred'
             })
             obj = {
                 'name': labels[inx],
@@ -251,7 +484,8 @@ class GEEApi():
             res[feat_id[inx]] = obj
             inx+=1
         return res
-
+    
+    
     # -------------------------------------------------------------------------
     def getTileLayerUrl(self, ee_image_object):
         map_id = ee.Image(ee_image_object).getMapId()

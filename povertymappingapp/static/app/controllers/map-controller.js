@@ -7,8 +7,8 @@
       var MAPBOXAPI = appSettings.mapboxapi;
 
       var map, basemap_layer, drawing_polygon;
-      $scope.STUDYLOW = 2015;
-      $scope.STUDYHIGH = 2020;
+      $scope.STUDYLOW = 2019;
+      $scope.STUDYHIGH = 2023;
       var refHigh, refLow, studyHigh, studyLow;
       var arrayWMSLayers = []
       var k = 'value';
@@ -18,6 +18,17 @@
       var MapLayerArr = {}
       var currentSelectedArea = '';
       var pieCharts = {};
+
+      // List of feature names
+      const featureNames = [
+        "education0", "edu_attain0", "edu_attend0", "health0", "health_food0",
+        "health_access0", "health_water0", "health_sanit0", "health_handwash0",
+        "livingstandard0", "liv_overcr0", "liv_hous0", "liv_cooking0",
+        "liv_elect0", "liv_asset0", "liv_coping0", "monetary0", "overall0"
+      ];
+
+      // List of years
+      const years = [2019, 2022, 2023];
 
 
       var feat_groups = ["education", "health", "living", "monetary", "overall"];
@@ -180,7 +191,9 @@
             'forest': eval('$scope.Forest' + y),
             'landcover': eval('$scope.Landcover' + y),
           }
+
         }
+
       }
 
       createMapVar();
@@ -302,6 +315,18 @@
       var adm2_data = null;
       var adm3_data = null;
 
+      var adm1_data_2019 = null;
+      var adm2_data_2019 = null;
+      var adm3_data_2019 = null;
+
+      var adm1_data_2022 = null;
+      var adm2_data_2022 = null;
+      var adm3_data_2022 = null;
+
+      var adm1_data_2023 = null;
+      var adm2_data_2023 = null;
+      var adm3_data_2023 = null;
+
 
       const static_url = "/static/";
       // $.getJSON(static_url + "data/VALNERABILITY_DATA_AMD1_v2.json", function (json) {
@@ -317,18 +342,53 @@
       //   adm3_data = json;
       // });
 
-      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD1_v2.json", 'adm1_data_cache', function (data) {
-        adm1_data = data;
-        createBarChart();
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD1_2019.json", 'adm1_2019_data_cache', function (data) {
+        adm1_data_2019 = data;
+        createBarChart(2019);
       });
 
-      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_v2.json", 'adm2_data_cache', function (data) {
-        adm2_data = data;
+      // fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_2019.json", 'adm2_2019_data_cache', function (data) {
+      //   adm2_data_2019 = data;
+      //   createBarChart(2019);
+      // });
+
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD3_2019.json", 'adm3_2019_data_cache', function (data) {
+        adm3_data_2019 = data;
+        createBarChart(2019);
       });
 
-      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD3_v2.json", 'adm3_data_cache', function (data) {
-        adm3_data = data;
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD1_2022.json", 'adm1_2022_data_cache', function (data) {
+        adm1_data_2022 = data;
+        createBarChart(2022);
       });
+
+      // fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_2022.json", 'adm2_2022_data_cache', function (data) {
+      //   adm2_data_2022 = data;
+      //   createBarChart(2022);
+      // });
+
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD3_2022.json", 'adm3_2022_data_cache', function (data) {
+        adm3_data_2022 = data;
+        createBarChart(2022);
+      });
+
+
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD1_2023.json", 'adm1_2023_data_cache', function (data) {
+        adm1_data_2023 = data;
+        createBarChart(2023);
+      });
+
+      // fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_2023.json", 'adm2_2023_data_cache', function (data) {
+      //   adm2_data_2023 = data;
+      //   createBarChart(2023);
+      // });
+
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD3_2023.json", 'adm3_2023_data_cache', function (data) {
+        adm3_data_2023 = data;
+        createBarChart(2023);
+      });
+
+      
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /**
@@ -499,7 +559,9 @@
         if (selected_features.includes(area_id)) {
           console.log(area_id)
         } else {
-          getGraphPieData();
+          getGraphPieData(2019);
+          getGraphPieData(2022);
+          getGraphPieData(2023);
 
         }
         selected_features.push(area_id);
@@ -514,6 +576,7 @@
         selected_layers.push(selected);
         $('.selected_area_name').text(selectedArea);
         selected_admin = selectedArea;
+       
 
       }
 
@@ -591,7 +654,7 @@
         onEachFeature: function (feature, layer) {
           layer.on({
             'mouseover': function (e) {
-              getPopupGraphPieData(e.target.feature.properties.PRO_CODE);
+              // getPopupGraphPieData(e.target.feature.properties.PRO_CODE);
               highlight(e.target);
               $(".highlight_area_textbox").css("display", "block");
               $(".highlight_area_textbox").text(e.target.feature.properties.HRName);
@@ -628,7 +691,7 @@
         onEachFeature: function (feature, layer) {
           layer.on({
             'mouseover': function (e) {
-              getPopupGraphPieData(e.target.feature.properties.DIS_CODE);
+              // getPopupGraphPieData(e.target.feature.properties.DIS_CODE);
               highlight(e.target);
               $(".highlight_area_textbox").css("display", "block");
               $(".highlight_area_textbox").text(e.target.feature.properties.PRO_NAME + "/" + e.target.feature.properties.DIS_NAME);
@@ -665,7 +728,7 @@
         onEachFeature: function (feature, layer) {
           layer.on({
             'mouseover': function (e) {
-              getPopupGraphPieData(e.target.feature.properties.COM_CODE);
+              // getPopupGraphPieData(e.target.feature.properties.COM_CODE);
               highlight(e.target);
               $(".highlight_area_textbox").css("display", "block");
               $(".highlight_area_textbox").text(e.target.feature.properties.PRO_NAME + "/" + e.target.feature.properties.DIS_NAME + "/" + e.target.feature.properties.COM_NAME);
@@ -704,13 +767,32 @@
           { name: 'Deprived', y: 0, color: '#7CB5EC' },
           { name: 'Not Deprived', y: 0, color: '#434348' }
         ];
-        var data = adm1_data;
+        var data = null;
+
         if (area_type === "provice") {
-          data = adm1_data;
+          if (year === 2019) {
+            data = adm1_data_2019;
+          } else if (year === 2022) {
+            data = adm1_data_2022;
+          } else if (year === 2023) {
+            data = adm1_data_2023;
+          }
         } else if (area_type === "district") {
-          data = adm2_data;
+          if (year === 2019) {
+            data = adm2_data_2019;
+          } else if (year === 2022) {
+            data = adm2_data_2022;
+          } else if (year === 2023) {
+            data = adm2_data_2023;
+          }
         } else if (area_type === "sub-district") {
-          data = adm3_data;
+          if (year === 2019) {
+            data = adm3_data_2019;
+          } else if (year === 2022) {
+            data = adm3_data_2022;
+          } else if (year === 2023) {
+            data = adm3_data_2023;
+          }
         }
         var index = data["id_area"].indexOf(id);
         var feat = "overall0"
@@ -750,7 +832,7 @@
             categorical_deprived = "Very high";
           }
         }
-        
+
         $("#no_population").text(parseInt(data["population"][index]));
         $("#no_buildings").text(parseInt(data["buildings"][index]));
         $(".info_areaname").text(data["name_area"][index]);
@@ -789,67 +871,33 @@
 
 
       function createToggleList(parentUL, inputID, label, yid, checked, bgcolor) {
-        // Get the current full URL
-        var currentUrl = window.location.href;
-        // Use regex to extract the language code from the URL
-        var langCode = currentUrl.match(/\/(en|kh)\//);
-        var activeLang = langCode[1];
-        var labels = {
-          'en': {
-            'Education': 'Education',
-            'Educational attainment': 'Educational attainment',
-            'School attendance': 'School attendance',
-            'Health': 'Health',
-            'Food Comsumtion': 'Food Comsumtion',
-            'Access to Healtcare': 'Access to Healtcare',
-            'Access to Clean Water': 'Access to Clean Water',
-            'Access to Sanitation': 'Access to Sanitation',
-            'Hand Washing': 'Hand Washing',
-            'Living Standard': 'Living Standard',
-            'Overcrowding': 'Overcrowding',
-            'Housing Materials': 'Housing Materials',
-            'Access to Electricity': 'Access to Electricity',
-            'Assets': 'Assets',
-            'Livelihood Based Coping Strategies': 'Livelihood Based Coping Strategies',
-            'Monetary': 'Monetary',
-            'overall': 'overall'
-          }, 
-         'kh': {
-            'Education': 'អប់រំ',
-            'Educational attainment': 'ទទួលបានការអប់រំ',
-            'School attendance': 'ចូលរៀននៅសាលា',
-            'Health': 'សុខភាព',
-            'Food Comsumtion': 'ការហូបចុក',
-            'Access to Healtcare': 'ការទទួលបានសេវាសុខាភិបាល',
-            'Access to Clean Water': 'ការទទួលបានទឹកស្អាត',
-            'Access to Sanitation': 'ការទទួលបានអនាម័យ',
-            'Hand Washing': 'ការលាងសម្អាតដៃ',
-            'Living Standard': 'ស្តង់ដាររស់នៅ',
-            'Overcrowding': 'ការរស់នៅដោយចង្អៀត',
-            'Housing Materials': 'សម្ភារៈលំនៅដ្ឋាន',
-            'Access to Electricity': 'ទទួលបានប្រើអគ្គិសនី',
-            'Assets': 'ទ្រព្យសម្បត្តិ',
-            'Livelihood Based Coping Strategies': 'យុទ្ធសាស្ត្រដោះស្រាយកង្វះខាតជីវភាព',
-            'Monetary': 'ស្តង់ដាររស់នៅ',
-            'overall': 'សរុប'
-         }
-        }
         $("#" + parentUL).append(
           '<li class="toggle">' +
-          '<label class="switch_layer"><input name="' + inputID + '" id="' + inputID + '" data-id="' + inputID + '"  data-yid="' + yid + '" data-name="' + label + '" data-color="#' + bgcolor + '" type="checkbox" ' + checked + '><span class="slider_toggle round"></span></input></label><label>' + labels[activeLang][label] + '</label></li>'
+          // '<span class="tooltip" name="download_'+inputID+'" id="download_'+inputID+'" data-id="'+inputID+'"  data-yid="'+yid+'" data-name="'+label+'" style="cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#d4dbd4" class="bi bi-file-arrow-down-fill" viewBox="0 0 16 16">' +
+          // '<path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8 5a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5A.5.5 0 0 1 8 5z"/>' +
+          // 	'</svg><span class="tooltiptext">Download </span></span>'+
+          '<label class="switch_layer"><input name="' + inputID + '" id="' + inputID + '" data-id="' + inputID + '"  data-yid="' + yid + '" data-name="' + label + '" data-color="#' + bgcolor + '" type="checkbox" ' + checked + '><span class="slider_toggle round"></span></input></label><label>' + label + '</label></li>'
         );
       }
 
-      function createSelectedAreaReport(parentUL, data, area_name, area_id, chartType) {
+      function createToggleListVal(parentUL, inputID, label, yid, checked, bgcolor) {
+        $("#" + parentUL).append(
+          '<li class="toggle">' +
+          '<label class="switch_layer"><input name="' + inputID + '" id="' + inputID + + yid + '" data-id="' + inputID + '"  data-yid="' + yid + '" data-name="' + label + '" data-color="#' + bgcolor + '" type="checkbox" ' + checked + '><span class="slider_toggle round"></span></input></label><label>' + label + '</label></li>'
+        );
+      }
+
+      function createSelectedAreaReport(parentUL, data, area_name, area_id, chartType, year) {
         if (chartType === "pie") {
           $("#" + parentUL).append(
             '<div class="col-lg-12">' +
             '<p>' + area_name + '</p>' +
             '<div class="row">' +
             '<div class="col-lg-12">' +
-            '<a id="' + data + '_piepng" data-yid="' + data + '" class="chart-btn-sm">PNG</a>' +
-            '<a id="' + data + '_piecsv" data-yid="' + data + '" class="chart-btn-sm">CSV</a>' +
-            '<div id="' + data + '_piechart"  width="1000" height="1000" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>' +
+            // '<p>Summary of '+data+' in '+ $scope.STUDYHIGH +' </p>'+
+            '<a id="' + data + '_piepng_' + year + '" data-yid="' + data + '" class="chart-btn-sm">PNG</a>' +
+            '<a id="' + data + '_piecsv_' + year + '" data-yid="' + data + '" class="chart-btn-sm">CSV</a>' +
+            '<div id="' + data + '_piechart_' + year + '"  width="1000" height="1000" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>' +
             '</div>' +
             '</div>' +
             '</div>'
@@ -860,9 +908,9 @@
             '<div class="row">' +
             '<div class="col-lg-12">' +
             // '<p>Summary of '+data+' from '+ $scope.STUDYLOW +' to '+ $scope.STUDYHIGH +' </p>'+
-            '<a id="' + data + '_barpng" data-yid="' + data + '" class="chart-btn-sm">PNG</a>' +
-            '<a id="' + data + '_barcsv" data-yid="' + data + '" class="chart-btn-sm">CSV</a>' +
-            '<div id="' + data + '_barchart"  width="1000" height="1000" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>' +
+            '<a id="' + data + '_barpng_' + year + '" data-yid="' + data + '" class="chart-btn-sm">PNG</a>' +
+            '<a id="' + data + '_barcsv_' + year + '" data-yid="' + data + '" class="chart-btn-sm">CSV</a>' +
+            '<div id="' + data + '_barchart_' + year + '"  width="1000" height="1000" style="border: 0px solid #eee;margin-bottom:15px;margin-top:5px;"></div>' +
             '</div>' +
             '</div>' +
             '</div>'
@@ -882,38 +930,6 @@
 
 
       function showPieHighChart(chartContainer, chartSeries, subtitle, featname) {// Data retrieved from https://olympics.com/en/olympic-games/beijing-2022/medals
-        // Highcharts.chart(chartContainer, {
-        //     chart: {
-        //         type: 'pie',
-        //         options3d: {
-        //             enabled: true,
-        //             alpha: 0
-        //         },
-        //         width: 410,
-        // 				height: 200,
-        // 				style: {
-        // 					fontFamily: "Roboto Condensed"
-        // 				},
-        //     },
-        //     tooltip: {
-        // 			formatter: function () {
-        // 				return this.point.name + " (" + this.point.percentage.toFixed(2) + "%)";
-        // 			}
-        // 			// pointFormat: '{series.name}: <br>{point.percentage:.1f} %<br>: {point.total}'
-        // 		},
-        //     title: false,
-        //     subtitle: subtitle,
-        //     plotOptions: {
-        //         pie: {
-        //             innerSize: 100,
-        //             depth: 45
-        //         }
-        //     },
-        //     series: [{
-        //         name: 'Deprivation',
-        //         data: chartSeries
-        //     }]
-        // });
 
         Highcharts.chart(chartContainer, {
           chart: {
@@ -987,13 +1003,10 @@
             data: chartSeries
           }],
         });
-
-
       }
 
 
       function showHighChart(chartContainer, chartType, categories, chartSeries, labelArea, pointWidth, subtitle) {
-
         Highcharts.chart(chartContainer, {
           chart: {
             type: chartType,
@@ -1084,7 +1097,6 @@
 
 
       function showColHightChart(chartContainer, chartType, categories, chartSeries, labelArea, pointWidth, subtitle) {
-
         Highcharts.chart(chartContainer, {
           chart: {
             type: chartType,
@@ -1236,8 +1248,6 @@
               });
 
             }
-
-
           }, function (error) {
             console.log(error);
           });
@@ -1392,11 +1402,12 @@
       getNightLightMap();
 
 
-      function getPropMap() {
+      function getPropMap(_year) {
         // $scope.showLoader = true;
         var parameters = {
           area_type: area_type,
           area_id: area_id,
+          year: _year
         };
         var area_data = [];
         var _yearArr = [];
@@ -1408,17 +1419,17 @@
             for (var i = 0; i < _keys.length; i++) {
               var _featData = data[_keys[i]];
               //add map layer
-              MapLayerArr[2020][_keys[i]] = addMapLayer(MapLayerArr[2020][_keys[i]], _featData.eeMapURL, 'geeMapLayer');
+              MapLayerArr[_year][_keys[i]] = addMapLayer(MapLayerArr[_year][_keys[i]], _featData.eeMapURL, 'geeMapLayer');
               /*jshint loopfunc: true */
-              if (_keys[i] === "prop_totalV2") {
+              if (_keys[i] === "prop_totalV2" && _year === 2023) {
                 // createToggleList('toggle-list-probability', _keys[i], _featData.name, 2020, 'checked', '333');
-                MapLayerArr[2020].prop_totalV2.setOpacity(1);
-                MapLayerArr[2020].prop_totalV2.addTo(map);
+                MapLayerArr[_year].prop_totalV2.setOpacity(1);
+                MapLayerArr[_year].prop_totalV2.addTo(map);
               } else {
                 // createToggleList('toggle-list-probability', _keys[i], _featData.name, 2020, '', '333');
               }
               //toggle each of forest map layer
-              $('#' + _keys[i]).change(function () {
+              $('#' + _keys[i] + '_' + _year).change(function () {
                 var layerID = $(this).attr('data-yid');
                 var dataID = $(this).attr('data-id');
                 if (this.checked) {
@@ -1441,43 +1452,82 @@
           });
       }
 
-      getPropMap();
+      getPropMap(2023);
+      getPropMap(2019);
+      getPropMap(2022);
 
 
-      function createBarChart() {
-        var data = adm1_data;
+      // Function to clear chart areas
+      function clearChartAreas(year) {
+        featureNames.forEach(featureName => {
+          $(`#${featureName}_chart_report_area_${year}`).html("");
+        });
+      }
+
+      function createBarChart(year) {
+        var data = null;
+        if (year === 2019) {
+          data = adm1_data_2019;
+        } else if (year === 2022) {
+          data = adm1_data_2022;
+        } else if (year === 2023) {
+          data = adm1_data_2023;
+        }
         if (area_type === "provice") {
-          data = adm1_data;
+          if (year === 2019) {
+            data = adm1_data_2019;
+          } else if (year === 2022) {
+            data = adm1_data_2022;
+          } else if (year === 2023) {
+            data = adm1_data_2023;
+          }
         } else if (area_type === "district") {
-          data = adm2_data;
+          if (year === 2019) {
+            data = adm2_data_2019;
+          } else if (year === 2022) {
+            data = adm2_data_2022;
+          } else if (year === 2023) {
+            data = adm2_data_2023;
+          }
         } else if (area_type === "sub-district") {
-          data = adm3_data;
+          if (year === 2019) {
+            data = adm3_data_2019;
+          } else if (year === 2022) {
+            data = adm3_data_2022;
+          } else if (year === 2023) {
+            data = adm3_data_2023;
+          }
         }
         for (var j = 0; j < feat_groups.length; j++) {
           var _listFeat = _groups[feat_groups[j]];
           var _listFeatDesc = _feat_desc[feat_groups[j]];
           for (var i = 0; i < _listFeat.length; i++) {
-
             var feat = _listFeat[i]
-
             var _featData = data[feat];
             var colChartSeries = [{
               "name": "Deprivation",//_listFeatDesc[i],
               "data": _featData["Deprived"],
               "color": "#0468b1"
             }]
-            showColHightChart(feat.toLowerCase() + '_barchart_adm', 'column', data["name_area"], colChartSeries, true, 5, 'OVERALL DEPRIVATION BY ADMINISTRATIVE LEVEL');
+            showColHightChart(feat.toLowerCase() + '_barchart_adm_'+ year, 'column', data["name_area"], colChartSeries, true, 5, 'OVERALL DEPRIVATION BY ADMINISTRATIVE LEVEL');
           }
         }
 
       }
       // createBarChart();
-      function getMapVal() {
+      function getMapVal(_y) {
         $scope.showLoader = true;
+        const years = [2019, 2022, 2023];
+        const categories = ['education', 'health', 'living', 'monetary', 'overall'];
+
+        years.forEach(year => {
+          categories.forEach(category => {
+            $(`#toggle-list-${category}-${year}`).empty();
+          });
+        });
         var parameters = {
-          feat: "overall0",
           area_type: area_type,
-          area_id: area_id,
+          year: _y
         };
         var area_data = [];
         var _yearArr = [];
@@ -1501,7 +1551,8 @@
               var _listFeat = _groups[feat_groups[j]];
               var _listFeatDesc = _feat_desc[feat_groups[j]];
               for (var i = 0; i < _listFeat.length; i++) {
-                var _year = 2020;
+                var _year = _y;
+
                 var feat = _listFeat[i]
                 colNames.push(_listFeatDesc[i]);
                 var _featData = data[feat];
@@ -1511,9 +1562,9 @@
                 //add map layer
                 MapLayerArr[_year][feat] = addMapLayer(MapLayerArr[_year][feat], _featData.eeMapURL, 'geeMapLayer');
                 /*jshint loopfunc: true */
-                createToggleList('toggle-list-' + feat_groups[j], feat, _listFeatDesc[i], _year, '', '333');
+                createToggleListVal('toggle-list-' + feat_groups[j] + '-' + _year, feat, _listFeatDesc[i], _year, '', '333');
                 //toggle each of forest map layer
-                $('#' + feat).change(function () {
+                $('#' + feat + '' + _year).change(function () {
                   var layerID = $(this).attr('data-yid');
                   var dataName = $(this).attr('data-id');
                   if (this.checked) {
@@ -1531,7 +1582,6 @@
                 });
               }
             }
-
             $scope.showLoader = false;
 
           }, function (error) {
@@ -1539,10 +1589,12 @@
           });
       }
 
-      getMapVal();
+      getMapVal(2019);
+      getMapVal(2022);
+      getMapVal(2023);
 
       var _focusedAreas = [];
-      var _barChartInfo = {
+      var _barChartInfo19 = {
         "Education0": [
           { name: 'Not Deprived', data: [], color: '#434348' },
           { name: 'Deprived', data: [], color: '#7CB5EC' },
@@ -1616,7 +1668,159 @@
           { name: 'Deprived', data: [], color: '#7CB5EC' },
         ],
       }
-      function getGraphPieData() {
+
+      var _barChartInfo22 = {
+        "Education0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "edu_attain0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "edu_attend0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "Health0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "health_food0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "health_access0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "health_water0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "health_sanit0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "health_handwash0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "LivingStandard0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_overcr0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_hous0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_cooking0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_elect0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_asset0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_coping0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "Monetary0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "overall0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+      }
+
+      var _barChartInfo23 = {
+        "Education0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "edu_attain0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "edu_attend0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "Health0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "health_food0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "health_access0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "health_water0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "health_sanit0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "health_handwash0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "LivingStandard0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_overcr0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_hous0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_cooking0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_elect0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_asset0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "liv_coping0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "Monetary0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+        "overall0": [
+          { name: 'Not Deprived', data: [], color: '#434348' },
+          { name: 'Deprived', data: [], color: '#7CB5EC' },
+        ],
+      }
+
+
+      function getGraphPieData(year) {
         // $scope.showLoader = true;
         var parameters = {
           feat: "overall0",
@@ -1630,41 +1834,44 @@
           { name: 'Not Deprived', data: [], color: '#434348' },
         ];
 
-        $("#health0_chart_report_area").html("");
-        $("#health_access0_chart_report_area").html("");
-        $("#health_water0_chart_report_area").html("");
-        $("#health_sanit0_chart_report_area").html("");
-        $("#health_food0_chart_report_area").html("");
-        $("#health_handwash0_chart_report_area").html("");
-        $("#education0_chart_report_area").html("");
-        $("#edu_attain0_chart_report_area").html("");
-        $("#edu_attend0_chart_report_area").html("");
+        $("#health0_chart_report_area_"+year).html("");
+        $("#health_access0_chart_report_area_"+year).html("");
+        $("#health_water0_chart_report_area_"+year).html("");
+        $("#health_sanit0_chart_report_area_"+year).html("");
+        $("#health_food0_chart_report_area_"+year).html("");
+        $("#health_handwash0_chart_report_area_"+year).html("");
+        $("#education0_chart_report_area_"+year).html("");
+        $("#edu_attain0_chart_report_area_"+year).html("");
+        $("#edu_attend0_chart_report_area_"+year).html("");
 
-        $("#livingstandard0_chart_report_area").html("");
-        $("#liv_overcr0_chart_report_area").html("");
-        $("#liv_hous0_chart_report_area").html("");
-        $("#liv_cooking0_chart_report_area").html("");
-        $("#liv_asset0_chart_report_area").html("");
-        $("#liv_coping0_chart_report_area").html("");
-        $("#liv_elect0_chart_report_area").html("");
+        $("#livingstandard0_chart_report_area_"+year).html("");
+        $("#liv_overcr0_chart_report_area_"+year).html("");
+        $("#liv_hous0_chart_report_area_"+year).html("");
+        $("#liv_cooking0_chart_report_area_"+year).html("");
+        $("#liv_asset0_chart_report_area_"+year).html("");
+        $("#liv_coping0_chart_report_area_"+year).html("");
+        $("#liv_elect0_chart_report_area_"+year).html("");
 
-        $("#monetary0_chart_report_area").html("");
-        $("#overall0_chart_report_area").html("");
+        $("#monetary0_chart_report_area_"+year).html("");
+        $("#overall0_chart_report_area_"+year).html("");
 
         const static_url = "/static/";
-        var _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD1_v2.json";
+        var _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD1_"+year+".json";
         if (area_type === "provice") {
-          _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD1_v2.json";
+          _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD1_"+year+".json";
         } else if (area_type === "district") {
-          _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD2_v2.json";
+          _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD2_"+year+".json";
         } else if (area_type === "sub-district") {
-          _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD3_v2.json";
+          _jsonfile = static_url + "data/VALNERABILITY_DATA_AMD3_"+year+".json";
         }
+        
 
         $.getJSON(_jsonfile, function (json) {
           var data = json;
           var index = data["id_area"].indexOf(area_id);
+
           index = parseInt(index);
+
           var feat_groups = ["education", "health", "living", "monetary", "overall"];
           var feat_names = ["Education0", "edu_attain0", "edu_attend0",
             "Health0", "health_food0", "health_access0", "health_water0", "health_sanit0", "health_handwash0",
@@ -1685,14 +1892,18 @@
             "monetary": ["Monetary"],
             "overall": ["overall"],
           }
+          
           _focusedAreas.push(selected_admin);
+         _focusedAreas = _focusedAreas.filter((item, index) => _focusedAreas.indexOf(item) === index);
+
 
           for (var j = 0; j < feat_groups.length; j++) {
             var _listFeat = _groups[feat_groups[j]];
             var _listFeatDesc = _feat_desc[feat_groups[j]];
+            
+            
             for (var i = 0; i < _listFeat.length; i++) {
 
-              var _year = 2020;
               var feat = _listFeat[i]
               var feat_des = _listFeatDesc[i]
 
@@ -1700,44 +1911,85 @@
               var pieData = [];
               pieData.push(["Deprived", _featData["Deprived"][index], '#7CB5EC']);
               pieData.push(["Not Deprived", _featData["Not Deprived"][index], '#434348']);
+              
+              if (year === 2019) {
+                _barChartInfo19[feat][0]["data"].push(_featData["Not Deprived"][index]);
+                _barChartInfo19[feat][1]["data"].push(_featData["Deprived"][index]);
 
-              _barChartInfo[feat][0]["data"].push(_featData["Not Deprived"][index]);
-              _barChartInfo[feat][1]["data"].push(_featData["Deprived"][index]);
-              var report_div_id = feat.toLowerCase() + "_chart_report_area";
+              } else if (year === 2022) {
+                _barChartInfo22[feat][0]["data"].push(_featData["Not Deprived"][index]);
+                _barChartInfo22[feat][1]["data"].push(_featData["Deprived"][index]);
+
+              } else if (year === 2023) {
+                _barChartInfo23[feat][0]["data"].push(_featData["Not Deprived"][index]);
+                _barChartInfo23[feat][1]["data"].push(_featData["Deprived"][index]);
+
+              }
+              
+
+              // _barChartInfo = _barChartInfo.slice(0, _focusedAreas.length)
+              // const targetLength = _focusedAreas.length; 
+
+              // // Iterate over each key in the object
+              // Object.keys(_barChartInfo).forEach(key => {
+              //   // Iterate over each object in the array
+              //   _barChartInfo[key].forEach(item => {
+              //     if (Array.isArray(item.data)) {
+              //       // Trim the data array to the desired length
+              //       item.data = item.data.slice(0, targetLength);
+              //     }
+              //   });
+              // });
+
+              
+              var report_div_id = feat.toLowerCase() + "_chart_report_area_" + year;
 
               if (_focusedAreas.length > 1) {
-                createSelectedAreaReport(report_div_id, feat.toLowerCase(), selected_admin, area_id, "bar");
-                var barChartID = feat.toLowerCase() + '_barchart';
-                showHighChart(barChartID, 'column', _focusedAreas, _barChartInfo[feat], true, 5, feat_des.toUpperCase());
-                $("#" + feat.toLowerCase() + "_barpng").click(function () {
+                createSelectedAreaReport(report_div_id, feat.toLowerCase(), selected_admin, area_id, "bar", year);
+                
+                var barChartID = feat.toLowerCase() + '_barchart_' + year;
+              
+                if (year === 2019) {
+                  showHighChart(barChartID, 'column', _focusedAreas, _barChartInfo19[feat], true, 5, feat_des.toUpperCase());
+  
+                } else if (year === 2022) {
+                  showHighChart(barChartID, 'column', _focusedAreas, _barChartInfo22[feat], true, 5, feat_des.toUpperCase());
+  
+                } else if (year === 2023) {
+                  showHighChart(barChartID, 'column', _focusedAreas, _barChartInfo23[feat], true, 5, feat_des.toUpperCase());
+  
+                }
+
+                
+                $("#" + feat.toLowerCase() + "_barpng_" + + year).click(function () {
                   var dataName = $(this).attr('data-yid');
-                  var chart = $("#" + dataName.toLowerCase() + '_barchart').highcharts();
+                  var chart = $("#" + dataName.toLowerCase() + '_barchart_'+ year).highcharts();
                   chart.exportChart();
                 });
-                $("#" + feat.toLowerCase() + "_barcsv").click(function () {
+                
+                $("#" + feat.toLowerCase() + "_barcsv_" + year).click(function () {
                   var dataName = $(this).attr('data-yid');
-                  var chart = $("#" + dataName.toLowerCase() + '_barchart').highcharts();
+                  var chart = $("#" + dataName.toLowerCase() + '_barchart_'+ year).highcharts();
                   chart.downloadCSV();
                 });
 
               } else {
-                createSelectedAreaReport(report_div_id, feat.toLowerCase(), selected_admin, area_id, "pie");
-                var pieChartID = feat.toLowerCase() + '_piechart';
+                createSelectedAreaReport(report_div_id, feat.toLowerCase(), selected_admin, area_id, "pie", year);
+                var pieChartID = feat.toLowerCase() + '_piechart_' + year;
                 showPieHighChart(pieChartID, pieData, feat_des.toUpperCase() + ' IN ' + selected_admin.toUpperCase(), feat.toLowerCase());
                 // A $( document ).ready() block.
-                $("#" + feat.toLowerCase() + "_piepng").click(function () {
+                $("#" + feat.toLowerCase() + "_piepng_"+ year).click(function () {
                   var dataName = $(this).attr('data-yid');
-                  var chart = $("#" + dataName.toLowerCase() + '_piechart').highcharts();
+                  var chart = $("#" + dataName.toLowerCase() + '_piechart_'+ year).highcharts();
                   chart.exportChart();
                 });
 
-                $("#" + feat.toLowerCase() + "_piecsv").click(function () {
+                $("#" + feat.toLowerCase() + "_piecsv_"+ year).click(function () {
                   var dataName = $(this).attr('data-yid');
-                  var chart = $("#" + dataName.toLowerCase() + '_piechart').highcharts();
+                  var chart = $("#" + dataName.toLowerCase() + '_piechart_'+ year).highcharts();
                   chart.downloadCSV();
                 });
               }
-
             }
           }
         });
@@ -1837,8 +2089,8 @@
       function getLandcover() {
         var parameters = {
           polygon_id: polygon_id,
-          startYear: studyLow,
-          endYear: studyHigh,
+          startYear: 2019,
+          endYear: 2020,
           area_type: area_type,
           area_id: area_id,
           year: '',
@@ -1939,7 +2191,158 @@
         $("#nightlight-div").css("display", "none");
         _focusedAreas = [];
         timeSeriesArr = [];
-        _barChartInfo = {
+        _barChartInfo19 = {
+          "Education0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "edu_attain0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "edu_attend0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "Health0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "health_food0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "health_access0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "health_water0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "health_sanit0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "health_handwash0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "LivingStandard0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_overcr0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_hous0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_cooking0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_elect0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_asset0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_coping0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "Monetary0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "overall0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+        };
+
+
+        _barChartInfo22 = {
+          "Education0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "edu_attain0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "edu_attend0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "Health0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "health_food0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "health_access0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "health_water0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "health_sanit0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "health_handwash0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "LivingStandard0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_overcr0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_hous0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_cooking0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_elect0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_asset0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "liv_coping0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "Monetary0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+          "overall0": [
+            { name: 'Not Deprived', data: [], color: '#434348' },
+            { name: 'Deprived', data: [], color: '#7CB5EC' },
+          ],
+        };
+
+        _barChartInfo23 = {
           "Education0": [
             { name: 'Not Deprived', data: [], color: '#434348' },
             { name: 'Deprived', data: [], color: '#7CB5EC' },
@@ -2073,194 +2476,222 @@
         });
 
 
-        $("#health0_chart_report_area").html("");
-        $("#health_access0_chart_report_area").html("");
-        $("#health_water0_chart_report_area").html("");
-        $("#health_sanit0_chart_report_area").html("");
-        $("#health_food0_chart_report_area").html("");
-        $("#health_handwash0_chart_report_area").html("");
-        $("#education0_chart_report_area").html("");
-        $("#edu_attain0_chart_report_area").html("");
-        $("#edu_attend0_chart_report_area").html("");
+        // $("#health0_chart_report_area").html("");
+        // $("#health_access0_chart_report_area").html("");
+        // $("#health_water0_chart_report_area").html("");
+        // $("#health_sanit0_chart_report_area").html("");
+        // $("#health_food0_chart_report_area").html("");
+        // $("#health_handwash0_chart_report_area").html("");
+        // $("#education0_chart_report_area").html("");
+        // $("#edu_attain0_chart_report_area").html("");
+        // $("#edu_attend0_chart_report_area").html("");
 
-        $("#livingstandard0_chart_report_area").html("");
-        $("#liv_overcr0_chart_report_area").html("");
-        $("#liv_hous0_chart_report_area").html("");
-        $("#liv_cooking0_chart_report_area").html("");
-        $("#liv_asset0_chart_report_area").html("");
-        $("#liv_coping0_chart_report_area").html("");
-        $("#liv_elect0_chart_report_area").html("");
+        // $("#livingstandard0_chart_report_area").html("");
+        // $("#liv_overcr0_chart_report_area").html("");
+        // $("#liv_hous0_chart_report_area").html("");
+        // $("#liv_cooking0_chart_report_area").html("");
+        // $("#liv_asset0_chart_report_area").html("");
+        // $("#liv_coping0_chart_report_area").html("");
+        // $("#liv_elect0_chart_report_area").html("");
 
-        $("#monetary0_chart_report_area").html("");
-        $("#overall0_chart_report_area").html("");
-
-      });
+        // $("#monetary0_chart_report_area").html("");
+        // $("#overall0_chart_report_area").html("");
 
 
-      $("#education0_bar_csv").click(function () {
-        var chart = $("#education0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#education0_bar_png").click(function () {
-        var chart = $("#education0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+        // Clear chart areas for all years
+        years.forEach(year => {
+          clearChartAreas(year);
+        });
 
-      $("#edu_attain0_bar_csv").click(function () {
-        var chart = $("#edu_attain0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#edu_attain0_bar_png").click(function () {
-        var chart = $("#edu_attain0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#edu_attend0_bar_csv").click(function () {
-        var chart = $("#edu_attend0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#edu_attend0_bar_png").click(function () {
-        var chart = $("#edu_attend0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#health0_bar_csv").click(function () {
-        var chart = $("#health0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health0_bar_png").click(function () {
-        var chart = $("#health0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#health_food0_bar_csv").click(function () {
-        var chart = $("#health_food0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health_food0_bar_png").click(function () {
-        var chart = $("#health_food0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
-
-      $("#health_access0_bar_csv").click(function () {
-        var chart = $("#health_access0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health_access0_bar_png").click(function () {
-        var chart = $("#health_access0_barchart_adm").highcharts();
-        chart.exportChart();
       });
 
 
-      $("#health_water0_bar_csv").click(function () {
-        var chart = $("#health_water0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health_water0_bar_png").click(function () {
-        var chart = $("#health_water0_barchart_adm").highcharts();
-        chart.exportChart();
+      // Function to attach click handlers
+      function attachExportHandlers(featureName, year) {
+        $(`#${featureName}_bar_csv_${year}`).click(function () {
+          console.log(`#${featureName}_barchart_adm_${year}`)
+          const chart = $(`#${featureName}_barchart_adm_${year}`).highcharts();
+          if (chart) chart.downloadCSV();
+        });
+
+        $(`#${featureName}_bar_png_${year}`).click(function () {
+          console.log(`#${featureName}_barchart_adm_${year}`)
+          const chart = $(`#${featureName}_barchart_adm_${year}`).highcharts();
+          if (chart) chart.exportChart();
+        });
+      }
+
+      // Attach handlers for all features and years
+      years.forEach(year => {
+        featureNames.forEach(featureName => {
+          attachExportHandlers(featureName, year);
+        });
       });
 
+      // $("#education0_bar_csv").click(function () {
+      //   var chart = $("#education0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#education0_bar_png").click(function () {
+      //   var chart = $("#education0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#health_sanit0_bar_csv").click(function () {
-        var chart = $("#health_sanit0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health_sanit0_bar_png").click(function () {
-        var chart = $("#health_sanit0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#edu_attain0_bar_csv").click(function () {
+      //   var chart = $("#edu_attain0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#edu_attain0_bar_png").click(function () {
+      //   var chart = $("#edu_attain0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#health_handwash0_bar_csv").click(function () {
-        var chart = $("#health_handwash0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#health_handwash0_bar_png").click(function () {
-        var chart = $("#health_handwash0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#edu_attend0_bar_csv").click(function () {
+      //   var chart = $("#edu_attend0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#edu_attend0_bar_png").click(function () {
+      //   var chart = $("#edu_attend0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#livingstandard0_bar_csv").click(function () {
-        var chart = $("#livingstandard0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#livingstandard0_bar_png").click(function () {
-        var chart = $("#livingstandard0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#health0_bar_csv").click(function () {
+      //   var chart = $("#health0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health0_bar_png").click(function () {
+      //   var chart = $("#health0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#liv_overcr0_bar_csv").click(function () {
-        var chart = $("#liv_overcr0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_overcr0_bar_png").click(function () {
-        var chart = $("#liv_overcr0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#health_food0_bar_csv").click(function () {
+      //   var chart = $("#health_food0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health_food0_bar_png").click(function () {
+      //   var chart = $("#health_food0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#health_access0_bar_csv").click(function () {
+      //   var chart = $("#health_access0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health_access0_bar_png").click(function () {
+      //   var chart = $("#health_access0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
 
-      $("#liv_hous0_bar_csv").click(function () {
-        var chart = $("#liv_hous0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_hous0_bar_png").click(function () {
-        var chart = $("#liv_hous0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#health_water0_bar_csv").click(function () {
+      //   var chart = $("#health_water0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health_water0_bar_png").click(function () {
+      //   var chart = $("#health_water0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#liv_cooking0_bar_csv").click(function () {
-        var chart = $("#liv_cooking0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_cooking0_bar_png").click(function () {
-        var chart = $("#liv_cooking0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
 
-      $("#liv_elect0_bar_csv").click(function () {
-        var chart = $("#liv_elect0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_elect0_bar_png").click(function () {
-        var chart = $("#liv_elect0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#health_sanit0_bar_csv").click(function () {
+      //   var chart = $("#health_sanit0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health_sanit0_bar_png").click(function () {
+      //   var chart = $("#health_sanit0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#liv_asset0_bar_csv").click(function () {
-        var chart = $("#liv_asset0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_asset0_bar_png").click(function () {
-        var chart = $("#liv_asset0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#health_handwash0_bar_csv").click(function () {
+      //   var chart = $("#health_handwash0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#health_handwash0_bar_png").click(function () {
+      //   var chart = $("#health_handwash0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#liv_coping0_bar_csv").click(function () {
-        var chart = $("#liv_coping0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#liv_coping0_bar_png").click(function () {
-        var chart = $("#liv_coping0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#livingstandard0_bar_csv").click(function () {
+      //   var chart = $("#livingstandard0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#livingstandard0_bar_png").click(function () {
+      //   var chart = $("#livingstandard0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#monetary0_bar_csv").click(function () {
-        var chart = $("#monetary0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#monetary0_bar_png").click(function () {
-        var chart = $("#monetary0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+      // $("#liv_overcr0_bar_csv").click(function () {
+      //   var chart = $("#liv_overcr0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_overcr0_bar_png").click(function () {
+      //   var chart = $("#liv_overcr0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
-      $("#overall0_bar_csv").click(function () {
-        var chart = $("#overall0_barchart_adm").highcharts();
-        chart.downloadCSV();
-      });
-      $("#overall0_bar_png").click(function () {
-        var chart = $("#overall0_barchart_adm").highcharts();
-        chart.exportChart();
-      });
+
+      // $("#liv_hous0_bar_csv").click(function () {
+      //   var chart = $("#liv_hous0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_hous0_bar_png").click(function () {
+      //   var chart = $("#liv_hous0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#liv_cooking0_bar_csv").click(function () {
+      //   var chart = $("#liv_cooking0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_cooking0_bar_png").click(function () {
+      //   var chart = $("#liv_cooking0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#liv_elect0_bar_csv").click(function () {
+      //   var chart = $("#liv_elect0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_elect0_bar_png").click(function () {
+      //   var chart = $("#liv_elect0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#liv_asset0_bar_csv").click(function () {
+      //   var chart = $("#liv_asset0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_asset0_bar_png").click(function () {
+      //   var chart = $("#liv_asset0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#liv_coping0_bar_csv").click(function () {
+      //   var chart = $("#liv_coping0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#liv_coping0_bar_png").click(function () {
+      //   var chart = $("#liv_coping0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#monetary0_bar_csv").click(function () {
+      //   var chart = $("#monetary0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#monetary0_bar_png").click(function () {
+      //   var chart = $("#monetary0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
+
+      // $("#overall0_bar_csv").click(function () {
+      //   var chart = $("#overall0_barchart_adm").highcharts();
+      //   chart.downloadCSV();
+      // });
+      // $("#overall0_bar_png").click(function () {
+      //   var chart = $("#overall0_barchart_adm").highcharts();
+      //   chart.exportChart();
+      // });
 
 
       function hideModel() {
@@ -2382,7 +2813,9 @@
         }
         else if (this.value === 'province') {
           $("#download_options").css("display", "none");
-          createBarChart();
+          createBarChart(2019);
+          createBarChart(2022);
+          createBarChart(2023);
           cam_adm1_layer.addTo(map);
           if (map.hasLayer(cam_country_layer)) {
             map.removeLayer(cam_country_layer);
@@ -2395,7 +2828,9 @@
           }
         } else if (this.value === 'district') {
           $("#download_options").css("display", "none");
-          createBarChart();
+          createBarChart(2019);
+          createBarChart(2022);
+          createBarChart(2023);
           cam_adm2_layer.addTo(map);
           if (map.hasLayer(cam_adm1_layer)) {
             map.removeLayer(cam_adm1_layer);
@@ -2419,7 +2854,9 @@
             map.removeLayer(cam_adm2_layer);
           }
         }
-        getMapVal();
+        getMapVal(2019);
+        getMapVal(2022);
+        getMapVal(2023);
       })
 
 

@@ -1731,3 +1731,16 @@ svg image{
 .content-item h3{
   font-family: 'Roboto', sans-serif !important;
 }
+
+.panel-heading {
+  padding: 10px 5px 2px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background: #ddd;
+  margin-bottom: 4px;
+}
+
+.panel-collapse .panel-body {
+  padding: 2px 5px 2px 15px;
+}
