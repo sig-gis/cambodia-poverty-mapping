@@ -12,6 +12,7 @@ from ee.ee_exception import EEException
 import requests
 import json
 from google.oauth2 import service_account
+import time
 
 # -----------------------------------------------------------------------------
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -63,6 +64,9 @@ WATER_IMG  = ee.Image("projects/earthengine-legacy/assets/projects/servir-mekong
 # VALNERABILITY_AMD3 = ee.FeatureCollection("projects/servir-mekong/undp/adm3_50v2/all_50")
 # VALNERABILITY_AMD3 = ee.FeatureCollection("projects/servir-mekong/undp/website/adm3_50v2")
 VALNERABILITY_AMD3 = ee.FeatureCollection("projects/servir-mekong/undp/website/basemap/adm3_19")
+VALNERABILITY_AMD3_19 = ee.FeatureCollection("projects/servir-mekong/undp/website/basemap/adm3_19")
+VALNERABILITY_AMD3_22 = ee.FeatureCollection("projects/servir-mekong/undp/website/basemap/adm3_22")
+VALNERABILITY_AMD3_23 = ee.FeatureCollection("projects/servir-mekong/undp/website/basemap/adm3_23")
 
 
 # ADM3 = ee.FeatureCollection("projects/earthengine-legacy/assets/projects/servir-mekong/admin/KHM_adm3")
@@ -81,6 +85,7 @@ POP_ADM3 = ee.FeatureCollection("projects/servir-mekong/undp/website/populationA
 BUILDINGS_POP = ee.Image("projects/servir-mekong/undp/buildingsWithPeople/buildingsWithPeopleImg")
 
 _feat_name = ""
+data_year = 0
 
 # Perform a join to add DIST_NAME to VALNERABILITY_AMD3
 def add_district_name(feature):
@@ -123,11 +128,20 @@ def getNightLightMap(start_year, end_year, area_type, area_id):
     return res
 #--------------------------------------------------------------------------
 
-def allArea(prov):
-    provAll = VALNERABILITY_AMD3.filterBounds(prov.geometry())
+def allArea(prov, data_year):
+    # Ensure data_year is valid
+    if data_year == 2019:
+        provAll = VALNERABILITY_AMD3_19.filterBounds(prov.geometry())
+    elif data_year == 2022:
+        provAll = VALNERABILITY_AMD3_22.filterBounds(prov.geometry())
+    elif data_year == 2023:
+        provAll = VALNERABILITY_AMD3_23.filterBounds(prov.geometry())
+    else:
+        raise ValueError(f"Unsupported year: {data_year}. Please use 2019, 2022, or 2023.")
 
+    # Perform aggregation
     total = provAll.aggregate_sum("Total")
-    Education =   provAll.aggregate_sum("Education0")
+    Education = provAll.aggregate_sum("Education0")
     edu_attain = provAll.aggregate_sum("edu_attain0")
     edu_attend = provAll.aggregate_sum("edu_attend0")
     Health = provAll.aggregate_sum("Health0")
@@ -146,39 +160,49 @@ def allArea(prov):
     monetary = provAll.aggregate_sum("Monetary0")
     overall = provAll.aggregate_sum("overall0")
 
-    return prov.set("Total",ee.Number(1).subtract(Education.divide(total)))\
-    .set("Education0",ee.Number(1).subtract(Education.divide(total)))\
-    .set("edu_attain0",ee.Number(1).subtract(edu_attain.divide(total)))\
-    .set("edu_attend0",ee.Number(1).subtract(edu_attend.divide(total)))\
-    .set("Health0",ee.Number(1).subtract(Health.divide(total)))\
-    .set("health_access0",ee.Number(1).subtract(healt_access.divide(total)))\
-    .set("health_food0",ee.Number(1).subtract(healt_food.divide(total)))\
-    .set("health_handwash0",ee.Number(1).subtract(healt_handWash.divide(total)))\
-    .set("health_sanit0",ee.Number(1).subtract(healt_sanit.divide(total)))\
-    .set("health_water0",ee.Number(1).subtract(healt_water.divide(total)))\
-    .set("LivingStandard0",ee.Number(1).subtract(LivingStandard.divide(total)))\
-    .set("liv_asset0",ee.Number(1).subtract(liv_asset.divide(total)))\
-    .set("liv_cooking0",ee.Number(1).subtract(liv_cooking.divide(total)))\
-    .set("liv_coping0",ee.Number(1).subtract(liv_coping.divide(total)))\
-    .set("liv_elect0",ee.Number(1).subtract(liv_elect.divide(total)))\
-    .set("liv_hous0",ee.Number(1).subtract(liv_house.divide(total)))\
-    .set("liv_overcr0",ee.Number(1).subtract(liv_overcrowd.divide(total)))\
-    .set("Monetary0",ee.Number(1).subtract(monetary.divide(total)))\
-    .set("overall0",ee.Number(1).subtract(overall.divide(total)))
+    return prov.set("Total", ee.Number(1).subtract(Education.divide(total)))\
+               .set("Education0", ee.Number(1).subtract(Education.divide(total)))\
+               .set("edu_attain0", ee.Number(1).subtract(edu_attain.divide(total)))\
+               .set("edu_attend0", ee.Number(1).subtract(edu_attend.divide(total)))\
+               .set("Health0", ee.Number(1).subtract(Health.divide(total)))\
+               .set("health_access0", ee.Number(1).subtract(healt_access.divide(total)))\
+               .set("health_food0", ee.Number(1).subtract(healt_food.divide(total)))\
+               .set("health_handwash0", ee.Number(1).subtract(healt_handWash.divide(total)))\
+               .set("health_sanit0", ee.Number(1).subtract(healt_sanit.divide(total)))\
+               .set("health_water0", ee.Number(1).subtract(healt_water.divide(total)))\
+               .set("LivingStandard0", ee.Number(1).subtract(LivingStandard.divide(total)))\
+               .set("liv_asset0", ee.Number(1).subtract(liv_asset.divide(total)))\
+               .set("liv_cooking0", ee.Number(1).subtract(liv_cooking.divide(total)))\
+               .set("liv_coping0", ee.Number(1).subtract(liv_coping.divide(total)))\
+               .set("liv_elect0", ee.Number(1).subtract(liv_elect.divide(total)))\
+               .set("liv_hous0", ee.Number(1).subtract(liv_house.divide(total)))\
+               .set("liv_overcr0", ee.Number(1).subtract(liv_overcrowd.divide(total)))\
+               .set("Monetary0", ee.Number(1).subtract(monetary.divide(total)))\
+               .set("overall0", ee.Number(1).subtract(overall.divide(total)))
+
 
 def calfraction(self, feat):
     total = ee.Number(feat.get("Total")).float()
     sample = ee.Number(feat.get(self.feat_name)).float()
     return feat.set("Not Deprived",ee.Number(1).subtract(sample.divide(total))).set("Deprived",sample.divide(total))
 
-def main(area_type):
+def main(area_type, year):
+    data_year = year
+  
     feat_names = ['Education0', 'Health0', 'LivingStandard0', 'Monetary0', 'Total', 'Unemploy0', 'edu_attain0', 'edu_attend0', 'health_access0', 'health_food0', 'health_handwash0', 'health_sanit0', 'health_water0', 'liv_asset0', 'liv_cooking0', 'liv_coping0', 'liv_elect0', 'liv_hous0', 'liv_overcr0', 'overall0', 'underemployment0', 'unemploy0']
-
     res = {}
     adm_name = ''
+    
+    if (data_year == 2019):
+        VALNERABILITY_AMD3 = VALNERABILITY_AMD3_19
+    elif (data_year == 2022):
+        VALNERABILITY_AMD3 = VALNERABILITY_AMD3_22
+    elif (data_year == 2023):
+        VALNERABILITY_AMD3 = VALNERABILITY_AMD3_23
+
     for feat_name in feat_names:
         _feat_name = feat_name
-        print(feat_name)
+
         _Deprived = []
         _Not_Deprived = []
         
@@ -186,12 +210,11 @@ def main(area_type):
             val_map = VALNERABILITY_AMD3 #self.getFraction(VALNERABILITY_AMD3, feat_name)
             adm_name = 'COM_NAME'
             adm_id = 'COM_CODE'
-            _json = 'VALNERABILITY_DATA_AMD3_2019.json'
+            _json = 'VALNERABILITY_DATA_AMD3_'+year+'.json'
             obj = val_map.aggregate_array(feat_name).getInfo()
             total = val_map.aggregate_array("Total").getInfo()
             no_pop = POP_ADM3.aggregate_array("population").getInfo()
             no_buildings = POP_ADM3.aggregate_array("buildingCount").getInfo()
-
             for i in range(len(obj)):
                 if total[i] != 0:
                     _Not_Deprived.append(1 - (obj[i] / total[i]))
@@ -201,46 +224,46 @@ def main(area_type):
                     _Deprived.append(0) 
 
         elif area_type == "district":
-            # Apply the function to VALNERABILITY_AMD3
-            VALNERABILITY_AMD3_WITH_DIST_NAME = VALNERABILITY_AMD3.map(add_district_name)
-            district_names = VALNERABILITY_AMD3_WITH_DIST_NAME.aggregate_array('DIS_NAME').distinct().getInfo()  # List of district names
-            district_codes = VALNERABILITY_AMD3_WITH_DIST_NAME.aggregate_array('DIS_CODE').distinct().getInfo()
+            batch_size = 50
+            ADM2_list = ADM2.toList(ADM2.size())  # Convert entire collection to a list
+            results = []
+
+            # Process features in batches
+            for i in range(0, ADM2.size().getInfo(), batch_size):
+                subset = ee.FeatureCollection(ADM2_list.slice(i, i + batch_size))
+                subset_result = subset.map(lambda prov: allArea(prov, data_year))
+                results.append(subset_result)
+
+            # Combine results into one FeatureCollection
+            val_map = ee.FeatureCollection(results).flatten()
+
+            # Aggregate values
             adm_name = 'DIS_NAME'
             adm_id = 'DIS_CODE'
-            _json = 'VALNERABILITY_DATA_AMD2_2019.json'
+            _json = 'VALNERABILITY_DATA_AMD2_' + str(year) + '.json'
 
-            grouped_results = []
+            # Check if feat_name exists
+            obj = val_map.aggregate_array(feat_name).getInfo()
 
-            for district_name in district_names:
-                print(district_name)
-                # Filter sub-districts belonging to the current district
-                district_features = VALNERABILITY_AMD3.filterMetadata('DIS_NAME', 'equals', district_name)
+            no_pop = []
+            no_buildings = []
+            for val in obj:
+                _Not_Deprived.append(val)
+                _Deprived.append(1 - val)
 
-                # Aggregate data for this district
-                obj = district_features.aggregate_array(feat_name).getInfo()
-                total = district_features.aggregate_array("Total").getInfo()
-    
-                _Not_Deprived = []
-                _Deprived = []
-                no_pop = []
-                no_buildings= []
-
-                for i in range(len(obj)):
-                    if total[i] != 0:
-                        _Not_Deprived.append(1 - (obj[i] / total[i]))
-                        _Deprived.append(obj)
         
         elif area_type == "province":
-            val_map = ADM1.map(allArea)
+            val_map = ADM1.map(lambda prov: allArea(prov, data_year))
             adm_name = 'HRName'
             adm_id = 'PRO_CODE'
-            _json = 'VALNERABILITY_DATA_AMD1_2019.json'
+            _json = 'VALNERABILITY_DATA_AMD1_'+str(year)+'.json'
             obj = val_map.aggregate_array(feat_name).getInfo()
             no_pop = POP_ADM1.aggregate_array("population").getInfo()
             no_buildings = POP_ADM1.aggregate_array("buildingCount").getInfo()
             for val in obj:
                 _Not_Deprived.append(val)
                 _Deprived.append(1-val)
+        
         
         dict = {
             "Not Deprived": _Not_Deprived,
@@ -249,12 +272,9 @@ def main(area_type):
         
         res[feat_name] = dict
     
-    if(area_type == "district"):
-        res['name_area'] = district_names
-        res['id_area'] = district_codes
-    else:
-        res['name_area'] = list(val_map.aggregate_array(adm_name).getInfo())
-        res['id_area'] = list(val_map.aggregate_array(adm_id).getInfo())
+
+    res['name_area'] = list(val_map.aggregate_array(adm_name).getInfo())
+    res['id_area'] = list(val_map.aggregate_array(adm_id).getInfo())
     res['population'] = list(no_pop)
     res['buildings'] = list(no_buildings)
 
@@ -264,6 +284,14 @@ def main(area_type):
         print(f"create a json file: {_json}")
 
 if __name__ == "__main__":
-    # main("sub-district")
-    main("province")
-    # main("district")
+    main("sub-district", 2019)
+    main("sub-district", 2022)
+    main("sub-district", 2023)
+    
+    main("province", 2019)
+    main("province", 2022)
+    main("province", 2023)
+
+    main("district", 2019)
+    main("district", 2022)
+    main("district", 2023)

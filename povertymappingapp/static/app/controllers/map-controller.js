@@ -347,10 +347,10 @@
         createBarChart(2019);
       });
 
-      // fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_2019.json", 'adm2_2019_data_cache', function (data) {
-      //   adm2_data_2019 = data;
-      //   createBarChart(2019);
-      // });
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_2019.json", 'adm2_2019_data_cache', function (data) {
+        adm2_data_2019 = data;
+        createBarChart(2019);
+      });
 
       fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD3_2019.json", 'adm3_2019_data_cache', function (data) {
         adm3_data_2019 = data;
@@ -362,10 +362,10 @@
         createBarChart(2022);
       });
 
-      // fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_2022.json", 'adm2_2022_data_cache', function (data) {
-      //   adm2_data_2022 = data;
-      //   createBarChart(2022);
-      // });
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_2022.json", 'adm2_2022_data_cache', function (data) {
+        adm2_data_2022 = data;
+        createBarChart(2022);
+      });
 
       fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD3_2022.json", 'adm3_2022_data_cache', function (data) {
         adm3_data_2022 = data;
@@ -378,10 +378,10 @@
         createBarChart(2023);
       });
 
-      // fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_2023.json", 'adm2_2023_data_cache', function (data) {
-      //   adm2_data_2023 = data;
-      //   createBarChart(2023);
-      // });
+      fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD2_2023.json", 'adm2_2023_data_cache', function (data) {
+        adm2_data_2023 = data;
+        createBarChart(2023);
+      });
 
       fetchWithCache(static_url + "data/VALNERABILITY_DATA_AMD3_2023.json", 'adm3_2023_data_cache', function (data) {
         adm3_data_2023 = data;
@@ -1588,11 +1588,11 @@
             console.log(error);
           });
       }
-
-      getMapVal(2019);
-      getMapVal(2022);
       getMapVal(2023);
-
+      getMapVal(2022);
+      getMapVal(2019);
+      
+    
       var _focusedAreas = [];
       var _barChartInfo19 = {
         "Education0": [
